@@ -157,32 +157,60 @@ const HeroBanner = () => {
         position: 'relative',
         zIndex: 2,
         display: 'flex',
-        gap: '24px',
-        justifyContent: 'center',
+        flexDirection: 'column',
         alignItems: 'center',
-        padding: '16px 24px',
+        gap: '4px',
+        padding: '20px 24px',
         opacity: isVisible ? 1 : 0,
         transition: 'opacity 800ms ease-out 800ms'
       }}>
-        <span style={{
-          fontFamily: 'var(--font-body)',
-          fontSize: '13px',
-          fontWeight: 'var(--font-medium)',
-          color: 'rgba(255, 255, 255, 0.9)',
-          letterSpacing: '0.02em'
-        }}>+1 200 femmes satisfaites</span>
+        {/* Titles line */}
+        <div style={{
+          display: 'flex',
+          gap: '32px',
+          justifyContent: 'center',
+          alignItems: 'center'
+        }}>
+          <span style={{
+            fontFamily: 'var(--font-heading)',
+            fontSize: '28px',
+            fontWeight: 'var(--font-semibold)',
+            color: '#FFFFFF',
+            textShadow: '0 2px 4px rgba(0, 0, 0, 0.3)'
+          }}>+1200</span>
 
-        <span style={{
-          color: 'rgba(255, 255, 255, 0.5)'
-        }}>•</span>
+          <span style={{
+            fontFamily: 'var(--font-heading)',
+            fontSize: '28px',
+            fontWeight: 'var(--font-semibold)',
+            color: '#FFFFFF',
+            textShadow: '0 2px 4px rgba(0, 0, 0, 0.3)'
+          }}>+10</span>
+        </div>
 
-        <span style={{
-          fontFamily: 'var(--font-body)',
-          fontSize: '13px',
-          fontWeight: 'var(--font-medium)',
-          color: 'rgba(255, 255, 255, 0.9)',
-          letterSpacing: '0.02em'
-        }}>+10 ans d'expérience</span>
+        {/* Subtitles line */}
+        <div style={{
+          display: 'flex',
+          gap: '32px',
+          justifyContent: 'center',
+          alignItems: 'center'
+        }}>
+          <span style={{
+            fontFamily: 'var(--font-body)',
+            fontSize: '14px',
+            fontWeight: 'var(--font-light)',
+            color: 'rgba(255, 255, 255, 0.9)',
+            letterSpacing: '0.02em'
+          }}>Femmes satisfaites</span>
+
+          <span style={{
+            fontFamily: 'var(--font-body)',
+            fontSize: '14px',
+            fontWeight: 'var(--font-light)',
+            color: 'rgba(255, 255, 255, 0.9)',
+            letterSpacing: '0.02em'
+          }}>Ans d'expérience</span>
+        </div>
       </div>
 
 
