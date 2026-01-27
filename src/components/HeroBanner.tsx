@@ -290,7 +290,7 @@ const HeroBanner = () => {
               alt="Google Reviews"
               className="usp-logo"
               style={{
-                height: '64px',
+                height: '83px',
                 width: 'auto',
               }}
             />
