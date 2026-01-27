@@ -20,11 +20,7 @@ const StickyBookingButton = () => {
             right: 0;
             padding: 16px;
             padding-bottom: calc(16px + env(safe-area-inset-bottom, 0px));
-            background: linear-gradient(
-              to bottom,
-              transparent,
-              rgba(255, 255, 255, 0.95) 30%
-            );
+            background: transparent;
             z-index: 999;
             pointer-events: none;
           }
