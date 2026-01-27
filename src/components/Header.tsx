@@ -58,9 +58,10 @@ const Header = () => {
           left: 0,
           right: 0,
           zIndex: 'var(--z-sticky)',
-          backgroundColor: 'var(--color-background)',
+          backgroundColor: '#FAFAF8',
           transition: 'box-shadow 200ms ease',
           boxShadow: isScrolled ? '0 1px 3px rgba(0, 0, 0, 0.1)' : 'none',
+          borderBottom: '1px solid var(--color-border-light)',
         }}
       >
         <div
