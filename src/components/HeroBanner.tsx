@@ -257,6 +257,7 @@ const HeroBanner = () => {
                 fontWeight: 'var(--font-normal)',
                 color: '#FFFFFF',
                 opacity: 0.9,
+                whiteSpace: 'nowrap',
               }}
             >
               {usps.satisfiedClients.label}
