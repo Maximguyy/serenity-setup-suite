@@ -48,176 +48,141 @@ const HeroBanner = () => {
 
       {/* Content */}
       <div className="hero-content" style={{
-      position: 'relative',
-      zIndex: 2,
-      maxWidth: '900px',
-      padding: '120px 32px 80px',
-      textAlign: 'center',
-      margin: 'auto',
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      justifyContent: 'center',
-      flex: 1
-    }}>
+        position: 'relative',
+        zIndex: 2,
+        maxWidth: '900px',
+        padding: '120px 32px 40px',
+        textAlign: 'center',
+        margin: '0 auto',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        flex: 1
+      }}>
 
         {/* Title */}
         <h1 className="hero-title" style={{
-        fontFamily: 'var(--font-heading)',
-        fontSize: '60px',
-        fontWeight: 'var(--font-semibold)',
-        color: '#FFFFFF',
-        lineHeight: 1.1,
-        letterSpacing: '-0.02em',
-        textShadow: '0 2px 4px rgba(0, 0, 0, 0.3)',
-        marginBottom: '24px',
-        opacity: isVisible ? 1 : 0,
-        transform: isVisible ? 'translateY(0)' : 'translateY(30px)',
-        transition: 'opacity 800ms ease-out 200ms, transform 800ms ease-out 200ms'
-      }}>
+          fontFamily: 'var(--font-heading)',
+          fontSize: '60px',
+          fontWeight: 'var(--font-semibold)',
+          color: '#FFFFFF',
+          lineHeight: 1.1,
+          letterSpacing: '-0.02em',
+          textShadow: '0 2px 4px rgba(0, 0, 0, 0.3)',
+          marginBottom: '24px',
+          opacity: isVisible ? 1 : 0,
+          transform: isVisible ? 'translateY(0)' : 'translateY(30px)',
+          transition: 'opacity 800ms ease-out 200ms, transform 800ms ease-out 200ms'
+        }}>
           {hero.title}
         </h1>
 
         {/* Subtitle */}
         {hero.subtitle && <p className="hero-subtitle" style={{
-        fontFamily: 'var(--font-body)',
-        fontSize: '20px',
-        fontWeight: 'var(--font-light)',
-        color: '#FFFFFF',
-        opacity: isVisible ? 0.95 : 0,
-        lineHeight: 1.6,
-        letterSpacing: '0.01em',
-        maxWidth: '600px',
-        margin: '0 auto 40px',
-        transform: isVisible ? 'translateY(0)' : 'translateY(30px)',
-        transition: 'opacity 800ms ease-out 400ms, transform 800ms ease-out 400ms'
-      }}>
-            {hero.subtitle}
-          </p>}
+          fontFamily: 'var(--font-body)',
+          fontSize: '20px',
+          fontWeight: 'var(--font-light)',
+          color: '#FFFFFF',
+          opacity: isVisible ? 0.95 : 0,
+          lineHeight: 1.6,
+          letterSpacing: '0.01em',
+          maxWidth: '600px',
+          margin: '0 auto 40px',
+          transform: isVisible ? 'translateY(0)' : 'translateY(30px)',
+          transition: 'opacity 800ms ease-out 400ms, transform 800ms ease-out 400ms'
+        }}>
+          {hero.subtitle}
+        </p>}
 
         {/* CTA Buttons */}
         <div className="hero-buttons" style={{
-        display: 'flex',
-        gap: '16px',
-        justifyContent: 'center',
-        alignItems: 'center',
-        opacity: isVisible ? 1 : 0,
-        transform: isVisible ? 'translateY(0)' : 'translateY(30px)',
-        transition: 'opacity 800ms ease-out 600ms, transform 800ms ease-out 600ms'
-      }}>
+          display: 'flex',
+          gap: '16px',
+          justifyContent: 'center',
+          alignItems: 'center',
+          opacity: isVisible ? 1 : 0,
+          transform: isVisible ? 'translateY(0)' : 'translateY(30px)',
+          transition: 'opacity 800ms ease-out 600ms, transform 800ms ease-out 600ms'
+        }}>
           {/* Primary Button */}
           <a href={booking.url} target="_blank" rel="noopener noreferrer" className="hero-btn-primary" aria-label="Réserver une séance dans notre institut" style={{
-          display: 'inline-flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          padding: '14px 32px',
-          fontFamily: 'var(--font-body)',
-          fontSize: '15px',
-          fontWeight: 'var(--font-semibold)',
-          textTransform: 'uppercase',
-          letterSpacing: '0.05em',
-          color: '#FFFFFF',
-          backgroundColor: 'var(--color-accent)',
-          border: 'none',
-          borderRadius: 'var(--border-radius-sm)',
-          textDecoration: 'none',
-          boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)',
-          cursor: 'pointer',
-          transition: 'all var(--transition-normal)'
-        }}>
+            display: 'inline-flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            padding: '14px 32px',
+            fontFamily: 'var(--font-body)',
+            fontSize: '15px',
+            fontWeight: 'var(--font-semibold)',
+            textTransform: 'uppercase',
+            letterSpacing: '0.05em',
+            color: '#FFFFFF',
+            backgroundColor: 'var(--color-accent)',
+            border: 'none',
+            borderRadius: 'var(--border-radius-sm)',
+            textDecoration: 'none',
+            boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)',
+            cursor: 'pointer',
+            transition: 'all var(--transition-normal)'
+          }}>
             {booking.buttonText}
           </a>
 
           {/* Secondary Button */}
           <a href={booking.giftCardUrl} target="_blank" rel="noopener noreferrer" className="hero-btn-secondary" aria-label="Offrir un soin cadeau" style={{
-          display: 'inline-flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          padding: '14px 32px',
-          fontFamily: 'var(--font-body)',
-          fontSize: '15px',
-          fontWeight: 'var(--font-semibold)',
-          textTransform: 'uppercase',
-          letterSpacing: '0.05em',
-          color: '#FFFFFF',
-          backgroundColor: 'transparent',
-          border: '2px solid #FFFFFF',
-          borderRadius: 'var(--border-radius-sm)',
-          textDecoration: 'none',
-          cursor: 'pointer',
-          transition: 'all var(--transition-normal)'
-        }}>
+            display: 'inline-flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            padding: '14px 32px',
+            fontFamily: 'var(--font-body)',
+            fontSize: '15px',
+            fontWeight: 'var(--font-semibold)',
+            textTransform: 'uppercase',
+            letterSpacing: '0.05em',
+            color: '#FFFFFF',
+            backgroundColor: 'transparent',
+            border: '2px solid #FFFFFF',
+            borderRadius: 'var(--border-radius-sm)',
+            textDecoration: 'none',
+            cursor: 'pointer',
+            transition: 'all var(--transition-normal)'
+          }}>
             {booking.giftCardText}
           </a>
         </div>
+      </div>
 
-        {/* USP Section */}
-        <div className="hero-usps" style={{
-          display: 'flex',
-          gap: '48px',
-          justifyContent: 'center',
-          alignItems: 'center',
-          marginTop: '48px',
-          opacity: isVisible ? 1 : 0,
-          transform: isVisible ? 'translateY(0)' : 'translateY(30px)',
-          transition: 'opacity 800ms ease-out 800ms, transform 800ms ease-out 800ms'
-        }}>
-          <div className="usp-item" style={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            textAlign: 'center'
-          }}>
-            <span style={{
-              fontFamily: 'var(--font-heading)',
-              fontSize: '32px',
-              fontWeight: 'var(--font-semibold)',
-              color: '#FFFFFF',
-              lineHeight: 1.2,
-              textShadow: '0 2px 4px rgba(0, 0, 0, 0.3)'
-            }}>+1 200</span>
-            <span style={{
-              fontFamily: 'var(--font-body)',
-              fontSize: '14px',
-              fontWeight: 'var(--font-normal)',
-              color: 'rgba(255, 255, 255, 0.9)',
-              textTransform: 'uppercase',
-              letterSpacing: '0.1em',
-              marginTop: '4px'
-            }}>femmes satisfaites</span>
-          </div>
+      {/* USP Section - Fixed at bottom */}
+      <div className="hero-usps" style={{
+        position: 'relative',
+        zIndex: 2,
+        display: 'flex',
+        gap: '24px',
+        justifyContent: 'center',
+        alignItems: 'center',
+        padding: '16px 24px',
+        opacity: isVisible ? 1 : 0,
+        transition: 'opacity 800ms ease-out 800ms'
+      }}>
+        <span style={{
+          fontFamily: 'var(--font-body)',
+          fontSize: '13px',
+          fontWeight: 'var(--font-medium)',
+          color: 'rgba(255, 255, 255, 0.9)',
+          letterSpacing: '0.02em'
+        }}>+1 200 femmes satisfaites</span>
 
-          <div style={{
-            width: '1px',
-            height: '40px',
-            backgroundColor: 'rgba(255, 255, 255, 0.4)'
-          }} />
+        <span style={{
+          color: 'rgba(255, 255, 255, 0.5)'
+        }}>•</span>
 
-          <div className="usp-item" style={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            textAlign: 'center'
-          }}>
-            <span style={{
-              fontFamily: 'var(--font-heading)',
-              fontSize: '32px',
-              fontWeight: 'var(--font-semibold)',
-              color: '#FFFFFF',
-              lineHeight: 1.2,
-              textShadow: '0 2px 4px rgba(0, 0, 0, 0.3)'
-            }}>+10 ans</span>
-            <span style={{
-              fontFamily: 'var(--font-body)',
-              fontSize: '14px',
-              fontWeight: 'var(--font-normal)',
-              color: 'rgba(255, 255, 255, 0.9)',
-              textTransform: 'uppercase',
-              letterSpacing: '0.1em',
-              marginTop: '4px'
-            }}>d'expérience</span>
-          </div>
-        </div>
+        <span style={{
+          fontFamily: 'var(--font-body)',
+          fontSize: '13px',
+          fontWeight: 'var(--font-medium)',
+          color: 'rgba(255, 255, 255, 0.9)',
+          letterSpacing: '0.02em'
+        }}>+10 ans d'expérience</span>
       </div>
 
 
