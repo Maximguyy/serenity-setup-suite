@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Menu, X, Phone } from 'lucide-react';
 import { clientConfig } from '@/config/client-config';
+import logo from '@/assets/logo.png';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -126,14 +127,14 @@ const Header = () => {
               flexShrink: 0,
             }}
           >
-            {clientConfig.logo ? (
+            {logo ? (
               <img
-                src={clientConfig.logo}
+                src={logo}
                 alt={clientConfig.institutName}
                 style={{
-                  height: '36px',
+                  height: '40px',
                   width: 'auto',
-                  filter: isScrolled ? 'none' : 'brightness(0) invert(1)',
+                  filter: isScrolled ? 'invert(1)' : 'none',
                   transition: 'filter 300ms ease',
                 }}
               />
