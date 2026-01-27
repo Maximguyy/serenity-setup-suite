@@ -73,7 +73,7 @@ const HeroBanner = () => {
           position: 'relative',
           zIndex: 2,
           maxWidth: '900px',
-          padding: '80px 32px',
+          padding: '100px 32px 80px',
           textAlign: 'center',
           margin: 'auto',
           display: 'flex',
@@ -273,7 +273,7 @@ const HeroBanner = () => {
           }
 
           .hero-content {
-            padding: 40px 24px 100px !important;
+            padding: 60px 24px 100px !important;
           }
 
           .hero-title {
