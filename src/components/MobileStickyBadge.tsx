@@ -25,12 +25,17 @@ const MobileStickyBadge = () => {
 
         @media (max-width: 767px) {
           .mobile-sticky-badge {
-            display: block;
+            display: flex;
+            justify-content: center;
             position: fixed;
             bottom: 16px;
-            left: 16px;
-            right: 16px;
+            left: 0;
+            right: 0;
             z-index: 1000;
+          }
+
+          .badge-inner {
+            display: inline-flex;
           }
 
           .badge-inner {
