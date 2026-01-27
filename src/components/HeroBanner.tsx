@@ -19,7 +19,7 @@ const HeroBanner = () => {
       className="hero-banner"
       style={{
         position: 'relative',
-        minHeight: '85vh',
+        minHeight: '72vh',
         display: 'flex',
         flexDirection: 'column',
         overflow: 'hidden',
@@ -369,7 +369,7 @@ const HeroBanner = () => {
         /* Mobile */
         @media (max-width: 767px) {
           .hero-banner {
-            min-height: 85vh !important;
+            min-height: 72vh !important;
           }
 
           .hero-content {
