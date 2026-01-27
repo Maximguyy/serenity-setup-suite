@@ -233,7 +233,7 @@ const HeroBanner = () => {
             style={{
               display: 'flex',
               flexDirection: 'column',
-              alignItems: 'flex-end',
+              alignItems: 'flex-start',
               gap: '2px',
             }}
           >
@@ -287,7 +287,7 @@ const HeroBanner = () => {
               alt="Google Reviews"
               className="usp-logo"
               style={{
-                height: '40px',
+                height: '56px',
                 width: 'auto',
               }}
             />
@@ -308,7 +308,7 @@ const HeroBanner = () => {
                   color: '#FFFFFF',
                 }}
               >
-                Excellent {usps.googleReviews.rating}
+                Excellent
               </span>
               <span
                 className="usp-reviews"
