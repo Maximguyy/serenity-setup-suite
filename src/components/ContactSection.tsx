@@ -1,5 +1,5 @@
 import { clientConfig } from '@/config/client-config';
-import { MapPin, Phone, Clock, Mail, Instagram, Facebook } from 'lucide-react';
+import { MapPin, Phone, Clock, Instagram, Facebook } from 'lucide-react';
 
 const ContactSection = () => {
   const hoursLabels: Record<string, string> = {
@@ -42,6 +42,7 @@ const ContactSection = () => {
           display: flex;
           justify-content: center;
           gap: 16px;
+          margin-bottom: 24px;
         }
 
         .social-link {
@@ -67,11 +68,15 @@ const ContactSection = () => {
           height: 24px;
         }
 
+        .quick-contact {
+          display: none;
+        }
+
         .contact-grid {
           display: grid;
-          grid-template-columns: 60% 40%;
+          grid-template-columns: 1fr 1fr;
           gap: 48px;
-          align-items: start;
+          align-items: stretch;
         }
 
         .map-container {
@@ -79,84 +84,66 @@ const ContactSection = () => {
           overflow: hidden;
           border: 1px solid #E5E5E5;
           box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+          height: 100%;
+          min-height: 450px;
         }
 
         .map-container iframe {
           display: block;
           width: 100%;
-          height: 450px;
+          height: 100%;
           border: none;
         }
 
-        .contact-info {
+        .hours-block {
+          background: #F8F8F8;
+          padding: 32px;
+          border-radius: 12px;
+          border: 1px solid #E5E5E5;
           display: flex;
           flex-direction: column;
-          gap: 32px;
+          height: 100%;
         }
 
-        .info-block {
-          background: #F8F8F8;
-          padding: 24px;
-          border-radius: 8px;
-          border: 1px solid #E5E5E5;
-        }
-
-        .info-header {
+        .hours-header {
           display: flex;
           align-items: center;
           gap: 12px;
-          margin-bottom: 12px;
+          margin-bottom: 24px;
         }
 
-        .info-header svg {
-          width: 24px;
-          height: 24px;
+        .hours-header svg {
+          width: 28px;
+          height: 28px;
           color: var(--color-accent, #C9A87C);
           flex-shrink: 0;
         }
 
-        .info-header h3 {
-          font-family: 'Raleway', sans-serif;
-          font-size: 18px;
+        .hours-header h3 {
+          font-family: 'Bitter', serif;
+          font-size: 24px;
           font-weight: 600;
           color: #1A1A1A;
           margin: 0;
         }
 
-        .info-content {
-          font-family: 'Raleway', sans-serif;
-          font-size: 15px;
-          font-weight: 400;
-          color: #333333;
-          line-height: 1.6;
-          margin: 0;
-          padding-left: 36px;
-        }
-
-        .info-link {
-          color: var(--color-accent, #C9A87C);
-          text-decoration: none;
-          transition: all 200ms ease;
-        }
-
-        .info-link:hover {
-          text-decoration: underline;
-          color: #B8956A;
-        }
-
         .hours-list {
           list-style: none;
-          padding: 0 0 0 36px;
+          padding: 0;
           margin: 0;
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
         }
 
         .hours-item {
           display: flex;
           justify-content: space-between;
-          padding: 8px 0;
+          padding: 12px 0;
           border-bottom: 1px solid #E5E5E5;
           font-family: 'Raleway', sans-serif;
-          font-size: 14px;
+          font-size: 15px;
           color: #333333;
         }
 
@@ -186,18 +173,61 @@ const ContactSection = () => {
             font-size: 32px;
           }
 
+          .social-links {
+            margin-bottom: 20px;
+          }
+
+          .quick-contact {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            align-items: center;
+          }
+
+          .quick-contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Raleway', sans-serif;
+            font-size: 14px;
+            color: #333333;
+            text-decoration: none;
+            transition: color 200ms ease;
+          }
+
+          .quick-contact-item:hover {
+            color: var(--color-accent, #C9A87C);
+          }
+
+          .quick-contact-item svg {
+            width: 18px;
+            height: 18px;
+            color: var(--color-accent, #C9A87C);
+            flex-shrink: 0;
+          }
+
           .contact-grid {
             display: flex;
             flex-direction: column;
-            gap: 32px;
+            gap: 24px;
           }
 
-          .map-container iframe {
-            height: 300px;
+          .map-container {
+            min-height: 280px;
+            height: 280px;
           }
 
-          .info-block {
-            padding: 20px;
+          .hours-block {
+            padding: 24px;
+          }
+
+          .hours-header h3 {
+            font-size: 20px;
+          }
+
+          .hours-item {
+            padding: 10px 0;
+            font-size: 14px;
           }
 
           .social-link {
@@ -214,12 +244,15 @@ const ContactSection = () => {
         /* Tablet */
         @media (min-width: 768px) and (max-width: 1023px) {
           .contact-grid {
-            grid-template-columns: 1fr 1fr;
             gap: 32px;
           }
 
-          .map-container iframe {
-            height: 400px;
+          .map-container {
+            min-height: 400px;
+          }
+
+          .hours-block {
+            padding: 24px;
           }
         }
       `}</style>
@@ -256,6 +289,28 @@ const ContactSection = () => {
               <MapPin />
             </a>
           </div>
+
+          {/* Mobile quick contact info */}
+          <div className="quick-contact">
+            <a
+              href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(clientConfig.contact.address.full)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="quick-contact-item"
+            >
+              <MapPin />
+              <span>
+                {clientConfig.contact.address.street}, {clientConfig.contact.address.postalCode} {clientConfig.contact.address.city}, France
+              </span>
+            </a>
+            <a
+              href={`tel:${clientConfig.contact.phone.replace(/\s/g, '')}`}
+              className="quick-contact-item"
+            >
+              <Phone />
+              <span>{clientConfig.contact.phone}</span>
+            </a>
+          </div>
         </div>
 
         <div className="contact-grid">
@@ -269,77 +324,22 @@ const ContactSection = () => {
             />
           </div>
 
-          <div className="contact-info">
-            {/* Adresse */}
-            <div className="info-block">
-              <div className="info-header">
-                <MapPin />
-                <h3>Adresse</h3>
-              </div>
-              <p className="info-content">
-                <a
-                  href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(clientConfig.contact.address.full)}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="info-link"
+          <div className="hours-block">
+            <div className="hours-header">
+              <Clock />
+              <h3>Horaires d'ouverture</h3>
+            </div>
+            <ul className="hours-list">
+              {Object.entries(clientConfig.hours).map(([day, hours]) => (
+                <li
+                  key={day}
+                  className={`hours-item ${hours === 'Fermé' ? 'closed' : ''}`}
                 >
-                  {clientConfig.contact.address.street}<br />
-                  {clientConfig.contact.address.postalCode} {clientConfig.contact.address.city}
-                </a>
-              </p>
-            </div>
-
-            {/* Téléphone */}
-            <div className="info-block">
-              <div className="info-header">
-                <Phone />
-                <h3>Téléphone</h3>
-              </div>
-              <p className="info-content">
-                <a
-                  href={`tel:${clientConfig.contact.phone.replace(/\s/g, '')}`}
-                  className="info-link"
-                  aria-label={`Appeler l'institut au ${clientConfig.contact.phone}`}
-                >
-                  {clientConfig.contact.phone}
-                </a>
-              </p>
-            </div>
-
-            {/* Email */}
-            <div className="info-block">
-              <div className="info-header">
-                <Mail />
-                <h3>Email</h3>
-              </div>
-              <p className="info-content">
-                <a
-                  href={`mailto:${clientConfig.contact.email}`}
-                  className="info-link"
-                >
-                  {clientConfig.contact.email}
-                </a>
-              </p>
-            </div>
-
-            {/* Horaires */}
-            <div className="info-block">
-              <div className="info-header">
-                <Clock />
-                <h3>Horaires</h3>
-              </div>
-              <ul className="hours-list">
-                {Object.entries(clientConfig.hours).map(([day, hours]) => (
-                  <li
-                    key={day}
-                    className={`hours-item ${hours === 'Fermé' ? 'closed' : ''}`}
-                  >
-                    <span className="hours-day">{hoursLabels[day]}</span>
-                    <span className="hours-time">{hours}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+                  <span className="hours-day">{hoursLabels[day]}</span>
+                  <span className="hours-time">{hours}</span>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </div>
