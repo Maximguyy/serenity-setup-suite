@@ -1,94 +1,56 @@
 
+# Modifications des cartes de prestations
 
-# Plan: USP Bar et Gradient Header
+## Problèmes identifiés
 
-## Objectif
-Ajouter une barre USP (Unique Selling Propositions) en bas du Hero Banner avec deux indicateurs de confiance, supprimer la fleche animee, et ajouter un gradient progressif sur le header.
+1. **Bordure visible** : Les cartes ont actuellement `border: '1px solid #E5E5E5'`
+2. **Durée mal positionnée** : La durée est affichée dans le contenu de la carte, pas sur l'image
+3. **Animation hover problématique** : Le `transform: translateY(-4px)` fait sortir les cartes de leur conteneur parent qui a `overflow: hidden` implicite
 
-## Modifications prevues
+## Modifications prévues
 
-### 1. Copie du logo Google Reviews
-Le logo Google Reviews fourni (`google-reviews-logo.png`) sera copie dans `public/assets/` pour etre utilise dans l'USP.
+### 1. Supprimer la bordure des cartes
+- Retirer la propriété `border: '1px solid #E5E5E5'` du style inline des cartes
+- Retirer `border-color: var(--color-accent)` du hover CSS
 
-### 2. Mise a jour de la configuration client
-Ajout d'une nouvelle section `usps` dans `src/config/client-config.ts`:
+### 2. Déplacer la durée en tag sur l'image
+- Ajouter un élément positionné en absolu dans le conteneur `.card-image`
+- Style du tag : fond semi-transparent foncé, texte blanc, coins arrondis
+- Position : en haut à droite de l'image avec un petit espacement
+- Supprimer la durée de la section `.card-content`
 
+### 3. Corriger l'animation hover
+- Remplacer `translateY(-4px)` par `scale(1.02)` pour éviter que les cartes sortent de leur zone
+- Ajouter un léger padding au conteneur `.services-grid` pour permettre l'affichage de l'ombre sans coupure
+- L'effet de zoom sur l'image reste inchangé
+
+---
+
+## Détails techniques
+
+### Structure du tag durée
 ```text
-usps: {
-  satisfiedClients: {
-    count: "1000+",
-    label: "femmes satisfaites"
-  },
-  googleReviews: {
-    rating: "4.9/5",
-    count: "+127 avis",
-    logo: "/assets/google-reviews-logo.png"
-  }
-}
++---------------------------+
+|                    [1h30] |  <-- Tag en haut à droite
+|                           |
+|        IMAGE              |
+|                           |
++---------------------------+
+|  Titre du soin            |
+|  45 €                     |
++---------------------------+
 ```
 
-### 3. Modification du HeroBanner (`src/components/HeroBanner.tsx`)
+### Styles du tag
+- Background : `rgba(0, 0, 0, 0.7)` (fond sombre semi-transparent)
+- Couleur : `#FFFFFF`
+- Padding : `4px 8px`
+- Border-radius : `4px`
+- Font-size : `11px` (desktop) / `10px` (mobile)
+- Position : `absolute`, `top: 8px`, `right: 8px`
 
-**Suppressions:**
-- Suppression complete du bloc "Scroll Indicator" (lignes 203-221)
-- Suppression des styles CSS `.scroll-indicator` et `@keyframes bounce`
-
-**Ajouts:**
-Une nouvelle barre USP en bas du Hero avec:
-- Layout: Flexbox horizontal, 2 colonnes separees par un separateur vertical
-- Fond: Semi-transparent ou integre a l'overlay existant
-- Contenu USP 1 (gauche): "1000+" en gras + "femmes satisfaites"
-- Contenu USP 2 (droite): Logo Google Reviews + "Excellent 4.9/5" + "+127 avis"
-
-Structure HTML:
-```text
-+------------------------------------------+
-|   1000+          |  [Google Logo]        |
-|   femmes         |  Excellent 4.9/5      |
-|   satisfaites    |  +127 avis            |
-+------------------------------------------+
-```
-
-**Responsive:**
-- Desktop: Barre horizontale avec les 2 USPs cote a cote
-- Mobile: Meme disposition mais taille reduite
-
-### 4. Modification du Header (`src/components/Header.tsx`)
-
-**Ajout d'un gradient overlay sur le header:**
-Quand le header n'est pas "scrolled", ajouter un pseudo-element ou un div avec:
-- Gradient: `linear-gradient(180deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0) 100%)`
-- Position: absolute, couvrant toute la largeur
-- Hauteur: ~120-150px pour un effet progressif
-- Z-index: en dessous du contenu du header mais au-dessus de l'image
-
-Cela creera un effet de fondu sombre en haut qui s'eclaircit vers le bas, ameliorant la lisibilite du texte blanc.
-
-## Details techniques
-
-### Barre USP - Styles
-```text
-Position: absolute ou relative en bas du hero
-Background: rgba(255,255,255,0.1) avec backdrop-filter blur subtil
-Padding: 16px 32px (desktop), 12px 16px (mobile)
-Separateur: ligne verticale blanche 1px, hauteur ~40px
-Typographie:
-  - Chiffres: 24px, font-weight bold
-  - Labels: 14px, font-weight normal
-  - Couleur: #FFFFFF
-```
-
-### Gradient Header - Specs
-```text
-Gradient applique uniquement quand !isScrolled
-Degrade du noir (60% opacite en haut) vers transparent en bas
-Hauteur du gradient: 120-150px
-Transition fluide lors du scroll
-```
-
-## Resume des fichiers modifies
-1. `public/assets/google-reviews-logo.png` - Copie de l'asset
-2. `src/config/client-config.ts` - Ajout section USPs
-3. `src/components/HeroBanner.tsx` - Ajout USP bar, suppression scroll indicator
-4. `src/components/Header.tsx` - Ajout gradient overlay progressif
+### Correction hover
+- Remplacer : `transform: translateY(-4px)`
+- Par : `transform: scale(1.02)`
+- Ajouter padding de 8px autour de la grille pour l'ombre
 
