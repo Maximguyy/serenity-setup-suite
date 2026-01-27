@@ -43,22 +43,11 @@ const AnnouncementBar = () => {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        gap: '8px',
         flex: 1,
+        textAlign: 'center',
       }}
     >
-      {/* Emoji */}
-      {announcement.emoji && (
-        <span
-          className="announcement-emoji"
-          aria-hidden="true"
-          style={{ fontSize: '16px' }}
-        >
-          {announcement.emoji}
-        </span>
-      )}
-
-      {/* Text */}
+      {/* Emoji + Text together */}
       <span
         className="announcement-text"
         style={{
@@ -70,6 +59,15 @@ const AnnouncementBar = () => {
           lineHeight: '1.4',
         }}
       >
+        {announcement.emoji && (
+          <span
+            className="announcement-emoji"
+            aria-hidden="true"
+            style={{ marginRight: '8px' }}
+          >
+            {announcement.emoji}
+          </span>
+        )}
         {announcement.text}
       </span>
     </div>
@@ -174,17 +172,19 @@ const AnnouncementBar = () => {
         @media (max-width: 767px) {
           .announcement-bar {
             top: 60px !important;
-            padding: 10px 16px !important;
+            padding: 10px 40px 10px 16px !important;
             min-height: 40px !important;
           }
 
           .announcement-text {
             font-size: 13px !important;
-            text-align: center;
           }
 
-          .announcement-content {
-            flex-wrap: wrap !important;
+          .announcement-close {
+            position: absolute !important;
+            right: 8px !important;
+            top: 50% !important;
+            transform: translateY(-50%) !important;
           }
         }
       `}</style>
