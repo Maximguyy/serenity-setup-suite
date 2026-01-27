@@ -151,8 +151,73 @@ const HeroBanner = () => {
           </a>
         </div>
 
-        {/* Social Proof Tag */}
-        
+        {/* USP Section */}
+        <div className="hero-usps" style={{
+          display: 'flex',
+          gap: '48px',
+          justifyContent: 'center',
+          alignItems: 'center',
+          marginTop: '48px',
+          opacity: isVisible ? 1 : 0,
+          transform: isVisible ? 'translateY(0)' : 'translateY(30px)',
+          transition: 'opacity 800ms ease-out 800ms, transform 800ms ease-out 800ms'
+        }}>
+          <div className="usp-item" style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            textAlign: 'center'
+          }}>
+            <span style={{
+              fontFamily: 'var(--font-heading)',
+              fontSize: '32px',
+              fontWeight: 'var(--font-semibold)',
+              color: '#FFFFFF',
+              lineHeight: 1.2,
+              textShadow: '0 2px 4px rgba(0, 0, 0, 0.3)'
+            }}>+1 200</span>
+            <span style={{
+              fontFamily: 'var(--font-body)',
+              fontSize: '14px',
+              fontWeight: 'var(--font-normal)',
+              color: 'rgba(255, 255, 255, 0.9)',
+              textTransform: 'uppercase',
+              letterSpacing: '0.1em',
+              marginTop: '4px'
+            }}>femmes satisfaites</span>
+          </div>
+
+          <div style={{
+            width: '1px',
+            height: '40px',
+            backgroundColor: 'rgba(255, 255, 255, 0.4)'
+          }} />
+
+          <div className="usp-item" style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            textAlign: 'center'
+          }}>
+            <span style={{
+              fontFamily: 'var(--font-heading)',
+              fontSize: '32px',
+              fontWeight: 'var(--font-semibold)',
+              color: '#FFFFFF',
+              lineHeight: 1.2,
+              textShadow: '0 2px 4px rgba(0, 0, 0, 0.3)'
+            }}>+10 ans</span>
+            <span style={{
+              fontFamily: 'var(--font-body)',
+              fontSize: '14px',
+              fontWeight: 'var(--font-normal)',
+              color: 'rgba(255, 255, 255, 0.9)',
+              textTransform: 'uppercase',
+              letterSpacing: '0.1em',
+              marginTop: '4px'
+            }}>d'expérience</span>
+          </div>
+        </div>
       </div>
 
 
