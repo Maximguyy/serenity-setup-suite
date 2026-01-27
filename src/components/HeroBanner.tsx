@@ -209,7 +209,6 @@ const HeroBanner = () => {
           right: 0,
           zIndex: 2,
           backgroundColor: 'rgba(255, 255, 255, 0.1)',
-          backdropFilter: 'blur(10px)',
           opacity: isVisible ? 1 : 0,
           transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
           transition: 'opacity 800ms ease-out 800ms, transform 800ms ease-out 800ms',
