@@ -1,56 +1,117 @@
 
-# Modifications des cartes de prestations
+# Section Notre Équipe
 
-## Problèmes identifiés
-
-1. **Bordure visible** : Les cartes ont actuellement `border: '1px solid #E5E5E5'`
-2. **Durée mal positionnée** : La durée est affichée dans le contenu de la carte, pas sur l'image
-3. **Animation hover problématique** : Le `transform: translateY(-4px)` fait sortir les cartes de leur conteneur parent qui a `overflow: hidden` implicite
-
-## Modifications prévues
-
-### 1. Supprimer la bordure des cartes
-- Retirer la propriété `border: '1px solid #E5E5E5'` du style inline des cartes
-- Retirer `border-color: var(--color-accent)` du hover CSS
-
-### 2. Déplacer la durée en tag sur l'image
-- Ajouter un élément positionné en absolu dans le conteneur `.card-image`
-- Style du tag : fond semi-transparent foncé, texte blanc, coins arrondis
-- Position : en haut à droite de l'image avec un petit espacement
-- Supprimer la durée de la section `.card-content`
-
-### 3. Corriger l'animation hover
-- Remplacer `translateY(-4px)` par `scale(1.02)` pour éviter que les cartes sortent de leur zone
-- Ajouter un léger padding au conteneur `.services-grid` pour permettre l'affichage de l'ombre sans coupure
-- L'effet de zoom sur l'image reste inchangé
+## Objectif
+Créer un composant `TeamSection` pour présenter l'équipe de l'institut avec un layout différent selon le device.
 
 ---
 
-## Détails techniques
+## Layout
 
-### Structure du tag durée
+### Desktop (≥ 768px)
 ```text
-+---------------------------+
-|                    [1h30] |  <-- Tag en haut à droite
-|                           |
-|        IMAGE              |
-|                           |
-+---------------------------+
-|  Titre du soin            |
-|  45 €                     |
-+---------------------------+
+┌─────────────────────────────────────────────────────────────┐
+│                     Notre Équipe                             │
+│    Des professionnelles passionnées et diplômées...          │
+│                                                              │
+│  ┌─────────┐  ┌─────────┐  ┌─────────┐  ┌─────────┐         │
+│  │ [Photo] │  │ [Photo] │  │ [Photo] │  │ [Photo] │         │
+│  │         │  │         │  │         │  │         │         │
+│  └─────────┘  └─────────┘  └─────────┘  └─────────┘         │
+│    Marie        Sophie       Julie        Emma               │
+│  Fondatrice   Esthéticienne  Prothésiste  Esthéticienne     │
+│  Soins visage   Massages     Nail art     Épilations        │
+└─────────────────────────────────────────────────────────────┘
 ```
 
-### Styles du tag
-- Background : `rgba(0, 0, 0, 0.7)` (fond sombre semi-transparent)
-- Couleur : `#FFFFFF`
-- Padding : `4px 8px`
-- Border-radius : `4px`
-- Font-size : `11px` (desktop) / `10px` (mobile)
-- Position : `absolute`, `top: 8px`, `right: 8px`
+### Mobile (< 768px) - Layout Alterné
+```text
+┌────────────────────────────────────┐
+│         Notre Équipe               │
+│   Des professionnelles...          │
+│                                    │
+│  ┌──────┐  Marie                   │
+│  │Photo │  Fondatrice & Esthé...   │
+│  └──────┘  Depuis 8 ans            │
+│                                    │
+│            Sophie    ┌──────┐      │
+│   Esthéticienne      │Photo │      │
+│        Depuis 5 ans  └──────┘      │
+│                                    │
+│  ┌──────┐  Julie                   │
+│  │Photo │  Prothésiste ongulaire   │
+│  └──────┘  Depuis 3 ans            │
+│                                    │
+│            Emma      ┌──────┐      │
+│   Esthéticienne      │Photo │      │
+│        Depuis 4 ans  └──────┘      │
+└────────────────────────────────────┘
+```
 
-### Correction hover
-- Remplacer : `transform: translateY(-4px)`
-- Par : `transform: scale(1.02)`
-- Ajouter padding de 8px autour de la grille pour l'ombre
+---
 
+## Fichiers à créer/modifier
+
+| Fichier | Action |
+|---------|--------|
+| `src/components/TeamSection.tsx` | Créer |
+| `src/pages/Index.tsx` | Ajouter le composant |
+
+---
+
+## Spécifications détaillées
+
+### Section Container
+- Background : `#F8F8F8` (fond alterné gris clair)
+- Padding : `80px 32px` (desktop) / `60px 24px` (mobile)
+- Max-width : `1200px`
+
+### Titre & Sous-titre
+- Titre : `clientConfig.team.sectionTitle` - Bitter, 42px/32px, 600, #1A1A1A
+- Sous-titre : `clientConfig.team.sectionSubtitle` - Raleway, 18px/16px, 400, #6B6B6B
+- Texte centré, max-width 700px pour le sous-titre
+
+### Cartes Desktop (grille 4 colonnes)
+- Grid : `repeat(4, 1fr)`, gap `32px`
+- Photo : aspect-ratio 1:1, border-radius 12px, bordure 3px accent optionnelle
+- Nom : Raleway, 20px, 600, #1A1A1A
+- Rôle : Raleway, 14px, 400, #6B6B6B
+- Spécialité : Raleway, 13px, 400 italic, couleur accent
+- Hover : `scale(1.02)` + ombre + zoom photo `scale(1.05)`
+
+### Layout Mobile (alterné)
+- Flexbox column, gap 40px
+- Chaque membre : flex row, gap 16px
+- Alternance via `flex-direction: row-reverse` sur index pair
+- Photo : 100px × 100px, border-radius 8px
+- Texte aligné selon position (left/right)
+- Afficher "Professionnelle depuis X ans"
+
+### Hover Effects (desktop uniquement)
+- Carte : légère élévation avec ombre
+- Photo : zoom `scale(1.05)` + rotation subtile `rotate(2deg)`
+
+---
+
+## Données utilisées
+
+```typescript
+clientConfig.team.sectionTitle    // "Notre Équipe"
+clientConfig.team.sectionSubtitle // "Des professionnelles passionnées..."
+clientConfig.team.members[]       // Array de 4 membres
+  - name: string
+  - role: string
+  - photo: string
+  - specialty?: string
+  - years: number
+```
+
+---
+
+## Responsive Breakpoints
+
+| Device | Colonnes | Photo | Layout |
+|--------|----------|-------|--------|
+| Desktop ≥1024px | 4 | 100% width, carré | Grille |
+| Tablet 768-1023px | 3 | 100% width | Grille |
+| Mobile < 768px | 1 | 100px cercle | Alterné |
