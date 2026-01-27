@@ -385,6 +385,7 @@ const Header = () => {
             display: grid !important;
             grid-template-columns: 40px 1fr 40px !important;
             gap: 8px !important;
+            align-items: center !important;
           }
 
           .burger-menu {
@@ -393,12 +394,14 @@ const Header = () => {
             justify-content: center !important;
             width: 40px !important;
             height: 40px !important;
+            align-self: center !important;
           }
 
           .header-logo {
             display: flex !important;
             align-items: center !important;
             justify-content: center !important;
+            align-self: center !important;
           }
 
           .header-logo img {
@@ -423,6 +426,8 @@ const Header = () => {
             justify-content: center !important;
             width: 40px !important;
             height: 40px !important;
+            align-self: center !important;
+          }
           }
         }
 
