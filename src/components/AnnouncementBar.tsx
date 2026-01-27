@@ -69,6 +69,11 @@ const AnnouncementBar = () => {
           </span>
         )}
         {announcement.text}
+        {announcement.highlight && (
+          <span style={{ fontWeight: 'var(--font-bold)', marginLeft: '4px' }}>
+            {announcement.highlight}
+          </span>
+        )}
       </span>
     </div>
   );
