@@ -253,7 +253,7 @@ const HeroBanner = () => {
         /* Mobile */
         @media (max-width: 767px) {
           .hero-banner {
-            min-height: 60svh !important;
+            min-height: 75svh !important;
           }
 
           .hero-content {
