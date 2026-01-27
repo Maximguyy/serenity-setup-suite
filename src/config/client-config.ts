@@ -109,20 +109,38 @@ export const clientConfig = {
       {
         author: "Marie D.",
         rating: 5,
-        text: "Un moment de pure détente ! L'équipe est aux petits soins.",
+        text: "Un moment de pure détente ! L'équipe est aux petits soins et l'ambiance est vraiment relaxante. Je reviendrai sans hésiter.",
         date: "il y a 2 semaines"
       },
       {
         author: "Sophie L.",
         rating: 5,
-        text: "Excellent institut, je recommande vivement les soins du visage.",
+        text: "Excellent institut, je recommande vivement les soins du visage. Ma peau n'a jamais été aussi belle !",
         date: "il y a 1 mois"
       },
       {
         author: "Julie M.",
         rating: 5,
-        text: "Ambiance zen et professionnalisme. Mon institut préféré !",
+        text: "Ambiance zen et professionnalisme. Mon institut préféré ! Les filles sont adorables et très compétentes.",
         date: "il y a 1 mois"
+      },
+      {
+        author: "Camille B.",
+        rating: 4,
+        text: "Très bon massage relaxant, je me suis endormie tellement c'était agréable. Seul petit bémol : un peu d'attente à l'accueil.",
+        date: "il y a 2 mois"
+      },
+      {
+        author: "Léa P.",
+        rating: 5,
+        text: "Super expérience pour ma première visite ! L'épilation est rapide et quasi indolore. Merci à Emma pour sa douceur.",
+        date: "il y a 2 mois"
+      },
+      {
+        author: "Nathalie R.",
+        rating: 5,
+        text: "Je suis cliente depuis 3 ans et je ne changerais pour rien au monde. Qualité des soins au top !",
+        date: "il y a 3 mois"
       }
     ]
   },
