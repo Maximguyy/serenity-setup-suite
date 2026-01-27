@@ -5,6 +5,7 @@ import ServicesSection from '@/components/ServicesSection';
 import TeamSection from '@/components/TeamSection';
 import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
+import MobileStickyBadge from '@/components/MobileStickyBadge';
 
 const Index = () => {
   return (
@@ -16,6 +17,7 @@ const Index = () => {
       <TeamSection />
       <ContactSection />
       <Footer />
+      <MobileStickyBadge />
     </>
   );
 };
