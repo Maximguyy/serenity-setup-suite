@@ -177,9 +177,9 @@ export const clientConfig = {
         icon: "leaf",
         items: [
           { name: "Jambes complètes", duration: "30 min", price: "35€", image: "/assets/services/epilation-jambes.jpg" },
+          { name: "Épilation laser", duration: "45 min", price: "90€", image: "/assets/services/epilation-laser.jpg" },
           { name: "Maillot intégral", duration: "20 min", price: "30€", image: "/assets/services/maillot.jpg" },
-          { name: "Aisselles", duration: "10 min", price: "12€", image: "/assets/services/aisselles.jpg" },
-          { name: "Demi-jambes", duration: "20 min", price: "25€", image: "/assets/services/demi-jambes.jpg" }
+          { name: "Aisselles", duration: "10 min", price: "12€", image: "/assets/services/aisselles.webp" }
         ]
       },
     ]
