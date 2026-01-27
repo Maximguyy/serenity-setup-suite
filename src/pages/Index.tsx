@@ -1,5 +1,6 @@
 import AnnouncementBar from '@/components/AnnouncementBar';
 import HeroBanner from '@/components/HeroBanner';
+import ReviewsSection from '@/components/ReviewsSection';
 import ServicesSection from '@/components/ServicesSection';
 import TeamSection from '@/components/TeamSection';
 import ContactSection from '@/components/ContactSection';
@@ -10,6 +11,7 @@ const Index = () => {
     <>
       <AnnouncementBar />
       <HeroBanner />
+      <ReviewsSection />
       <ServicesSection />
       <TeamSection />
       <ContactSection />
