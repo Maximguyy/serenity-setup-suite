@@ -81,7 +81,7 @@ const AnnouncementBar = () => {
   const barStyles: React.CSSProperties = {
     position: 'relative',
     zIndex: 200,
-    backgroundColor: '#1A1A1A',
+    backgroundColor: 'var(--color-accent)',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
