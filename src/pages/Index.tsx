@@ -6,6 +6,7 @@ import TeamSection from '@/components/TeamSection';
 import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
 import MobileStickyBadge from '@/components/MobileStickyBadge';
+import StickyBookingButton from '@/components/StickyBookingButton';
 
 const Index = () => {
   return (
@@ -18,6 +19,7 @@ const Index = () => {
       <ContactSection />
       <Footer />
       <MobileStickyBadge />
+      <StickyBookingButton />
     </>
   );
 };
