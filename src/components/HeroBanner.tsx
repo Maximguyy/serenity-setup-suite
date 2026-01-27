@@ -11,7 +11,7 @@ const HeroBanner = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  const { hero, booking, usps } = clientConfig;
+  const { hero, booking } = clientConfig;
 
   return (
     <section
@@ -199,135 +199,6 @@ const HeroBanner = () => {
         </div>
       </div>
 
-      {/* USP Bar */}
-      <div
-        className="usp-bar"
-        style={{
-          position: 'absolute',
-          bottom: 0,
-          left: 0,
-          right: 0,
-          zIndex: 2,
-          backgroundColor: 'rgba(255, 255, 255, 0.1)',
-          opacity: isVisible ? 1 : 0,
-          transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
-          transition: 'opacity 800ms ease-out 800ms, transform 800ms ease-out 800ms',
-        }}
-      >
-        <div
-          className="usp-container"
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            maxWidth: 'var(--container-max-width)',
-            margin: '0 auto',
-            padding: '20px 48px',
-            gap: '48px',
-          }}
-        >
-          {/* USP 1: Femmes satisfaites */}
-          <div
-            className="usp-item usp-item-left"
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'flex-start',
-              gap: '2px',
-            }}
-          >
-            <span
-              className="usp-count"
-              style={{
-                display: 'block',
-                fontFamily: 'var(--font-heading)',
-                fontSize: '32px',
-                fontWeight: 'var(--font-bold)',
-                color: '#FFFFFF',
-                lineHeight: 1.1,
-              }}
-            >
-              {usps.satisfiedClients.count}
-            </span>
-            <span
-              className="usp-label"
-              style={{
-                display: 'block',
-                fontFamily: 'var(--font-body)',
-                fontSize: '16px',
-                fontWeight: 'var(--font-normal)',
-                color: '#FFFFFF',
-                opacity: 0.9,
-                whiteSpace: 'nowrap',
-              }}
-            >
-              {usps.satisfiedClients.label}
-            </span>
-          </div>
-
-          {/* Separator */}
-          <div
-            className="usp-separator"
-            style={{
-              width: '1px',
-              height: '50px',
-              backgroundColor: 'rgba(255, 255, 255, 0.4)',
-            }}
-          />
-
-          {/* USP 2: Google Reviews */}
-          <div
-            className="usp-item usp-item-right"
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '12px',
-            }}
-          >
-            <img
-              src={usps.googleReviews.logo}
-              alt="Google Reviews"
-              className="usp-logo"
-              style={{
-                height: '83px',
-                width: 'auto',
-              }}
-            />
-            <div
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'flex-start',
-                gap: '0px',
-              }}
-            >
-              <span
-                className="usp-rating"
-                style={{
-                  fontFamily: 'var(--font-body)',
-                  fontSize: '16px',
-                  fontWeight: 'var(--font-semibold)',
-                  color: '#FFFFFF',
-                }}
-              >
-                Excellent
-              </span>
-              <span
-                className="usp-reviews"
-                style={{
-                  fontFamily: 'var(--font-body)',
-                  fontSize: '14px',
-                  fontWeight: 'var(--font-normal)',
-                  color: '#FFFFFF',
-                  opacity: 0.85,
-                }}
-              >
-                {usps.googleReviews.count}
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
 
       {/* CSS for hover states and responsive */}
       <style>{`
@@ -397,43 +268,6 @@ const HeroBanner = () => {
             text-align: center;
           }
 
-          .usp-container {
-            padding: 16px 20px !important;
-            gap: 24px !important;
-          }
-
-          .usp-item-left {
-            align-items: flex-end !important;
-          }
-
-          .usp-item-right {
-            gap: 12px !important;
-          }
-
-          .usp-count {
-            font-size: 24px !important;
-          }
-
-          .usp-label {
-            font-size: 13px !important;
-          }
-
-          .usp-logo {
-            height: 54px !important;
-          }
-
-          .usp-rating {
-            font-size: 14px !important;
-          }
-
-          .usp-reviews {
-            font-size: 12px !important;
-          }
-
-          .usp-separator {
-            height: 40px !important;
-          }
-        }
       `}</style>
     </section>
   );
