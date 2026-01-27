@@ -6,10 +6,10 @@ const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  // Detect scroll for shadow effect
+  // Detect scroll for background change
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 0);
+      setIsScrolled(window.scrollY > 50);
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -53,15 +53,15 @@ const Header = () => {
       <header
         className={`header ${isScrolled ? 'header--scrolled' : ''}`}
         style={{
-          position: 'fixed',
+          position: 'absolute',
           top: 0,
           left: 0,
           right: 0,
           zIndex: 'var(--z-sticky)',
-          backgroundColor: '#FAFAF8',
-          transition: 'box-shadow 200ms ease',
+          backgroundColor: isScrolled ? 'rgba(250, 250, 248, 0.95)' : 'transparent',
+          backdropFilter: isScrolled ? 'blur(8px)' : 'none',
+          transition: 'background-color 300ms ease, backdrop-filter 300ms ease, box-shadow 300ms ease',
           boxShadow: isScrolled ? '0 1px 3px rgba(0, 0, 0, 0.1)' : 'none',
-          borderBottom: '1px solid var(--color-border-light)',
         }}
       >
         <div
@@ -93,8 +93,8 @@ const Header = () => {
               backgroundColor: 'transparent',
               borderRadius: 'var(--border-radius-sm)',
               cursor: 'pointer',
-              transition: 'background-color var(--transition-fast)',
-              color: 'var(--color-primary)',
+              transition: 'background-color var(--transition-fast), color 300ms ease',
+              color: isScrolled ? 'var(--color-primary)' : '#FFFFFF',
             }}
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -117,6 +117,8 @@ const Header = () => {
                 style={{
                   height: '36px',
                   width: 'auto',
+                  filter: isScrolled ? 'none' : 'brightness(0) invert(1)',
+                  transition: 'filter 300ms ease',
                 }}
               />
             ) : (
@@ -125,7 +127,8 @@ const Header = () => {
                   fontFamily: 'var(--font-heading)',
                   fontSize: 'var(--text-xl)',
                   fontWeight: 'var(--font-semibold)',
-                  color: 'var(--color-primary)',
+                  color: isScrolled ? 'var(--color-primary)' : '#FFFFFF',
+                  transition: 'color 300ms ease',
                 }}
               >
                 {clientConfig.institutName}
@@ -148,12 +151,12 @@ const Header = () => {
               <a
                 key={link.href}
                 href={link.href}
-                className="nav-link"
+                className={`nav-link ${isScrolled ? 'nav-link--scrolled' : ''}`}
                 style={{
                   fontFamily: 'var(--font-body)',
                   fontSize: '15px',
                   fontWeight: 'var(--font-medium)',
-                  color: 'var(--color-secondary)',
+                  color: isScrolled ? 'var(--color-secondary)' : 'rgba(255, 255, 255, 0.9)',
                   textDecoration: 'none',
                   padding: '8px 0',
                   position: 'relative',
@@ -168,7 +171,7 @@ const Header = () => {
           {/* Desktop CTA Button */}
           <a
             href={clientConfig.navigation.ctaButton.href}
-            className="header-cta"
+            className={`header-cta ${isScrolled ? 'header-cta--scrolled' : ''}`}
             style={{
               display: 'inline-flex',
               alignItems: 'center',
@@ -178,9 +181,9 @@ const Header = () => {
               fontSize: '14px',
               fontWeight: 'var(--font-semibold)',
               letterSpacing: '0.02em',
-              color: 'var(--color-text-on-dark)',
-              backgroundColor: 'var(--color-accent)',
-              border: 'none',
+              color: isScrolled ? 'var(--color-text-on-dark)' : '#FFFFFF',
+              backgroundColor: isScrolled ? 'var(--color-accent)' : 'transparent',
+              border: isScrolled ? 'none' : '2px solid #FFFFFF',
               borderRadius: 'var(--border-radius-sm)',
               textDecoration: 'none',
               cursor: 'pointer',
@@ -207,8 +210,8 @@ const Header = () => {
               backgroundColor: 'transparent',
               borderRadius: '50%',
               cursor: 'pointer',
-              transition: 'background-color var(--transition-fast)',
-              color: 'var(--color-accent)',
+              transition: 'background-color var(--transition-fast), color 300ms ease',
+              color: isScrolled ? 'var(--color-accent)' : '#FFFFFF',
             }}
           >
             <Phone size={24} />
@@ -314,11 +317,19 @@ const Header = () => {
           left: 0;
           width: 0;
           height: 2px;
+          background-color: #FFFFFF;
+          transition: width 200ms ease, background-color 300ms ease;
+        }
+
+        .nav-link--scrolled::after {
           background-color: var(--color-accent);
-          transition: width 200ms ease;
         }
 
         .nav-link:hover {
+          color: #FFFFFF !important;
+        }
+
+        .nav-link--scrolled:hover {
           color: var(--color-primary) !important;
         }
 
@@ -327,14 +338,18 @@ const Header = () => {
         }
 
         .header-cta:hover {
-          background-color: var(--color-accent-hover) !important;
+          background-color: rgba(255, 255, 255, 0.1) !important;
           transform: translateY(-1px);
+        }
+
+        .header-cta--scrolled:hover {
+          background-color: var(--color-accent-hover) !important;
           box-shadow: 0 2px 8px rgba(201, 168, 124, 0.3);
         }
 
         .burger-menu:hover,
         .phone-icon:hover {
-          background-color: var(--color-accent-light) !important;
+          background-color: rgba(255, 255, 255, 0.1) !important;
         }
 
         /* Mobile styles */
@@ -414,16 +429,6 @@ const Header = () => {
           .mobile-menu,
           .mobile-menu-overlay {
             display: none !important;
-          }
-        }
-      `}</style>
-
-      {/* Spacer for fixed header */}
-      <div style={{ height: '70px' }} className="header-spacer" />
-      <style>{`
-        @media (max-width: 767px) {
-          .header-spacer {
-            height: 60px !important;
           }
         }
       `}</style>

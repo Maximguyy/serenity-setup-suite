@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { ChevronDown } from 'lucide-react';
 import { clientConfig } from '@/config/client-config';
+import Header from './Header';
 
 const HeroBanner = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -19,13 +20,14 @@ const HeroBanner = () => {
       className="hero-banner"
       style={{
         position: 'relative',
-        minHeight: 'calc(70vh - 114px)',
+        minHeight: '85vh',
         display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
+        flexDirection: 'column',
         overflow: 'hidden',
       }}
     >
+      {/* Header intégré au hero */}
+      <Header />
       {/* Background Image */}
       <div
         className="hero-background"
@@ -74,6 +76,12 @@ const HeroBanner = () => {
           maxWidth: '900px',
           padding: '80px 32px',
           textAlign: 'center',
+          margin: 'auto',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          flex: 1,
         }}
       >
         {/* Title */}
@@ -268,7 +276,7 @@ const HeroBanner = () => {
         /* Mobile */
         @media (max-width: 767px) {
           .hero-banner {
-            min-height: calc(70vh - 100px) !important;
+            min-height: 85vh !important;
           }
 
           .hero-content {
