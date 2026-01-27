@@ -420,7 +420,7 @@ const HeroBanner = () => {
           }
 
           .usp-logo {
-            height: 28px !important;
+            height: 54px !important;
           }
 
           .usp-rating {
