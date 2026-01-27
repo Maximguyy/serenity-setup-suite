@@ -182,16 +182,6 @@ export const clientConfig = {
           { name: "Demi-jambes", duration: "20 min", price: "25€", image: "/assets/services/demi-jambes.jpg" }
         ]
       },
-      {
-        name: "Beauté des Mains & Pieds",
-        icon: "gem",
-        items: [
-          { name: "Manucure complète", duration: "45 min", price: "35€", image: "/assets/services/manucure.jpg" },
-          { name: "Pédicure complète", duration: "60 min", price: "45€", image: "/assets/services/pedicure.jpg" },
-          { name: "Pose vernis semi-permanent", duration: "30 min", price: "28€", image: "/assets/services/semi-permanent.jpg" },
-          { name: "Nail art", duration: "45 min", price: "40€", image: "/assets/services/nail-art.jpg" }
-        ]
-      }
     ]
   },
 
