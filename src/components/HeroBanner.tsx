@@ -240,6 +240,7 @@ const HeroBanner = () => {
             <span
               className="usp-count"
               style={{
+                display: 'block',
                 fontFamily: 'var(--font-heading)',
                 fontSize: '32px',
                 fontWeight: 'var(--font-bold)',
@@ -252,6 +253,7 @@ const HeroBanner = () => {
             <span
               className="usp-label"
               style={{
+                display: 'block',
                 fontFamily: 'var(--font-body)',
                 fontSize: '16px',
                 fontWeight: 'var(--font-normal)',
