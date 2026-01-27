@@ -69,7 +69,33 @@ const ContactSection = () => {
         }
 
         .quick-contact {
-          display: none;
+          display: flex;
+          flex-direction: row;
+          gap: 32px;
+          justify-content: center;
+          flex-wrap: wrap;
+        }
+
+        .quick-contact-item {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          font-family: 'Raleway', sans-serif;
+          font-size: 15px;
+          color: #333333;
+          text-decoration: none;
+          transition: color 200ms ease;
+        }
+
+        .quick-contact-item:hover {
+          color: var(--color-accent, #C9A87C);
+        }
+
+        .quick-contact-item svg {
+          width: 20px;
+          height: 20px;
+          color: var(--color-accent, #C9A87C);
+          flex-shrink: 0;
         }
 
         .contact-grid {
@@ -178,32 +204,18 @@ const ContactSection = () => {
           }
 
           .quick-contact {
-            display: flex;
             flex-direction: column;
             gap: 12px;
             align-items: center;
           }
 
           .quick-contact-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-family: 'Raleway', sans-serif;
             font-size: 14px;
-            color: #333333;
-            text-decoration: none;
-            transition: color 200ms ease;
-          }
-
-          .quick-contact-item:hover {
-            color: var(--color-accent, #C9A87C);
           }
 
           .quick-contact-item svg {
             width: 18px;
             height: 18px;
-            color: var(--color-accent, #C9A87C);
-            flex-shrink: 0;
           }
 
           .contact-grid {
