@@ -56,7 +56,7 @@ export const clientConfig = {
     url: "https://exemple-reservation.com",
     buttonText: "Réserver une séance",
     giftCardUrl: "https://exemple-carte-cadeau.com",
-    giftCardText: "Découvrir nos prestations"
+    giftCardText: "Découvrir nos offres"
   },
 
   // ─────────────────────────────────────────
