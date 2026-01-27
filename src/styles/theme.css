@@ -1,0 +1,302 @@
+/* ===========================================
+   THEME - INSTITUT DE BEAUTE
+   Style : Professionnel & Minimaliste
+
+   Modifier ces variables pour changer
+   l'apparence de tout le site
+   =========================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Bitter:wght@400;500;600;700&family=Raleway:wght@300;400;500;600&display=swap');
+
+:root {
+  /* ─────────────────────────────────────────
+     COULEURS PRINCIPALES
+     ───────────────────────────────────────── */
+
+  /* Couleur primaire - Titres et elements importants */
+  --color-primary: #1A1A1A;
+
+  /* Couleur secondaire - Sous-titres et texte secondaire */
+  --color-secondary: #6B6B6B;
+
+  /* Couleur d'accent - Boutons CTA et liens */
+  --color-accent: #C9A87C;
+  --color-accent-hover: #B8956A;
+  --color-accent-light: rgba(201, 168, 124, 0.1);
+
+  /* Fonds */
+  --color-background: #FFFFFF;
+  --color-background-alt: #F8F8F8;
+  --color-background-dark: #1A1A1A;
+
+  /* Texte */
+  --color-text: #333333;
+  --color-text-light: #666666;
+  --color-text-muted: #999999;
+  --color-text-on-dark: #FFFFFF;
+
+  /* Utilitaires */
+  --color-border: #E5E5E5;
+  --color-border-light: #F0F0F0;
+  --color-success: #4CAF50;
+  --color-error: #E53935;
+  --color-overlay: rgba(0, 0, 0, 0.5);
+
+  /* ─────────────────────────────────────────
+     TYPOGRAPHIE
+     ───────────────────────────────────────── */
+
+  /* Familles de polices */
+  --font-heading: 'Bitter', Georgia, serif;
+  --font-body: 'Raleway', 'Helvetica Neue', sans-serif;
+
+  /* Tailles - Desktop */
+  --text-xs: 0.75rem;      /* 12px */
+  --text-sm: 0.875rem;     /* 14px */
+  --text-base: 1rem;       /* 16px */
+  --text-lg: 1.125rem;     /* 18px */
+  --text-xl: 1.25rem;      /* 20px */
+  --text-2xl: 1.5rem;      /* 24px */
+  --text-3xl: 1.875rem;    /* 30px */
+  --text-4xl: 2.25rem;     /* 36px */
+  --text-5xl: 3rem;        /* 48px */
+  --text-6xl: 3.75rem;     /* 60px */
+
+  /* Graisse */
+  --font-light: 300;
+  --font-normal: 400;
+  --font-medium: 500;
+  --font-semibold: 600;
+  --font-bold: 700;
+
+  /* Hauteur de ligne */
+  --leading-tight: 1.2;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.75;
+
+  /* Espacement lettres */
+  --tracking-tight: -0.02em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.05em;
+  --tracking-wider: 0.1em;
+
+  /* ─────────────────────────────────────────
+     ESPACEMENTS
+     ───────────────────────────────────────── */
+
+  --spacing-xs: 0.5rem;    /* 8px */
+  --spacing-sm: 1rem;      /* 16px */
+  --spacing-md: 1.5rem;    /* 24px */
+  --spacing-lg: 2rem;      /* 32px */
+  --spacing-xl: 3rem;      /* 48px */
+  --spacing-2xl: 4rem;     /* 64px */
+  --spacing-3xl: 6rem;     /* 96px */
+  --spacing-4xl: 8rem;     /* 128px */
+
+  /* Padding sections */
+  --section-padding-y: var(--spacing-3xl);
+  --section-padding-x: var(--spacing-lg);
+
+  /* Container */
+  --container-max-width: 1200px;
+  --container-padding: var(--spacing-lg);
+
+  /* ─────────────────────────────────────────
+     BORDURES & OMBRES
+     ───────────────────────────────────────── */
+
+  --border-radius-sm: 4px;
+  --border-radius-md: 8px;
+  --border-radius-lg: 12px;
+  --border-radius-xl: 16px;
+  --border-radius-full: 9999px;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.15);
+
+  /* ─────────────────────────────────────────
+     TRANSITIONS
+     ───────────────────────────────────────── */
+
+  --transition-fast: 150ms ease;
+  --transition-normal: 300ms ease;
+  --transition-slow: 500ms ease;
+
+  /* ─────────────────────────────────────────
+     Z-INDEX
+     ───────────────────────────────────────── */
+
+  --z-dropdown: 100;
+  --z-sticky: 200;
+  --z-fixed: 300;
+  --z-modal-backdrop: 400;
+  --z-modal: 500;
+  --z-tooltip: 600;
+}
+
+/* ─────────────────────────────────────────
+   STYLES DE BASE
+   ───────────────────────────────────────── */
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  font-weight: var(--font-normal);
+  line-height: var(--leading-normal);
+  color: var(--color-text);
+  background-color: var(--color-background);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─────────────────────────────────────────
+   TYPOGRAPHIE
+   ───────────────────────────────────────── */
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: var(--font-semibold);
+  line-height: var(--leading-tight);
+  color: var(--color-primary);
+}
+
+h1 {
+  font-size: var(--text-5xl);
+  letter-spacing: var(--tracking-tight);
+}
+
+h2 {
+  font-size: var(--text-4xl);
+}
+
+h3 {
+  font-size: var(--text-2xl);
+}
+
+h4 {
+  font-size: var(--text-xl);
+}
+
+p {
+  margin-bottom: var(--spacing-sm);
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--color-accent-hover);
+}
+
+/* ─────────────────────────────────────────
+   CLASSES UTILITAIRES
+   ───────────────────────────────────────── */
+
+.container {
+  width: 100%;
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+}
+
+.section {
+  padding: var(--section-padding-y) var(--section-padding-x);
+}
+
+.section-alt {
+  background-color: var(--color-background-alt);
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-accent {
+  color: var(--color-accent);
+}
+
+/* ─────────────────────────────────────────
+   BOUTONS
+   ───────────────────────────────────────── */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-sm) var(--spacing-lg);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  border: none;
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  transition: all var(--transition-normal);
+}
+
+.btn-primary {
+  background-color: var(--color-accent);
+  color: var(--color-text-on-dark);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-accent-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--color-primary);
+  border: 1px solid var(--color-border);
+}
+
+.btn-secondary:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.btn-outline-light {
+  background-color: transparent;
+  color: var(--color-text-on-dark);
+  border: 1px solid var(--color-text-on-dark);
+}
+
+.btn-outline-light:hover {
+  background-color: var(--color-text-on-dark);
+  color: var(--color-primary);
+}
+
+/* ─────────────────────────────────────────
+   RESPONSIVE - MOBILE FIRST
+   ───────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  :root {
+    --text-5xl: 2.25rem;   /* 36px sur mobile */
+    --text-4xl: 1.875rem;  /* 30px sur mobile */
+    --text-3xl: 1.5rem;    /* 24px sur mobile */
+
+    --section-padding-y: var(--spacing-2xl);
+    --section-padding-x: var(--spacing-sm);
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --text-5xl: 1.875rem;  /* 30px sur petit mobile */
+    --text-4xl: 1.5rem;    /* 24px sur petit mobile */
+  }
+}
