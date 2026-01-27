@@ -69,7 +69,7 @@ const Header = () => {
       <header
         className={`header ${isScrolled ? 'header--scrolled' : ''}`}
         style={{
-          position: 'absolute',
+          position: isScrolled ? 'fixed' : 'absolute',
           top: 0,
           left: 0,
           right: 0,
@@ -370,6 +370,14 @@ const Header = () => {
 
         /* Mobile styles */
         @media (max-width: 767px) {
+          .header {
+            position: absolute !important;
+          }
+
+          .header--scrolled {
+            position: absolute !important;
+          }
+
           .header-container {
             height: 60px !important;
             padding: 0 16px !important;
