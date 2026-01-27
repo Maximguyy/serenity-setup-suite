@@ -1,6 +1,7 @@
 import AnnouncementBar from '@/components/AnnouncementBar';
 import HeroBanner from '@/components/HeroBanner';
 import ServicesSection from '@/components/ServicesSection';
+import TeamSection from '@/components/TeamSection';
 
 const Index = () => {
   return (
@@ -8,6 +9,7 @@ const Index = () => {
       <AnnouncementBar />
       <HeroBanner />
       <ServicesSection />
+      <TeamSection />
     </>
   );
 };
