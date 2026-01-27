@@ -83,6 +83,21 @@ export const clientConfig = {
   },
 
   // ─────────────────────────────────────────
+  // USPs (BARRE DE CONFIANCE)
+  // ─────────────────────────────────────────
+  usps: {
+    satisfiedClients: {
+      count: "1000+",
+      label: "femmes satisfaites"
+    },
+    googleReviews: {
+      rating: "4.9/5",
+      count: "+127 avis",
+      logo: "/assets/google-reviews-logo.png"
+    }
+  },
+
+  // ─────────────────────────────────────────
   // AVIS GOOGLE
   // ─────────────────────────────────────────
   reviews: {
