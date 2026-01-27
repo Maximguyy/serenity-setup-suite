@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { ChevronDown } from 'lucide-react';
 import { clientConfig } from '@/config/client-config';
 import Header from './Header';
 
@@ -12,7 +11,7 @@ const HeroBanner = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  const { hero, booking } = clientConfig;
+  const { hero, booking, usps } = clientConfig;
 
   return (
     <section
@@ -200,24 +199,125 @@ const HeroBanner = () => {
         </div>
       </div>
 
-      {/* Scroll Indicator */}
+      {/* USP Bar */}
       <div
-        className="scroll-indicator"
+        className="usp-bar"
         style={{
           position: 'absolute',
-          bottom: '32px',
-          left: '50%',
-          transform: 'translateX(-50%)',
+          bottom: 0,
+          left: 0,
+          right: 0,
           zIndex: 2,
-          opacity: isVisible ? 0.7 : 0,
-          transition: 'opacity 800ms ease-out 800ms',
+          backgroundColor: 'rgba(255, 255, 255, 0.1)',
+          backdropFilter: 'blur(10px)',
+          opacity: isVisible ? 1 : 0,
+          transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
+          transition: 'opacity 800ms ease-out 800ms, transform 800ms ease-out 800ms',
         }}
       >
-        <ChevronDown
-          size={32}
-          color="#FFFFFF"
-          className="scroll-arrow"
-        />
+        <div
+          className="usp-container"
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            maxWidth: 'var(--container-max-width)',
+            margin: '0 auto',
+            padding: '16px 32px',
+          }}
+        >
+          {/* USP 1: Femmes satisfaites */}
+          <div
+            className="usp-item"
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '8px',
+              paddingRight: '24px',
+            }}
+          >
+            <span
+              style={{
+                fontFamily: 'var(--font-heading)',
+                fontSize: '24px',
+                fontWeight: 'var(--font-bold)',
+                color: '#FFFFFF',
+              }}
+            >
+              {usps.satisfiedClients.count}
+            </span>
+            <span
+              style={{
+                fontFamily: 'var(--font-body)',
+                fontSize: '14px',
+                fontWeight: 'var(--font-normal)',
+                color: '#FFFFFF',
+                opacity: 0.9,
+              }}
+            >
+              {usps.satisfiedClients.label}
+            </span>
+          </div>
+
+          {/* Separator */}
+          <div
+            className="usp-separator"
+            style={{
+              width: '1px',
+              height: '40px',
+              backgroundColor: 'rgba(255, 255, 255, 0.3)',
+            }}
+          />
+
+          {/* USP 2: Google Reviews */}
+          <div
+            className="usp-item"
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '12px',
+              paddingLeft: '24px',
+            }}
+          >
+            <img
+              src={usps.googleReviews.logo}
+              alt="Google Reviews"
+              style={{
+                height: '24px',
+                width: 'auto',
+              }}
+            />
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '2px',
+              }}
+            >
+              <span
+                style={{
+                  fontFamily: 'var(--font-body)',
+                  fontSize: '14px',
+                  fontWeight: 'var(--font-semibold)',
+                  color: '#FFFFFF',
+                }}
+              >
+                Excellent {usps.googleReviews.rating}
+              </span>
+              <span
+                style={{
+                  fontFamily: 'var(--font-body)',
+                  fontSize: '12px',
+                  fontWeight: 'var(--font-normal)',
+                  color: '#FFFFFF',
+                  opacity: 0.8,
+                }}
+              >
+                {usps.googleReviews.count}
+              </span>
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* CSS for hover states and responsive */}
@@ -242,22 +342,6 @@ const HeroBanner = () => {
           background-color: rgba(255, 255, 255, 0.9) !important;
         }
 
-        .scroll-arrow {
-          animation: bounce 2s infinite;
-        }
-
-        @keyframes bounce {
-          0%, 20%, 50%, 80%, 100% {
-            transform: translateY(0);
-          }
-          40% {
-            transform: translateY(10px);
-          }
-          60% {
-            transform: translateY(5px);
-          }
-        }
-
         .hero-background img {
           transition: transform 8s ease-out;
         }
@@ -280,7 +364,7 @@ const HeroBanner = () => {
           }
 
           .hero-content {
-            padding: 40px 24px !important;
+            padding: 40px 24px 100px !important;
           }
 
           .hero-title {
@@ -304,8 +388,25 @@ const HeroBanner = () => {
             text-align: center;
           }
 
-          .scroll-indicator {
-            bottom: 24px !important;
+          .usp-container {
+            padding: 12px 16px !important;
+          }
+
+          .usp-item {
+            padding-left: 16px !important;
+            padding-right: 16px !important;
+          }
+
+          .usp-item span:first-child {
+            font-size: 20px !important;
+          }
+
+          .usp-item span:last-child {
+            font-size: 12px !important;
+          }
+
+          .usp-separator {
+            height: 32px !important;
           }
         }
       `}</style>

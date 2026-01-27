@@ -50,6 +50,22 @@ const Header = () => {
 
   return (
     <>
+      {/* Header Gradient Overlay - visible only when not scrolled */}
+      {!isScrolled && (
+        <div
+          className="header-gradient"
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            height: '150px',
+            background: 'linear-gradient(180deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0) 100%)',
+            zIndex: 1,
+            pointerEvents: 'none',
+          }}
+        />
+      )}
       <header
         className={`header ${isScrolled ? 'header--scrolled' : ''}`}
         style={{
