@@ -1,22 +1,22 @@
 import { useState } from 'react';
-import { Star, X, ExternalLink } from 'lucide-react';
+import { Star, X, ExternalLink, ChevronDown, ChevronUp } from 'lucide-react';
 import { clientConfig } from '@/config/client-config';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
-const MobileStickyBadge = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const { reviews, social, institutName } = clientConfig;
+interface ReviewCardProps {
+  author: string;
+  rating: number;
+  text: string;
+  date: string;
+}
 
-  const renderStars = (size: number = 14) => {
-    return Array.from({ length: 5 }, (_, i) => (
-      <Star
-        key={i}
-        size={size}
-        fill={i < Math.round(reviews.averageRating) ? '#C9A87C' : 'transparent'}
-        color={i < Math.round(reviews.averageRating) ? '#C9A87C' : '#E5E5E5'}
-        strokeWidth={1.5}
-      />
-    ));
+const ReviewCard = ({ author, rating, text, date }: ReviewCardProps) => {
+  const [isExpanded, setIsExpanded] = useState(false);
+  const MAX_LINES = 4;
+  const LINE_HEIGHT = 22; // approx line height in px
+  const MAX_HEIGHT = MAX_LINES * LINE_HEIGHT;
+
+  const getInitials = (name: string) => {
+    return name.split(' ').map(n => n[0]).join('').toUpperCase();
   };
 
   const renderReviewStars = (rating: number) => {
@@ -31,8 +31,61 @@ const MobileStickyBadge = () => {
     ));
   };
 
-  const getInitials = (name: string) => {
-    return name.split(' ').map(n => n[0]).join('').toUpperCase();
+  // Check if text is long enough to need truncation (rough estimate)
+  const needsTruncation = text.length > 120;
+
+  return (
+    <div className="review-card">
+      <div className="review-header">
+        <div className="review-avatar-custom">
+          {getInitials(author)}
+        </div>
+        <div className="review-author-info">
+          <p className="review-author-name">{author}</p>
+          <div className="review-meta">
+            <div className="review-stars">
+              {renderReviewStars(rating)}
+            </div>
+            <span className="review-date">{date}</span>
+          </div>
+        </div>
+      </div>
+      <div 
+        className={`review-text-container ${!isExpanded && needsTruncation ? 'truncated' : ''}`}
+        style={!isExpanded && needsTruncation ? { maxHeight: `${MAX_HEIGHT}px` } : undefined}
+      >
+        <p className="review-text">{text}</p>
+      </div>
+      {needsTruncation && (
+        <button 
+          className="see-more-btn"
+          onClick={() => setIsExpanded(!isExpanded)}
+        >
+          {isExpanded ? (
+            <>Voir moins <ChevronUp size={14} /></>
+          ) : (
+            <>Voir plus <ChevronDown size={14} /></>
+          )}
+        </button>
+      )}
+    </div>
+  );
+};
+
+const MobileStickyBadge = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const { reviews, social } = clientConfig;
+
+  const renderStars = (size: number = 14) => {
+    return Array.from({ length: 5 }, (_, i) => (
+      <Star
+        key={i}
+        size={size}
+        fill={i < Math.round(reviews.averageRating) ? '#C9A87C' : 'transparent'}
+        color={i < Math.round(reviews.averageRating) ? '#C9A87C' : '#E5E5E5'}
+        strokeWidth={1.5}
+      />
+    ));
   };
 
   const handleBadgeClick = (e: React.MouseEvent) => {
@@ -54,6 +107,14 @@ const MobileStickyBadge = () => {
     <>
       <style>{`
         .mobile-sticky-badge {
+          display: none;
+        }
+
+        .reviews-modal-overlay {
+          display: none;
+        }
+
+        .reviews-modal {
           display: none;
         }
 
@@ -115,6 +176,7 @@ const MobileStickyBadge = () => {
 
           /* Modal Overlay */
           .reviews-modal-overlay {
+            display: block;
             position: fixed;
             inset: 0;
             background: rgba(0, 0, 0, 0.6);
@@ -131,6 +193,7 @@ const MobileStickyBadge = () => {
 
           /* Modal Container */
           .reviews-modal {
+            display: flex;
             position: fixed;
             bottom: 0;
             left: 0;
@@ -141,7 +204,6 @@ const MobileStickyBadge = () => {
             z-index: 1002;
             transform: translateY(100%);
             transition: transform 0.35s cubic-bezier(0.32, 0.72, 0, 1);
-            display: flex;
             flex-direction: column;
             overflow: hidden;
           }
@@ -250,7 +312,7 @@ const MobileStickyBadge = () => {
             gap: 8px;
             margin: 16px 20px;
             padding: 14px 24px;
-            background: var(--color-accent, #C9A87C);
+            background: #C9A87C;
             color: #FFFFFF;
             border: none;
             border-radius: 50px;
@@ -297,7 +359,7 @@ const MobileStickyBadge = () => {
             margin-bottom: 10px;
           }
 
-          .review-avatar {
+          .review-avatar-custom {
             width: 40px;
             height: 40px;
             border-radius: 50%;
@@ -341,20 +403,55 @@ const MobileStickyBadge = () => {
             color: #999;
           }
 
+          .review-text-container {
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+          }
+
+          .review-text-container.truncated {
+            position: relative;
+          }
+
+          .review-text-container.truncated::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 24px;
+            background: linear-gradient(transparent, #FFFFFF);
+          }
+
           .review-text {
             font-family: 'Raleway', sans-serif;
             font-size: 14px;
-            line-height: 1.6;
+            line-height: 22px;
             color: #333;
             margin: 0;
           }
-        }
 
-        /* Hide modal on desktop */
-        @media (min-width: 768px) {
-          .reviews-modal-overlay,
-          .reviews-modal {
-            display: none !important;
+          .see-more-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            margin-top: 8px;
+            padding: 0;
+            background: none;
+            border: none;
+            font-family: 'Raleway', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            color: #C9A87C;
+            cursor: pointer;
+            transition: color 0.2s ease;
+          }
+
+          .see-more-btn:hover {
+            color: #B8976B;
+          }
+
+          .see-more-btn svg {
+            flex-shrink: 0;
           }
         }
       `}</style>
@@ -468,25 +565,13 @@ const MobileStickyBadge = () => {
 
         <div className="reviews-list">
           {reviews.featured.map((review, index) => (
-            <div key={index} className="review-card">
-              <div className="review-header">
-                <Avatar className="review-avatar">
-                  <AvatarFallback className="bg-gradient-to-br from-[#C9A87C] to-[#B8976B] text-white text-sm font-semibold">
-                    {getInitials(review.author)}
-                  </AvatarFallback>
-                </Avatar>
-                <div className="review-author-info">
-                  <p className="review-author-name">{review.author}</p>
-                  <div className="review-meta">
-                    <div className="review-stars">
-                      {renderReviewStars(review.rating)}
-                    </div>
-                    <span className="review-date">{review.date}</span>
-                  </div>
-                </div>
-              </div>
-              <p className="review-text">{review.text}</p>
-            </div>
+            <ReviewCard
+              key={index}
+              author={review.author}
+              rating={review.rating}
+              text={review.text}
+              date={review.date}
+            />
           ))}
         </div>
       </div>
