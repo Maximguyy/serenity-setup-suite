@@ -79,17 +79,14 @@ const AnnouncementBar = () => {
   );
 
   const barStyles: React.CSSProperties = {
-    position: 'fixed',
-    top: '70px',
-    left: 0,
-    right: 0,
-    zIndex: 150,
+    position: 'relative',
+    zIndex: 200,
     backgroundColor: '#1A1A1A',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     minHeight: '44px',
-    padding: '10px 32px',
+    padding: '10px 48px 10px 16px',
     transform: isVisible ? 'translateY(0)' : 'translateY(-100%)',
     opacity: isVisible ? 1 : 0,
     transition: 'transform 400ms ease-out, opacity 400ms ease-out',
@@ -113,6 +110,10 @@ const AnnouncementBar = () => {
             aria-label="Fermer l'annonce"
             className="announcement-close"
             style={{
+              position: 'absolute',
+              right: '16px',
+              top: '50%',
+              transform: 'translateY(-50%)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
@@ -126,7 +127,6 @@ const AnnouncementBar = () => {
               color: '#FFFFFF',
               opacity: 0.7,
               transition: 'opacity var(--transition-fast), background-color var(--transition-fast)',
-              marginLeft: '16px',
               flexShrink: 0,
             }}
           >
@@ -144,6 +144,10 @@ const AnnouncementBar = () => {
             aria-label="Fermer l'annonce"
             className="announcement-close"
             style={{
+              position: 'absolute',
+              right: '16px',
+              top: '50%',
+              transform: 'translateY(-50%)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
@@ -157,7 +161,6 @@ const AnnouncementBar = () => {
               color: '#FFFFFF',
               opacity: 0.7,
               transition: 'opacity var(--transition-fast), background-color var(--transition-fast)',
-              marginLeft: '16px',
               flexShrink: 0,
             }}
           >
@@ -176,7 +179,6 @@ const AnnouncementBar = () => {
         /* Mobile styles */
         @media (max-width: 767px) {
           .announcement-bar {
-            top: 60px !important;
             padding: 10px 40px 10px 16px !important;
             min-height: 40px !important;
           }
@@ -186,22 +188,7 @@ const AnnouncementBar = () => {
           }
 
           .announcement-close {
-            position: absolute !important;
             right: 8px !important;
-            top: 50% !important;
-            transform: translateY(-50%) !important;
-          }
-        }
-      `}</style>
-
-      {/* Spacer for fixed announcement bar */}
-      {isVisible && (
-        <div className="announcement-spacer" style={{ height: '44px' }} />
-      )}
-      <style>{`
-        @media (max-width: 767px) {
-          .announcement-spacer {
-            height: 40px !important;
           }
         }
       `}</style>
