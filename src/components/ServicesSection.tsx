@@ -137,7 +137,6 @@ const ServicesSection = () => {
                     style={{
                       display: 'block',
                       backgroundColor: '#FFFFFF',
-                      border: '1px solid #E5E5E5',
                       borderRadius: '12px',
                       overflow: 'hidden',
                       textDecoration: 'none',
@@ -182,6 +181,24 @@ const ServicesSection = () => {
                           <IconComponent size={48} style={{ color: 'var(--color-accent)', opacity: 0.5 }} />
                         </div>
                       )}
+                      {/* Duration Tag */}
+                      <span
+                        className="duration-tag"
+                        style={{
+                          position: 'absolute',
+                          top: '8px',
+                          right: '8px',
+                          backgroundColor: 'rgba(0, 0, 0, 0.7)',
+                          color: '#FFFFFF',
+                          padding: '4px 8px',
+                          borderRadius: '4px',
+                          fontSize: '11px',
+                          fontFamily: 'var(--font-body)',
+                          fontWeight: 'var(--font-medium)',
+                        }}
+                      >
+                        {item.duration}
+                      </span>
                     </div>
 
                     {/* Card Content */}
@@ -204,18 +221,6 @@ const ServicesSection = () => {
                       >
                         {item.name}
                       </h4>
-                      <p
-                        className="card-duration"
-                        style={{
-                          fontFamily: 'var(--font-body)',
-                          fontSize: '13px',
-                          fontWeight: 'var(--font-normal)',
-                          color: '#6B6B6B',
-                          margin: '0 0 8px 0',
-                        }}
-                      >
-                        {item.duration}
-                      </p>
                       <p
                         className="card-price"
                         style={{
@@ -243,12 +248,13 @@ const ServicesSection = () => {
           display: grid;
           grid-template-columns: repeat(4, 1fr);
           gap: 24px;
+          padding: 8px;
+          margin: -8px;
         }
 
         .service-card:hover {
-          border-color: var(--color-accent) !important;
           box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12) !important;
-          transform: translateY(-4px);
+          transform: scale(1.02);
         }
 
         .service-card:hover .card-image img {
@@ -327,8 +333,8 @@ const ServicesSection = () => {
             font-size: 14px !important;
           }
 
-          .card-duration {
-            font-size: 12px !important;
+          .duration-tag {
+            font-size: 10px !important;
           }
 
           .card-price {
