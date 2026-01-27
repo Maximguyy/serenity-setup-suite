@@ -188,7 +188,7 @@ const MobileStickyBadge = () => {
             display: flex;
             justify-content: center;
             position: fixed;
-            bottom: 16px;
+            bottom: calc(88px + env(safe-area-inset-bottom, 0px));
             left: 0;
             right: 0;
             z-index: 1000;
