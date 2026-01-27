@@ -282,7 +282,7 @@ const HeroBanner = () => {
             style={{
               display: 'flex',
               alignItems: 'center',
-              gap: '20px',
+              gap: '12px',
             }}
           >
             <img
@@ -299,7 +299,7 @@ const HeroBanner = () => {
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'flex-start',
-                gap: '2px',
+                gap: '0px',
               }}
             >
               <span
