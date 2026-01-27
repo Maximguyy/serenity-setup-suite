@@ -1,78 +1,94 @@
 
 
-## Plan de Configuration - Site Institut de Beauté
+# Plan: USP Bar et Gradient Header
 
-### Phase 1 : Mise en place de la base technique
+## Objectif
+Ajouter une barre USP (Unique Selling Propositions) en bas du Hero Banner avec deux indicateurs de confiance, supprimer la fleche animee, et ajouter un gradient progressif sur le header.
 
-Cette phase configure uniquement les fondations du projet. Aucun composant visuel ne sera créé.
+## Modifications prevues
 
----
+### 1. Copie du logo Google Reviews
+Le logo Google Reviews fourni (`google-reviews-logo.png`) sera copie dans `public/assets/` pour etre utilise dans l'USP.
 
-#### 1. Création du fichier de configuration client
-**Fichier :** `src/config/client-config.ts`
+### 2. Mise a jour de la configuration client
+Ajout d'une nouvelle section `usps` dans `src/config/client-config.ts`:
 
-Ce fichier centralisé contiendra toutes les informations de l'institut :
-- Identité (nom, tagline, logo)
-- Coordonnées (téléphone, email, adresse)
-- Réseaux sociaux (Instagram, Facebook, Google)
-- Horaires d'ouverture
-- Liens de réservation
-- Contenu du hero (titre, sous-titre, images de fond)
-- Bandeau d'annonce promotionnelle
-- Avis clients Google
-- Liste des prestations par catégorie
-- Équipe et membres
-- Configuration Google Maps
-- Navigation et liens du menu
-- Footer et liens légaux
-- Métadonnées SEO
+```text
+usps: {
+  satisfiedClients: {
+    count: "1000+",
+    label: "femmes satisfaites"
+  },
+  googleReviews: {
+    rating: "4.9/5",
+    count: "+127 avis",
+    logo: "/assets/google-reviews-logo.png"
+  }
+}
+```
 
----
+### 3. Modification du HeroBanner (`src/components/HeroBanner.tsx`)
 
-#### 2. Création du thème CSS
-**Fichier :** `src/styles/theme.css`
+**Suppressions:**
+- Suppression complete du bloc "Scroll Indicator" (lignes 203-221)
+- Suppression des styles CSS `.scroll-indicator` et `@keyframes bounce`
 
-Configuration visuelle complète avec :
-- **Import des polices Google** : Bitter (titres) et Raleway (corps de texte)
-- **Palette de couleurs** : tons neutres avec accent doré (#C9A87C)
-- **Système typographique** : tailles, graisses, hauteurs de ligne
-- **Espacements** : système cohérent (xs à 4xl)
-- **Bordures et ombres** : arrondis et effets d'élévation
-- **Transitions** : animations fluides
-- **Classes utilitaires** : .container, .section, .btn
-- **Styles responsives** : breakpoints mobile-first
+**Ajouts:**
+Une nouvelle barre USP en bas du Hero avec:
+- Layout: Flexbox horizontal, 2 colonnes separees par un separateur vertical
+- Fond: Semi-transparent ou integre a l'overlay existant
+- Contenu USP 1 (gauche): "1000+" en gras + "femmes satisfaites"
+- Contenu USP 2 (droite): Logo Google Reviews + "Excellent 4.9/5" + "+127 avis"
 
----
+Structure HTML:
+```text
++------------------------------------------+
+|   1000+          |  [Google Logo]        |
+|   femmes         |  Excellent 4.9/5      |
+|   satisfaites    |  +127 avis            |
++------------------------------------------+
+```
 
-#### 3. Intégration et page temporaire
-- Import du fichier theme.css dans main.tsx
-- Création d'une page d'accueil temporaire affichant :
-  - Titre "Institut de Beauté - Configuration OK"
-  - Message confirmant que les sections seront ajoutées une par une
-  - Application des styles du thème (police Raleway, fond blanc)
+**Responsive:**
+- Desktop: Barre horizontale avec les 2 USPs cote a cote
+- Mobile: Meme disposition mais taille reduite
 
----
+### 4. Modification du Header (`src/components/Header.tsx`)
 
-### Résultat attendu après cette phase
+**Ajout d'un gradient overlay sur le header:**
+Quand le header n'est pas "scrolled", ajouter un pseudo-element ou un div avec:
+- Gradient: `linear-gradient(180deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0) 100%)`
+- Position: absolute, couvrant toute la largeur
+- Hauteur: ~120-150px pour un effet progressif
+- Z-index: en dessous du contenu du header mais au-dessus de l'image
 
-✅ Architecture prête pour recevoir les composants  
-✅ Toutes les données client modifiables depuis un seul fichier  
-✅ Thème visuel cohérent et professionnel défini  
-✅ Polices Bitter et Raleway chargées  
-✅ Page temporaire fonctionnelle  
+Cela creera un effet de fondu sombre en haut qui s'eclaircit vers le bas, ameliorant la lisibilite du texte blanc.
 
-❌ Aucun composant visuel (Header, Hero, Footer, sections)
+## Details techniques
 
----
+### Barre USP - Styles
+```text
+Position: absolute ou relative en bas du hero
+Background: rgba(255,255,255,0.1) avec backdrop-filter blur subtil
+Padding: 16px 32px (desktop), 12px 16px (mobile)
+Separateur: ligne verticale blanche 1px, hauteur ~40px
+Typographie:
+  - Chiffres: 24px, font-weight bold
+  - Labels: 14px, font-weight normal
+  - Couleur: #FFFFFF
+```
 
-### Prochaines étapes (futurs prompts)
+### Gradient Header - Specs
+```text
+Gradient applique uniquement quand !isScrolled
+Degrade du noir (60% opacite en haut) vers transparent en bas
+Hauteur du gradient: 120-150px
+Transition fluide lors du scroll
+```
 
-Après validation de cette configuration, les sections seront créées une par une dans cet ordre suggéré :
-1. Header avec navigation
-2. Hero section
-3. Section prestations
-4. Section avis clients
-5. Section équipe
-6. Section contact et carte
-7. Footer
+## Resume des fichiers modifies
+1. `public/assets/google-reviews-logo.png` - Copie de l'asset
+2. `src/config/client-config.ts` - Ajout section USPs
+3. `src/components/HeroBanner.tsx` - Ajout USP bar, suppression scroll indicator
+4. `src/components/Header.tsx` - Ajout gradient overlay progressif
 
