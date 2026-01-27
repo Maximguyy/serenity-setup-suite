@@ -195,28 +195,28 @@ export const clientConfig = {
       {
         name: "Marie",
         role: "Fondatrice & Esthéticienne",
-        photo: "/assets/team/marie.jpg",
+        photo: "/assets/team/marie.png",
         specialty: "Soins visage",
         years: 8
       },
       {
         name: "Sophie",
         role: "Esthéticienne",
-        photo: "/assets/team/sophie.jpg",
+        photo: "/assets/team/sophie.png",
         specialty: "Massages",
         years: 5
       },
       {
         name: "Julie",
         role: "Prothésiste ongulaire",
-        photo: "/assets/team/julie.jpg",
+        photo: "/assets/team/julie.png",
         specialty: "Nail art",
         years: 3
       },
       {
         name: "Emma",
         role: "Esthéticienne",
-        photo: "/assets/team/emma.jpg",
+        photo: "/assets/team/emma.png",
         specialty: "Épilations",
         years: 4
       }
