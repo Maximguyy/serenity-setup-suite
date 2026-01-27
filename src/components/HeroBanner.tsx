@@ -83,33 +83,6 @@ const HeroBanner = () => {
           flex: 1,
         }}
       >
-        {/* Social Proof Tag */}
-        <div
-          className="social-proof-tag"
-          style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            padding: '8px 20px',
-            backgroundColor: '#FFFFFF',
-            borderRadius: '50px',
-            marginBottom: '24px',
-            opacity: isVisible ? 1 : 0,
-            transform: isVisible ? 'translateY(0)' : 'translateY(30px)',
-            transition: 'opacity 800ms ease-out 100ms, transform 800ms ease-out 100ms',
-          }}
-        >
-          <span
-            style={{
-              fontFamily: 'var(--font-body)',
-              fontSize: '14px',
-              fontWeight: 'var(--font-semibold)',
-              color: '#C9A87C',
-              letterSpacing: '0.02em',
-            }}
-          >
-            +1000 femmes satisfaites
-          </span>
-        </div>
 
         {/* Title */}
         <h1
@@ -224,6 +197,34 @@ const HeroBanner = () => {
           >
             {booking.giftCardText}
           </a>
+        </div>
+
+        {/* Social Proof Tag */}
+        <div
+          className="social-proof-tag"
+          style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            padding: '8px 20px',
+            backgroundColor: '#FFFFFF',
+            borderRadius: '50px',
+            marginTop: '32px',
+            opacity: isVisible ? 1 : 0,
+            transform: isVisible ? 'translateY(0)' : 'translateY(30px)',
+            transition: 'opacity 800ms ease-out 700ms, transform 800ms ease-out 700ms',
+          }}
+        >
+          <span
+            style={{
+              fontFamily: 'var(--font-body)',
+              fontSize: '14px',
+              fontWeight: 'var(--font-semibold)',
+              color: '#C9A87C',
+              letterSpacing: '0.02em',
+            }}
+          >
+            +1000 femmes satisfaites
+          </span>
         </div>
       </div>
 
