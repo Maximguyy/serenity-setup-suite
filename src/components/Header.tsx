@@ -401,9 +401,11 @@ const Header = () => {
             justify-content: center !important;
           }
 
-          .header-logo img,
+          .header-logo img {
+            height: 36px !important;
+          }
+
           .header-logo span {
-            height: 28px !important;
             font-size: var(--text-lg) !important;
           }
 
