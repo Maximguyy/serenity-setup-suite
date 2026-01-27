@@ -223,33 +223,37 @@ const HeroBanner = () => {
             justifyContent: 'center',
             maxWidth: 'var(--container-max-width)',
             margin: '0 auto',
-            padding: '16px 32px',
+            padding: '20px 48px',
+            gap: '48px',
           }}
         >
           {/* USP 1: Femmes satisfaites */}
           <div
-            className="usp-item"
+            className="usp-item usp-item-left"
             style={{
               display: 'flex',
-              alignItems: 'center',
-              gap: '8px',
-              paddingRight: '24px',
+              flexDirection: 'column',
+              alignItems: 'flex-end',
+              gap: '2px',
             }}
           >
             <span
+              className="usp-count"
               style={{
                 fontFamily: 'var(--font-heading)',
-                fontSize: '24px',
+                fontSize: '32px',
                 fontWeight: 'var(--font-bold)',
                 color: '#FFFFFF',
+                lineHeight: 1.1,
               }}
             >
               {usps.satisfiedClients.count}
             </span>
             <span
+              className="usp-label"
               style={{
                 fontFamily: 'var(--font-body)',
-                fontSize: '14px',
+                fontSize: '16px',
                 fontWeight: 'var(--font-normal)',
                 color: '#FFFFFF',
                 opacity: 0.9,
@@ -264,26 +268,26 @@ const HeroBanner = () => {
             className="usp-separator"
             style={{
               width: '1px',
-              height: '40px',
-              backgroundColor: 'rgba(255, 255, 255, 0.3)',
+              height: '50px',
+              backgroundColor: 'rgba(255, 255, 255, 0.4)',
             }}
           />
 
           {/* USP 2: Google Reviews */}
           <div
-            className="usp-item"
+            className="usp-item usp-item-right"
             style={{
               display: 'flex',
               alignItems: 'center',
-              gap: '12px',
-              paddingLeft: '24px',
+              gap: '20px',
             }}
           >
             <img
               src={usps.googleReviews.logo}
               alt="Google Reviews"
+              className="usp-logo"
               style={{
-                height: '24px',
+                height: '40px',
                 width: 'auto',
               }}
             />
@@ -291,13 +295,15 @@ const HeroBanner = () => {
               style={{
                 display: 'flex',
                 flexDirection: 'column',
+                alignItems: 'flex-start',
                 gap: '2px',
               }}
             >
               <span
+                className="usp-rating"
                 style={{
                   fontFamily: 'var(--font-body)',
-                  fontSize: '14px',
+                  fontSize: '16px',
                   fontWeight: 'var(--font-semibold)',
                   color: '#FFFFFF',
                 }}
@@ -305,12 +311,13 @@ const HeroBanner = () => {
                 Excellent {usps.googleReviews.rating}
               </span>
               <span
+                className="usp-reviews"
                 style={{
                   fontFamily: 'var(--font-body)',
-                  fontSize: '12px',
+                  fontSize: '14px',
                   fontWeight: 'var(--font-normal)',
                   color: '#FFFFFF',
-                  opacity: 0.8,
+                  opacity: 0.85,
                 }}
               >
                 {usps.googleReviews.count}
@@ -389,24 +396,40 @@ const HeroBanner = () => {
           }
 
           .usp-container {
-            padding: 12px 16px !important;
+            padding: 16px 20px !important;
+            gap: 24px !important;
           }
 
-          .usp-item {
-            padding-left: 16px !important;
-            padding-right: 16px !important;
+          .usp-item-left {
+            align-items: flex-end !important;
           }
 
-          .usp-item span:first-child {
-            font-size: 20px !important;
+          .usp-item-right {
+            gap: 12px !important;
           }
 
-          .usp-item span:last-child {
+          .usp-count {
+            font-size: 24px !important;
+          }
+
+          .usp-label {
+            font-size: 13px !important;
+          }
+
+          .usp-logo {
+            height: 28px !important;
+          }
+
+          .usp-rating {
+            font-size: 14px !important;
+          }
+
+          .usp-reviews {
             font-size: 12px !important;
           }
 
           .usp-separator {
-            height: 32px !important;
+            height: 40px !important;
           }
         }
       `}</style>
