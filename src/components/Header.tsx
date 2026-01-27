@@ -341,17 +341,23 @@ const Header = () => {
           .header-container {
             height: 60px !important;
             padding: 0 16px !important;
+            display: grid !important;
+            grid-template-columns: 40px 1fr 40px !important;
+            gap: 8px !important;
           }
 
           .burger-menu {
             display: flex !important;
-            order: 1;
+            align-items: center !important;
+            justify-content: center !important;
+            width: 40px !important;
+            height: 40px !important;
           }
 
           .header-logo {
-            order: 2;
-            flex: 1;
-            justify-content: center;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
           }
 
           .header-logo img,
@@ -370,7 +376,10 @@ const Header = () => {
 
           .phone-icon {
             display: flex !important;
-            order: 3;
+            align-items: center !important;
+            justify-content: center !important;
+            width: 40px !important;
+            height: 40px !important;
           }
         }
 
