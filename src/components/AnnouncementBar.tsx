@@ -190,7 +190,8 @@ const AnnouncementBar = () => {
             font-size: 13px !important;
           }
 
-          .announcement-desktop-only {
+          .announcement-desktop-only,
+          .announcement-highlight {
             display: none !important;
           }
 

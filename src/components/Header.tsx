@@ -59,8 +59,8 @@ const Header = () => {
             top: 0,
             left: 0,
             right: 0,
-            height: '150px',
-            background: 'linear-gradient(180deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0) 100%)',
+            height: '180px',
+            background: 'linear-gradient(180deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.45) 50%, rgba(0,0,0,0) 100%)',
             zIndex: 1,
             pointerEvents: 'none',
           }}
