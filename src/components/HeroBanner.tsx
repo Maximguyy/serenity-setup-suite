@@ -287,7 +287,7 @@ const HeroBanner = () => {
               alt="Google Reviews"
               className="usp-logo"
               style={{
-                height: '56px',
+                height: '64px',
                 width: 'auto',
               }}
             />
