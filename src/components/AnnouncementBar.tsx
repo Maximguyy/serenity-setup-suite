@@ -68,9 +68,9 @@ const AnnouncementBar = () => {
             {announcement.emoji}
           </span>
         )}
-        {announcement.text}
+        <span className="announcement-main-text">{announcement.text}</span>
         {announcement.highlight && (
-          <span style={{ fontWeight: 'var(--font-bold)', marginLeft: '4px' }}>
+          <span className="announcement-highlight" style={{ fontWeight: 'var(--font-bold)', marginLeft: '4px' }}>
             {announcement.highlight}
           </span>
         )}
@@ -81,7 +81,7 @@ const AnnouncementBar = () => {
   const barStyles: React.CSSProperties = {
     position: 'relative',
     zIndex: 200,
-    backgroundColor: 'var(--color-accent)',
+    backgroundColor: '#000000',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -185,6 +185,14 @@ const AnnouncementBar = () => {
 
           .announcement-text {
             font-size: 13px !important;
+          }
+
+          .announcement-main-text {
+            display: none !important;
+          }
+
+          .announcement-highlight {
+            margin-left: 0 !important;
           }
 
           .announcement-close {
