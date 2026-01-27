@@ -68,7 +68,10 @@ const AnnouncementBar = () => {
             {announcement.emoji}
           </span>
         )}
-        <span className="announcement-main-text">{announcement.text}</span>
+        {announcement.text}
+        {announcement.textDesktopOnly && (
+          <span className="announcement-desktop-only">{announcement.textDesktopOnly}</span>
+        )}
         {announcement.highlight && (
           <span className="announcement-highlight" style={{ fontWeight: 'var(--font-bold)', marginLeft: '4px' }}>
             {announcement.highlight}
@@ -187,12 +190,8 @@ const AnnouncementBar = () => {
             font-size: 13px !important;
           }
 
-          .announcement-main-text {
+          .announcement-desktop-only {
             display: none !important;
-          }
-
-          .announcement-highlight {
-            margin-left: 0 !important;
           }
 
           .announcement-close {

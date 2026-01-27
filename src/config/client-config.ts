@@ -77,7 +77,8 @@ export const clientConfig = {
   announcement: {
     enabled: true,
     emoji: "❤️‍🩹",
-    text: "Saint-Valentin : -20% sur nos soins en duo",
+    text: "Saint-Valentin : -20% sur nos soins",
+    textDesktopOnly: " en duo",
     highlight: "jusqu'au 14 février",
     link: null as string | null
   },
