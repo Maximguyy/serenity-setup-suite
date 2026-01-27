@@ -157,19 +157,20 @@ const HeroBanner = () => {
         position: 'relative',
         zIndex: 2,
         display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        gap: '4px',
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'flex-start',
+        gap: '48px',
         padding: '20px 24px',
         opacity: isVisible ? 1 : 0,
         transition: 'opacity 800ms ease-out 800ms'
       }}>
-        {/* Titles line */}
+        {/* USP 1 */}
         <div style={{
           display: 'flex',
-          gap: '32px',
-          justifyContent: 'center',
-          alignItems: 'center'
+          flexDirection: 'column',
+          alignItems: 'center',
+          gap: '4px'
         }}>
           <span style={{
             fontFamily: 'var(--font-heading)',
@@ -178,23 +179,6 @@ const HeroBanner = () => {
             color: '#FFFFFF',
             textShadow: '0 2px 4px rgba(0, 0, 0, 0.3)'
           }}>+1200</span>
-
-          <span style={{
-            fontFamily: 'var(--font-heading)',
-            fontSize: '28px',
-            fontWeight: 'var(--font-semibold)',
-            color: '#FFFFFF',
-            textShadow: '0 2px 4px rgba(0, 0, 0, 0.3)'
-          }}>+10</span>
-        </div>
-
-        {/* Subtitles line */}
-        <div style={{
-          display: 'flex',
-          gap: '32px',
-          justifyContent: 'center',
-          alignItems: 'center'
-        }}>
           <span style={{
             fontFamily: 'var(--font-body)',
             fontSize: '14px',
@@ -202,7 +186,22 @@ const HeroBanner = () => {
             color: 'rgba(255, 255, 255, 0.9)',
             letterSpacing: '0.02em'
           }}>Femmes satisfaites</span>
+        </div>
 
+        {/* USP 2 */}
+        <div style={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          gap: '4px'
+        }}>
+          <span style={{
+            fontFamily: 'var(--font-heading)',
+            fontSize: '28px',
+            fontWeight: 'var(--font-semibold)',
+            color: '#FFFFFF',
+            textShadow: '0 2px 4px rgba(0, 0, 0, 0.3)'
+          }}>+10</span>
           <span style={{
             fontFamily: 'var(--font-body)',
             fontSize: '14px',
