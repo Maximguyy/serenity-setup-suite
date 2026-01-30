@@ -1,11 +1,11 @@
-import AnnouncementBar from '@/components/AnnouncementBar';
-import HeroBanner from '@/components/HeroBanner';
-import ServicesSection from '@/components/ServicesSection';
-import TeamSection from '@/components/TeamSection';
-import ContactSection from '@/components/ContactSection';
-import Footer from '@/components/Footer';
-import MobileStickyBadge from '@/components/MobileStickyBadge';
-import StickyBookingButton from '@/components/StickyBookingButton';
+import AnnouncementBar from "@/components/AnnouncementBar";
+import HeroBanner from "@/components/HeroBanner";
+import ServicesSection from "@/components/ServicesSection";
+import TeamSection from "@/components/TeamSection";
+import ContactSection from "@/components/ContactSection";
+import Footer from "@/components/Footer";
+import MobileStickyBadge from "@/components/MobileStickyBadge";
+import StickyBookingButton from "@/components/StickyBookingButton";
 
 const Index = () => {
   return (
