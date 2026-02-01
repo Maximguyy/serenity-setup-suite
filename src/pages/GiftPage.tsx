@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Gift, Heart, Sparkles, Mail, Check } from 'lucide-react';
 import { Header, Footer, MobileStickyBadge, StickyBookingButton } from '@/components/layout';
 import { SectionWrapper, SectionTitle } from '@/components/core';
+import { ContactSection } from '@/components/sections/contact';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { cn } from '@/lib/utils';
@@ -194,6 +195,7 @@ const GiftPage = () => {
         </div>
       </SectionWrapper>
 
+      <ContactSection />
       <Footer />
       <MobileStickyBadge />
       <StickyBookingButton />
