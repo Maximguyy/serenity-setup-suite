@@ -23,6 +23,7 @@ export const clientConfig = {
       street: "123 Rue de la Beauté",
       postalCode: "75001",
       city: "Paris",
+      country: "France",
       full: "123 Rue de la Beauté, 75001 Paris"
     }
   },
@@ -68,7 +69,12 @@ export const clientConfig = {
     backgroundImage: {
       desktop: "/assets/hero-desktop.jpg",
       mobile: "/assets/hero-mobile.jpg"
-    }
+    },
+    // USPs affichés en bas du hero
+    usps: [
+      { value: "+1200", label: "Femmes satisfaites" },
+      { value: "+10", label: "Ans d'expérience" }
+    ]
   },
 
   // ─────────────────────────────────────────
@@ -84,27 +90,17 @@ export const clientConfig = {
   },
 
   // ─────────────────────────────────────────
-  // USPs (BARRE DE CONFIANCE)
-  // ─────────────────────────────────────────
-  usps: {
-    satisfiedClients: {
-      count: "1000+",
-      label: "femmes satisfaites"
-    },
-    googleReviews: {
-      rating: "4.9/5",
-      count: "+127 avis",
-      logo: "/assets/google-reviews-logo.png"
-    }
-  },
-
-  // ─────────────────────────────────────────
   // AVIS GOOGLE
   // ─────────────────────────────────────────
   reviews: {
+    sectionTitle: "Ce que nos clientes disent",
+    sectionSubtitle: "Découvrez les témoignages de nos clientes satisfaites",
     googlePlaceId: "ChIJ...",
     averageRating: 4.9,
     totalReviews: 127,
+    googleLogo: "/assets/google-reviews-logo.png",
+    ctaText: "Voir tous les avis sur Google",
+    mobileBadgeCtaText: "Laissez-nous un avis sur Google",
     featured: [
       {
         author: "Marie D.",
@@ -151,9 +147,11 @@ export const clientConfig = {
   services: {
     sectionTitle: "Découvrez Nos Soins",
     sectionSubtitle: "Une sélection de rituels beauté pour révéler votre éclat naturel",
+    defaultDescription: "Offrez-vous un moment de détente et de bien-être avec ce soin réalisé par nos expertes. Une expérience unique adaptée à vos besoins.",
     categories: [
       {
         name: "Soins Visage",
+        displayTitle: "Soins Du Visage",
         slug: "visage",
         icon: "sparkles",
         heroImage: "/assets/categories/visage-hero.jpg",
@@ -166,6 +164,7 @@ export const clientConfig = {
       },
       {
         name: "Soins Corps",
+        displayTitle: "Soins Du Corps",
         slug: "corps",
         icon: "heart",
         heroImage: "/assets/categories/corps-hero.jpg",
@@ -178,6 +177,7 @@ export const clientConfig = {
       },
       {
         name: "Épilations",
+        displayTitle: "Nos Épilations",
         slug: "epilations",
         icon: "leaf",
         heroImage: "/assets/categories/epilations-hero.jpg",
@@ -197,6 +197,7 @@ export const clientConfig = {
   team: {
     sectionTitle: "Notre Équipe",
     sectionSubtitle: "Des professionnelles passionnées et diplômées à votre écoute",
+    yearsLabel: "Professionnelle depuis {years} ans",
     members: [
       {
         name: "Marie",
@@ -252,10 +253,55 @@ export const clientConfig = {
       }
     ]
   },
+
+  // ─────────────────────────────────────────
+  // CONTACT / MAP
+  // ─────────────────────────────────────────
   map: {
     embedUrl: "https://www.google.com/maps/embed?pb=...",
     latitude: 48.8566,
     longitude: 2.3522
+  },
+
+  contactSection: {
+    title: "Où nous retrouver ?",
+    hoursTitle: "Horaires d'ouverture"
+  },
+
+  // ─────────────────────────────────────────
+  // PAGE CARTE CADEAU
+  // ─────────────────────────────────────────
+  giftCard: {
+    heroTitle: "Offrez un moment de bien-être",
+    heroSubtitle: "Faites plaisir à vos proches avec une carte cadeau utilisable sur tous nos soins",
+    heroTag: "Carte Cadeau",
+    valentineTitle: "Meilleur cadeau de Saint-Valentin",
+    features: [
+      {
+        icon: "gift",
+        title: "Cadeau parfait",
+        description: "Un moment de détente à offrir"
+      },
+      {
+        icon: "heart",
+        title: "Saint-Valentin",
+        description: "Le meilleur cadeau pour votre moitié"
+      },
+      {
+        icon: "sparkles",
+        title: "Expérience unique",
+        description: "Un souvenir inoubliable"
+      }
+    ],
+    formTitle: "Créez votre carte cadeau",
+    formSubtitle: "Choisissez le montant et recevez votre carte par email",
+    emailLabel: "Email du destinataire",
+    emailPlaceholder: "email@exemple.com",
+    amountLabel: "Choisissez un montant",
+    customAmountLabel: "Ou entrez un montant personnalisé",
+    amounts: [25, 50, 75, 100, 150, 200],
+    ctaButton: "Procéder au paiement",
+    securityNote: "Paiement sécurisé • Carte envoyée instantanément par email"
   },
 
   // ─────────────────────────────────────────
@@ -279,6 +325,12 @@ export const clientConfig = {
   // FOOTER
   // ─────────────────────────────────────────
   footer: {
+    columns: {
+      location: "Nous trouver",
+      contact: "Nous contacter",
+      legal: "Informations légales",
+      social: "Nos réseaux"
+    },
     copyright: "© 2025 Institut de Beauté Exemple. Tous droits réservés.",
     legalLinks: [
       { label: "Mentions légales", href: "/mentions-legales" },
@@ -288,13 +340,25 @@ export const clientConfig = {
   },
 
   // ─────────────────────────────────────────
+  // LABELS UI (boutons, textes génériques)
+  // ─────────────────────────────────────────
+  ui: {
+    callButton: "Nous appeler",
+    bookButton: "Réserver cette séance",
+    backToServices: "Retour aux prestations",
+    categoryNotFound: "Catégorie non trouvée",
+    viewAllLink: "Tout afficher →"
+  },
+
+  // ─────────────────────────────────────────
   // SEO & META
   // ─────────────────────────────────────────
   seo: {
     title: "Institut de Beauté Exemple | Soins Visage & Corps à Paris",
     description: "Découvrez notre institut de beauté à Paris. Soins du visage, massages, épilations et manucures dans une ambiance zen et relaxante.",
     keywords: "institut beauté, soins visage, massage, épilation, manucure, Paris",
-    ogImage: "/assets/og-image.jpg"
+    ogImage: "/assets/og-image.jpg",
+    twitterHandle: "@institut_exemple"
   }
 };
 

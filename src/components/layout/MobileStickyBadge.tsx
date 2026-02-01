@@ -167,7 +167,7 @@ const MobileStickyBadge = () => {
           className="mx-5 my-4 flex shrink-0 items-center justify-center gap-2 rounded-full bg-accent px-6 py-3.5 font-body text-[15px] font-semibold text-white no-underline transition-colors hover:bg-accent-hover"
         >
           <ExternalLink size={16} />
-          Laissez-nous un avis sur Google
+          {reviews.mobileBadgeCtaText}
         </a>
 
         {/* Reviews List */}

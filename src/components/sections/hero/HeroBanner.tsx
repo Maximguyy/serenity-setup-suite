@@ -100,7 +100,7 @@ const HeroBanner = () => {
         </div>
       </div>
 
-      {/* USP Section */}
+      {/* USP Section - Dynamic from config */}
       <div
         className={cn(
           'relative z-[2] flex flex-row items-start justify-center gap-12 px-6 py-5 transition-opacity duration-800',
@@ -108,25 +108,16 @@ const HeroBanner = () => {
         )}
         style={{ transitionDelay: '800ms' }}
       >
-        {/* USP 1 */}
-        <div className="flex flex-col items-center gap-1">
-          <span className="font-heading text-[28px] font-semibold text-white drop-shadow-md">
-            +1200
-          </span>
-          <span className="font-body text-sm font-light tracking-wide text-white/90">
-            Femmes satisfaites
-          </span>
-        </div>
-
-        {/* USP 2 */}
-        <div className="flex flex-col items-center gap-1">
-          <span className="font-heading text-[28px] font-semibold text-white drop-shadow-md">
-            +10
-          </span>
-          <span className="font-body text-sm font-light tracking-wide text-white/90">
-            Ans d'expérience
-          </span>
-        </div>
+        {hero.usps.map((usp, index) => (
+          <div key={index} className="flex flex-col items-center gap-1">
+            <span className="font-heading text-[28px] font-semibold text-white drop-shadow-md">
+              {usp.value}
+            </span>
+            <span className="font-body text-sm font-light tracking-wide text-white/90">
+              {usp.label}
+            </span>
+          </div>
+        ))}
       </div>
     </section>
   );

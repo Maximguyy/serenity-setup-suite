@@ -11,20 +11,20 @@ import {
 import { Card, CardContent } from '@/components/ui/card';
 
 const GoogleReviewsCarousel = () => {
-  const { reviews, usps } = clientConfig;
+  const { reviews, social } = clientConfig;
 
   return (
     <SectionWrapper id="avis" background="light" className="hidden py-8 md:block md:py-10 lg:py-12">
       <SectionTitle
-        title="Ce que nos clientes disent"
-        subtitle="Découvrez les témoignages de nos clientes satisfaites"
+        title={reviews.sectionTitle}
+        subtitle={reviews.sectionSubtitle}
         className="mb-5 md:mb-7"
       />
 
       {/* Google Rating Badge */}
       <div className="mb-5 flex items-center justify-center gap-3">
         <img
-          src={usps.googleReviews.logo}
+          src={reviews.googleLogo}
           alt="Google Reviews"
           className="h-16 w-auto"
         />
@@ -106,12 +106,12 @@ const GoogleReviewsCarousel = () => {
       {/* CTA */}
       <div className="mt-5 text-center">
         <a
-          href={clientConfig.social.google}
+          href={social.google}
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center gap-2 font-body text-sm text-accent underline-offset-4 transition-colors hover:text-accent/80 hover:underline"
         >
-          Voir tous les avis sur Google
+          {reviews.ctaText}
         </a>
       </div>
     </SectionWrapper>

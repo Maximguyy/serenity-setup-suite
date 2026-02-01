@@ -14,12 +14,14 @@ const hoursLabels: Record<string, string> = {
 };
 
 const ContactSection = () => {
+  const { contactSection } = clientConfig;
+
   return (
     <SectionWrapper id="contact" background="white" className="bg-gradient-to-r from-accent/5 via-accent/10 to-accent/5">
       {/* Header */}
       <div className="mb-12 text-center">
         <h2 className="mb-6 font-heading text-3xl font-semibold text-foreground md:text-4xl lg:text-[42px]">
-          Où nous retrouver ?
+          {contactSection.title}
         </h2>
 
         {/* Social Links */}
@@ -63,7 +65,7 @@ const ContactSection = () => {
           >
             <MapPin className="h-[18px] w-[18px] shrink-0 text-accent max-md:h-[16px] max-md:w-[16px]" />
             <span>
-              {clientConfig.contact.address.street}, {clientConfig.contact.address.postalCode} {clientConfig.contact.address.city}, France
+              {clientConfig.contact.address.street}, {clientConfig.contact.address.postalCode} {clientConfig.contact.address.city}, {clientConfig.contact.address.country}
             </span>
           </a>
           <a
@@ -95,7 +97,7 @@ const ContactSection = () => {
           <div className="mb-6 flex items-center gap-3">
             <Clock className="h-7 w-7 shrink-0 text-accent" />
             <h3 className="font-heading text-xl font-semibold text-foreground md:text-2xl">
-              Horaires d'ouverture
+              {contactSection.hoursTitle}
             </h3>
           </div>
 

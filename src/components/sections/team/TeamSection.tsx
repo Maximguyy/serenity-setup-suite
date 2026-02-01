@@ -5,6 +5,10 @@ import { cn } from '@/lib/utils';
 const TeamSection = () => {
   const { team } = clientConfig;
 
+  const getYearsLabel = (years: number) => {
+    return team.yearsLabel.replace('{years}', years.toString());
+  };
+
   return (
     <SectionWrapper id="equipe" background="light">
       <SectionTitle title={team.sectionTitle} subtitle={team.sectionSubtitle} />
@@ -77,7 +81,7 @@ const TeamSection = () => {
               <h3 className="mb-1 font-body text-lg font-semibold text-foreground">{member.name}</h3>
               <p className="mb-1 font-body text-sm text-secondary">{member.role}</p>
               <p className="font-body text-[13px] italic text-accent">
-                Professionnelle depuis {member.years} ans
+                {getYearsLabel(member.years)}
               </p>
             </div>
           </article>

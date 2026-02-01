@@ -1,33 +1,21 @@
 import { useState } from 'react';
-import { Gift, Heart, Sparkles, Mail, Check } from 'lucide-react';
+import { Gift, Heart, Sparkles, Mail, Check, LucideIcon } from 'lucide-react';
 import { Header, Footer, MobileStickyBadge, StickyBookingButton } from '@/components/layout';
 import { SectionWrapper, SectionTitle } from '@/components/core';
 import { ContactSection } from '@/components/sections/contact';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { clientConfig } from '@/config/client-config';
 import { cn } from '@/lib/utils';
 
-const amounts = [25, 50, 75, 100, 150, 200];
-
-const valentineFeatures = [
-  {
-    icon: Gift,
-    title: 'Cadeau parfait',
-    description: 'Un moment de détente à offrir',
-  },
-  {
-    icon: Heart,
-    title: 'Saint-Valentin',
-    description: 'Le meilleur cadeau pour votre moitié',
-  },
-  {
-    icon: Sparkles,
-    title: 'Expérience unique',
-    description: 'Un souvenir inoubliable',
-  },
-];
+const iconMap: Record<string, LucideIcon> = {
+  gift: Gift,
+  heart: Heart,
+  sparkles: Sparkles,
+};
 
 const GiftPage = () => {
+  const { giftCard } = clientConfig;
   const [email, setEmail] = useState('');
   const [selectedAmount, setSelectedAmount] = useState<number | null>(null);
   const [customAmount, setCustomAmount] = useState('');
@@ -49,13 +37,13 @@ const GiftPage = () => {
         <div className="mx-auto max-w-4xl px-4 text-center">
           <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-accent/10 px-4 py-2 text-sm font-medium text-accent">
             <Gift className="h-4 w-4" />
-            Carte Cadeau
+            {giftCard.heroTag}
           </div>
           <h1 className="mb-4 font-heading text-3xl font-semibold text-foreground md:text-4xl lg:text-5xl">
-            Offrez un moment de bien-être
+            {giftCard.heroTitle}
           </h1>
           <p className="mx-auto max-w-2xl font-body text-lg text-secondary">
-            Faites plaisir à vos proches avec une carte cadeau utilisable sur tous nos soins
+            {giftCard.heroSubtitle}
           </p>
         </div>
       </div>
@@ -63,16 +51,16 @@ const GiftPage = () => {
       {/* Valentine's Section */}
       <div className="bg-gradient-to-r from-accent/5 via-accent/10 to-accent/5 py-4 md:py-8">
         <div className="mx-auto max-w-4xl px-4">
-          <div className="mb-6 text-center hidden md:block">
+          <div className="mb-6 hidden text-center md:block">
             <span className="inline-flex items-center gap-2 font-heading text-lg font-semibold text-accent md:text-xl">
               <Heart className="h-5 w-5 fill-accent" />
-              Meilleur cadeau de Saint-Valentin
+              {giftCard.valentineTitle}
               <Heart className="h-5 w-5 fill-accent" />
             </span>
           </div>
           <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-            {valentineFeatures.map((feature, index) => {
-              const Icon = feature.icon;
+            {giftCard.features.map((feature, index) => {
+              const Icon = iconMap[feature.icon] || Gift;
               return (
                 <div
                   key={index}
@@ -98,20 +86,20 @@ const GiftPage = () => {
       <SectionWrapper id="offrir-form" background="white" className="py-12 md:py-16">
         <div className="mx-auto max-w-xl">
           <SectionTitle 
-            title="Créez votre carte cadeau" 
-            subtitle="Choisissez le montant et recevez votre carte par email"
+            title={giftCard.formTitle} 
+            subtitle={giftCard.formSubtitle}
           />
 
           {/* Email Input */}
           <div className="mb-8">
             <label className="mb-2 block font-body text-sm font-medium text-foreground">
-              Email du destinataire
+              {giftCard.emailLabel}
             </label>
             <div className="relative">
               <Mail className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-secondary" />
               <Input
                 type="email"
-                placeholder="email@exemple.com"
+                placeholder={giftCard.emailPlaceholder}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className="pl-11"
@@ -122,10 +110,10 @@ const GiftPage = () => {
           {/* Amount Selection */}
           <div className="mb-8">
             <label className="mb-3 block font-body text-sm font-medium text-foreground">
-              Choisissez un montant
+              {giftCard.amountLabel}
             </label>
             <div className="grid grid-cols-3 gap-3">
-              {amounts.map((amount) => (
+              {giftCard.amounts.map((amount) => (
                 <button
                   key={amount}
                   onClick={() => {
@@ -147,7 +135,7 @@ const GiftPage = () => {
             {/* Custom Amount */}
             <div className="mt-4">
               <label className="mb-2 block font-body text-sm text-secondary">
-                Ou entrez un montant personnalisé
+                {giftCard.customAmountLabel}
               </label>
               <div className="relative">
                 <Input
@@ -186,11 +174,11 @@ const GiftPage = () => {
             className="w-full rounded-lg bg-accent py-6 font-body text-base font-semibold text-accent-foreground transition-all hover:bg-accent-hover disabled:opacity-50"
           >
             <Check className="mr-2 h-5 w-5" />
-            Procéder au paiement
+            {giftCard.ctaButton}
           </Button>
 
           <p className="mt-4 text-center font-body text-xs text-secondary">
-            Paiement sécurisé • Carte envoyée instantanément par email
+            {giftCard.securityNote}
           </p>
         </div>
       </SectionWrapper>

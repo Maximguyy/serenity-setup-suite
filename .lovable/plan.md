@@ -8,89 +8,56 @@ Rendre la grille de cartes sur desktop (PC) dynamique : la largeur de la section
 
 ---
 
-## Comportement attendu
-
-| Nombre de cartes | Comportement |
-|------------------|--------------|
-| 6 cartes | Grille 6 colonnes, largeur max (comme actuellement) |
-| 5 cartes | Grille 5 colonnes, centrée |
-| 4 cartes | Grille 4 colonnes, centrée |
-| 2-3 cartes | Affichage spécial (cartes plus larges ou layout différent) |
+## ✅ IMPLÉMENTÉ
 
 ---
 
-## Solution technique
+# Configuration Centralisée - Template Institut de Beauté
 
-### 1. Calcul dynamique du nombre de colonnes
+## Fichier de configuration unique
 
-Créer une fonction qui détermine le nombre de colonnes selon le nombre d'items :
+**`src/config/client-config.ts`** contient TOUTES les données modifiables du site.
 
-```text
-const getGridColumns = (itemCount) => {
-  if (itemCount >= 6) return 6
-  if (itemCount >= 4) return itemCount  // 4 ou 5 colonnes
-  return 4  // Minimum 4 colonnes avec cartes élargies pour 2-3 items
-}
-```
+## Sections de la configuration
 
-### 2. Container adaptatif et centré
+| Section | Contenu |
+|---------|---------|
+| `institutName`, `tagline`, `logo`, `favicon` | Identité visuelle |
+| `contact` | Téléphone, email, adresse complète |
+| `social` | Liens Instagram, Facebook, Google |
+| `hours` | Horaires d'ouverture par jour |
+| `booking` | URL de réservation, textes des boutons |
+| `hero` | Titre, sous-titre, images, **USPs dynamiques** |
+| `announcement` | Bandeau promo (activable/désactivable) |
+| `reviews` | Titre section, avis Google, note moyenne, CTA |
+| `services` | Catégories, prestations, descriptions par défaut |
+| `team` | Membres de l'équipe, label années d'expérience |
+| `philosophy` | Valeurs de l'institut |
+| `giftCard` | Page carte cadeau (titre, features, montants, labels) |
+| `contactSection` | Titres de la section contact |
+| `navigation` | Liens du menu, bouton CTA |
+| `footer` | Titres colonnes, copyright, liens légaux |
+| `ui` | Labels UI génériques (boutons, textes) |
+| `seo` | Titre, description, mots-clés, images OG |
 
-Remplacer la grille fixe `lg:grid-cols-6` par un style inline dynamique :
+## Fichiers à modifier pour chaque nouvel institut
 
-```text
-// Avant (fixe)
-<div className="hidden gap-4 lg:grid lg:grid-cols-6">
+### 1. Configuration (obligatoire)
+- `src/config/client-config.ts` — Toutes les données textuelles
 
-// Après (adaptatif)
-<div 
-  className="hidden gap-4 lg:grid mx-auto"
-  style={{ 
-    gridTemplateColumns: `repeat(${columns}, 1fr)`,
-    maxWidth: `${columns * cardWidth + (columns-1) * gap}px`
-  }}
->
-```
+### 2. Assets (obligatoire)
+- `src/assets/logo.png` — Logo de l'institut
+- `public/assets/hero-desktop.jpg` — Image hero desktop
+- `public/assets/hero-mobile.jpg` — Image hero mobile
+- `public/assets/categories/*.jpg` — Images bannières catégories
+- `public/assets/services/*.jpg` — Images des prestations
+- `public/assets/team/*.png` — Photos équipe
+- `public/assets/og-image.jpg` — Image Open Graph
+- `public/favicon.ico` — Favicon
 
-### 3. Repositionnement du header avec "Tout afficher"
+### 3. SEO (obligatoire)
+- `index.html` — Mettre à jour title, description, og:tags selon `seo` dans config
 
-Wrapper le header de catégorie dans le même container adaptatif pour que le lien "Tout afficher" s'aligne avec la dernière carte :
+## Aucun autre fichier à modifier !
 
-```text
-<div className="mx-auto" style={{ maxWidth: calculatedWidth }}>
-  {/* Category Header */}
-  <div className="flex justify-between">
-    <h3>Catégorie</h3>
-    <Link>Tout afficher →</Link>
-  </div>
-  
-  {/* Cards Grid */}
-  <div className="grid" style={{ ... }}>
-    ...
-  </div>
-</div>
-```
-
-### 4. Cas spécial : 2-3 cartes
-
-Pour éviter un affichage "moche" avec seulement 2-3 cartes :
-- Les cartes seront légèrement plus larges
-- Grille de 4 colonnes mais cartes centrées avec `justify-center`
-- Ou utiliser flexbox avec des cartes de largeur fixe plus grande
-
----
-
-## Fichiers modifiés
-
-| Fichier | Modification |
-|---------|--------------|
-| `src/components/sections/services/ServicesSection.tsx` | Ajout logique grille dynamique + styles inline |
-
----
-
-## Points d'attention
-
-- La largeur des cartes doit rester cohérente visuellement
-- Le gap entre cartes reste de 16px (gap-4)
-- Seul le viewport desktop (lg:) est affecté
-- Mobile et tablette restent inchangés (scroll horizontal)
-
+Tous les composants lisent leurs données depuis `clientConfig`.

@@ -38,7 +38,7 @@ const getContainerWidth = (columns: number) => {
 };
 
 const ServicesSection = () => {
-  const { services, booking } = clientConfig;
+  const { services, ui } = clientConfig;
   const [selectedService, setSelectedService] = useState<ServiceItem | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -82,7 +82,7 @@ const ServicesSection = () => {
                     to={`/soins/${category.slug}`}
                     className="font-body text-sm font-medium text-accent underline transition-colors hover:text-accent-hover"
                   >
-                    Tout afficher →
+                    {ui.viewAllLink}
                   </Link>
                 </div>
 
@@ -151,7 +151,7 @@ const ServicesSection = () => {
                   to={`/soins/${category.slug}`}
                   className="hidden font-body text-sm font-medium text-accent underline transition-colors hover:text-accent-hover md:block"
                 >
-                  Tout afficher →
+                  {ui.viewAllLink}
                 </Link>
               </div>
 
@@ -254,7 +254,7 @@ const ServicesSection = () => {
                 to={`/soins/${category.slug}`}
                 className="mt-3 block text-center font-body text-sm font-medium text-accent underline transition-colors hover:text-accent-hover md:hidden"
               >
-                Tout afficher →
+                {ui.viewAllLink}
               </Link>
             </div>
           );
