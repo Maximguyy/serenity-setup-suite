@@ -31,19 +31,15 @@ const ServiceModal = ({ service, isOpen, onClose }: ServiceModalProps) => {
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-h-[85vh] max-w-[90vw] overflow-y-auto p-3 sm:max-w-md sm:p-4">
+      <DialogContent className="max-h-[85vh] max-w-[90vw] overflow-y-auto rounded-xl p-3 sm:max-w-md sm:p-4">
         {/* Service Image */}
         {service.image && (
-          <div className="relative -mx-3 -mt-3 mb-3 aspect-[16/9] overflow-hidden rounded-t-lg sm:-mx-4 sm:-mt-4 sm:aspect-[2/1]">
+          <div className="relative -mx-3 -mt-3 mb-3 aspect-[16/9] overflow-hidden rounded-t-xl sm:-mx-4 sm:-mt-4 sm:aspect-[2/1]">
             <img
               src={service.image}
               alt={service.name}
               className="h-full w-full object-cover"
             />
-            {/* Duration Tag */}
-            <span className="absolute right-2 top-2 rounded-full bg-black/70 px-2.5 py-1 font-body text-[10px] font-medium text-white sm:text-xs">
-              {service.duration}
-            </span>
           </div>
         )}
 
