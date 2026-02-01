@@ -313,9 +313,9 @@ export const clientConfig = {
     sections: [
       {
         title: "Votre institut au cœur de Paris",
-        text: "Niché au 123 Rue de la Beauté dans le 1er arrondissement, notre institut vous accueille dans un espace lumineux de 120m². Notre équipe de 4 esthéticiennes diplômées vous reçoit du mardi au samedi pour des moments de détente sur-mesure.",
+        text: "Niché au 123 Rue de la Beauté dans le 1er arrondissement, notre institut vous accueille dans un espace lumineux et apaisant. Notre équipe de 4 esthéticiennes diplômées vous reçoit du mardi au samedi pour des moments de détente sur-mesure.",
         image: "/assets/about/institut-interior.jpg",
-        cta: "Nous localiser"
+        cta: "Prendre rendez-vous"
       },
       {
         title: "Plus de 10 ans d'expertise beauté",

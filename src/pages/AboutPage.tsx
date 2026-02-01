@@ -15,7 +15,7 @@ const AboutPage = () => {
       
       <main className="pt-[70px]">
         {/* Section Header */}
-        <SectionWrapper id="about-header" background="white" className="pb-0 md:pb-0 lg:pb-0">
+        <SectionWrapper id="about-header" background="white" className="py-8 md:py-10 lg:py-12">
           <SectionTitle 
             title={about.sectionTitle} 
             subtitle={about.sectionSubtitle} 
