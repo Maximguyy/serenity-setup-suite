@@ -2,7 +2,7 @@ import { clientConfig } from '@/config/client-config';
 import Header from '@/components/layout/Header';
 import { Footer } from '@/components/layout';
 import { SectionWrapper, SectionTitle } from '@/components/core';
-import { TeamSection } from '@/components/sections';
+import { TeamSection, ContactSection } from '@/components/sections';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
@@ -102,6 +102,9 @@ const AboutPage = () => {
             </div>
           </div>
         </SectionWrapper>
+
+        {/* Contact Section (duplicated from home) */}
+        <ContactSection />
       </main>
 
       <Footer />
