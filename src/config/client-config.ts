@@ -305,6 +305,33 @@ export const clientConfig = {
   },
 
   // ─────────────────────────────────────────
+  // PAGE A PROPOS
+  // ─────────────────────────────────────────
+  about: {
+    pageTitle: "À propos de notre institut",
+    sections: [
+      {
+        title: "Bienvenue dans notre écrin de beauté",
+        text: "Au cœur de la ville, notre institut est bien plus qu'un simple espace de soins : c'est un refuge où le temps s'arrête. Depuis notre ouverture, nous avons à cœur d'offrir à chaque cliente une expérience personnalisée, dans un cadre chaleureux et apaisant. Notre philosophie ? Révéler votre beauté naturelle tout en vous offrant un véritable moment de détente.",
+        image: "/assets/about/institut-interior.jpg",
+        cta: "Découvrir nos soins"
+      },
+      {
+        title: "L'expertise au service de votre beauté",
+        text: "Notre équipe de professionnelles passionnées se forme continuellement aux dernières techniques et innovations du secteur. Chaque soin est réalisé avec des produits haut de gamme, sélectionnés pour leur efficacité et leur respect de votre peau. Nous prenons le temps de vous écouter pour adapter chaque prestation à vos besoins spécifiques.",
+        image: "/assets/about/expertise.jpg",
+        cta: "Rencontrer notre équipe"
+      },
+      {
+        title: "Une expérience unique vous attend",
+        text: "Dès votre arrivée, laissez-vous porter par une ambiance zen et raffinée. Nos cabines privatives, notre accueil personnalisé et notre attention aux moindres détails font de chaque visite un moment privilégié. Rejoignez les centaines de clientes qui nous font confiance et découvrez pourquoi notre institut est devenu leur rendez-vous beauté incontournable.",
+        image: "/assets/about/experience.jpg",
+        cta: "Réserver maintenant"
+      }
+    ]
+  },
+
+  // ─────────────────────────────────────────
   // MENU NAVIGATION
   // ─────────────────────────────────────────
   navigation: {
@@ -312,7 +339,7 @@ export const clientConfig = {
       { label: "Accueil", href: "#accueil" },
       { label: "Prestations", href: "#prestations" },
       { label: "Contact", href: "#contact" },
-      { label: "Adresse", href: "#adresse" },
+      { label: "À propos", href: "/a-propos" },
       { label: "Offrir", href: "/offrir" }
     ],
     ctaButton: {

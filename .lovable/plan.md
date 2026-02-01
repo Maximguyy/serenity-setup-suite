@@ -52,6 +52,7 @@ Rendre la grille de cartes sur desktop (PC) dynamique : la largeur de la section
 - `public/assets/categories/*.jpg` — Images bannières catégories
 - `public/assets/services/*.jpg` — Images des prestations
 - `public/assets/team/*.png` — Photos équipe
+- `public/assets/about/*.jpg` — Images page À propos (institut-interior.jpg, expertise.jpg, experience.jpg)
 - `public/assets/og-image.jpg` — Image Open Graph
 - `public/favicon.ico` — Favicon
 
