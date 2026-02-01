@@ -3,18 +3,10 @@ import { MapPin, Phone, Clock, Instagram, Facebook } from 'lucide-react';
 import { SectionWrapper } from '@/components/core';
 import { cn } from '@/lib/utils';
 
-const hoursLabels: Record<string, string> = {
-  monday: 'Lundi',
-  tuesday: 'Mardi',
-  wednesday: 'Mercredi',
-  thursday: 'Jeudi',
-  friday: 'Vendredi',
-  saturday: 'Samedi',
-  sunday: 'Dimanche',
-};
 
 const ContactSection = () => {
-  const { contactSection } = clientConfig;
+  const { contactSection, ui } = clientConfig;
+  const hoursLabels = ui.daysLabels as Record<string, string>;
 
   return (
     <SectionWrapper id="contact" background="light">
