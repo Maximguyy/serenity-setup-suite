@@ -14,14 +14,15 @@ const GoogleReviewsCarousel = () => {
   const { reviews, usps } = clientConfig;
 
   return (
-    <SectionWrapper id="avis" background="light">
+    <SectionWrapper id="avis" background="light" className="py-8 md:py-10 lg:py-12">
       <SectionTitle
         title="Ce que nos clientes disent"
         subtitle="Découvrez les témoignages de nos clientes satisfaites"
+        className="mb-5 md:mb-7"
       />
 
       {/* Google Rating Badge */}
-      <div className="mb-10 flex items-center justify-center gap-3">
+      <div className="mb-5 flex items-center justify-center gap-3">
         <img
           src={usps.googleReviews.logo}
           alt="Google Reviews"
@@ -103,7 +104,7 @@ const GoogleReviewsCarousel = () => {
       </Carousel>
 
       {/* CTA */}
-      <div className="mt-10 text-center">
+      <div className="mt-5 text-center">
         <a
           href={clientConfig.social.google}
           target="_blank"
