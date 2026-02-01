@@ -7,6 +7,7 @@ import {
   DialogTitle,
 } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
+import { ServiceItem as BookingServiceItem } from '@/components/booking/types';
 
 interface ServiceItem {
   name: string;
@@ -20,14 +21,39 @@ interface ServiceModalProps {
   service: ServiceItem | null;
   isOpen: boolean;
   onClose: () => void;
+  onBookService?: (service: BookingServiceItem) => void;
+  categoryName?: string;
+  categorySlug?: string;
 }
 
-const ServiceModal = ({ service, isOpen, onClose }: ServiceModalProps) => {
-  const { contact, booking, services, ui } = clientConfig;
+const ServiceModal = ({ 
+  service, 
+  isOpen, 
+  onClose, 
+  onBookService,
+  categoryName = '',
+  categorySlug = ''
+}: ServiceModalProps) => {
+  const { contact, ui } = clientConfig;
 
   if (!service) return null;
 
   const phoneNumber = contact.phone.replace(/\s/g, '');
+
+  const handleBookClick = () => {
+    if (onBookService && service) {
+      const bookingService: BookingServiceItem = {
+        name: service.name,
+        duration: service.duration,
+        price: service.price,
+        image: service.image || '',
+        categoryName: categoryName,
+        categorySlug: categorySlug
+      };
+      onBookService(bookingService);
+      onClose();
+    }
+  };
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
@@ -51,7 +77,7 @@ const ServiceModal = ({ service, isOpen, onClose }: ServiceModalProps) => {
 
         {/* Description */}
         <p className="mt-0.5 font-body text-xs leading-relaxed text-secondary sm:text-sm">
-          {service.description || services.defaultDescription}
+          {service.description || clientConfig.services.defaultDescription}
         </p>
 
         {/* Price */}
@@ -91,17 +117,13 @@ const ServiceModal = ({ service, isOpen, onClose }: ServiceModalProps) => {
           </div>
 
           {/* Book Button */}
-          <a
-            href={booking.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex-1"
+          <Button 
+            onClick={handleBookClick}
+            className="w-full flex-1 gap-2 bg-accent text-white hover:bg-accent-hover"
           >
-            <Button className="w-full gap-2 bg-accent text-white hover:bg-accent-hover">
-              <Calendar className="h-4 w-4" />
-              {ui.bookButton}
-            </Button>
-          </a>
+            <Calendar className="h-4 w-4" />
+            {ui.bookButton}
+          </Button>
         </div>
       </DialogContent>
     </Dialog>
