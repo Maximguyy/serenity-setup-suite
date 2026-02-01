@@ -1,4 +1,5 @@
 import { useState, useMemo, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { format } from 'date-fns';
 import { fr } from 'date-fns/locale';
 import { Button } from '@/components/ui/button';
@@ -11,7 +12,6 @@ import { cn } from '@/lib/utils';
 import { z } from 'zod';
 import * as Dialog from '@radix-ui/react-dialog';
 import { X } from 'lucide-react';
-import { useToast } from '@/hooks/use-toast';
 
 interface BookingModalProps {
   open: boolean;
@@ -29,10 +29,10 @@ const clientInfoSchema = z.object({
 });
 
 const BookingModal = ({ open, onOpenChange, initialService = null }: BookingModalProps) => {
+  const navigate = useNavigate();
   const [bookingState, setBookingState] = useState<BookingState>(initialBookingState);
   const [errors, setErrors] = useState<Partial<Record<keyof ClientInfo, string>>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const { toast } = useToast();
 
   // Reset state when modal opens
   useEffect(() => {
@@ -117,10 +117,17 @@ const BookingModal = ({ open, onOpenChange, initialService = null }: BookingModa
     setTimeout(() => {
       setIsSubmitting(false);
       onOpenChange(false);
-      toast({
-        title: "✓ Rendez-vous confirmé !",
-        description: "Nous vous recontacterons rapidement pour finaliser votre réservation.",
-        variant: "success",
+      
+      // Navigate to confirmation page with booking data
+      navigate('/reservation-confirmee', {
+        state: {
+          clientName: bookingState.clientInfo.firstName,
+          selectedDate: bookingState.selectedDate 
+            ? format(bookingState.selectedDate, 'EEEE d MMMM yyyy', { locale: fr })
+            : null,
+          selectedTime: bookingState.selectedTime,
+          servicesCount: bookingState.selectedServices.length
+        }
       });
     }, 1000);
   };
