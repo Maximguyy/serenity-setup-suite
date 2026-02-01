@@ -3,7 +3,7 @@ import { MapPin, Phone, Mail, Instagram, Facebook } from 'lucide-react';
 
 const Footer = () => {
   return (
-    <footer className="bg-[#1A1A1A] px-6 pb-8 pt-16 md:px-8">
+    <footer className="bg-[#1A1A1A] px-6 pb-[calc(160px+env(safe-area-inset-bottom,0px))] pt-16 md:px-8 md:pb-8">
       <div className="mx-auto grid max-w-6xl grid-cols-1 gap-8 text-center md:grid-cols-2 md:gap-8 md:text-left lg:grid-cols-4 lg:gap-12">
         {/* Column 1: Location */}
         <div>
