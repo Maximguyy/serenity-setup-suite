@@ -82,11 +82,11 @@ export const clientConfig = {
   // ─────────────────────────────────────────
   announcement: {
     enabled: true,
-    emoji: "❤️‍🩹",
-    text: "Saint-Valentin : -20% sur nos soins",
-    textDesktopOnly: " en duo",
-    highlight: "jusqu'au 14 février",
-    link: null as string | null
+    icon: "heart",
+    text: "Saint-Valentin : -20% sur les cartes cadeaux",
+    textDesktopOnly: " • Offrez du bien-être",
+    ctaText: "J'en profite",
+    ctaLink: "/offrir"
   },
 
   // ─────────────────────────────────────────
