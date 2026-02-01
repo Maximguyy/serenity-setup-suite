@@ -14,6 +14,8 @@ const iconMap: Record<string, LucideIcon> = {
   sparkles: Sparkles,
 };
 
+const DISCOUNT_PERCENTAGE = 20;
+
 const GiftPage = () => {
   const { giftCard } = clientConfig;
   const [email, setEmail] = useState('');
@@ -21,11 +23,12 @@ const GiftPage = () => {
   const [customAmount, setCustomAmount] = useState('');
 
   const finalAmount = selectedAmount || (customAmount ? parseInt(customAmount) : null);
+  const discountedAmount = finalAmount ? Math.round(finalAmount * (1 - DISCOUNT_PERCENTAGE / 100)) : null;
 
   const handleCheckout = () => {
     if (!email || !finalAmount) return;
     // TODO: Implement checkout logic
-    console.log('Checkout:', { email, amount: finalAmount });
+    console.log('Checkout:', { email, amount: finalAmount, discountedAmount });
   };
 
   return (
@@ -35,6 +38,11 @@ const GiftPage = () => {
       {/* Hero Section */}
       <div className="bg-gradient-to-br from-accent/10 via-background to-accent/5 pb-8 pt-28 md:pb-12 md:pt-32">
         <div className="mx-auto max-w-4xl px-4 text-center">
+          {/* Promo Badge */}
+          <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-black px-4 py-2 text-sm font-medium text-white">
+            <span>❤️</span>
+            <span>-{DISCOUNT_PERCENTAGE}% Saint-Valentin</span>
+          </div>
           <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-accent/10 px-4 py-2 text-sm font-medium text-accent">
             <Gift className="h-4 w-4" />
             {giftCard.heroTag}
@@ -85,6 +93,14 @@ const GiftPage = () => {
       {/* Gift Card Form */}
       <SectionWrapper id="offrir-form" background="white" className="py-12 md:py-16">
         <div className="mx-auto max-w-xl">
+          {/* Promo reminder above form */}
+          <div className="mb-6 flex justify-center">
+            <span className="inline-flex items-center gap-2 rounded-full bg-black px-4 py-2 font-body text-sm font-medium text-white">
+              <span>❤️</span>
+              <span>-{DISCOUNT_PERCENTAGE}% sur toutes les cartes cadeaux</span>
+            </span>
+          </div>
+          
           <SectionTitle 
             title={giftCard.formTitle} 
             subtitle={giftCard.formSubtitle}
@@ -157,13 +173,18 @@ const GiftPage = () => {
           </div>
 
           {/* Summary & Checkout */}
-          {finalAmount && (
+          {finalAmount && discountedAmount && (
             <div className="mb-6 rounded-xl bg-muted p-4">
               <div className="flex items-center justify-between">
                 <span className="font-body text-secondary">Total</span>
-                <span className="font-heading text-2xl font-semibold text-foreground">
-                  {finalAmount}€
-                </span>
+                <div className="flex items-center gap-2">
+                  <span className="font-body text-base text-muted-foreground line-through">
+                    {finalAmount}€
+                  </span>
+                  <span className="font-heading text-2xl font-semibold text-accent">
+                    {discountedAmount}€
+                  </span>
+                </div>
               </div>
             </div>
           )}
@@ -175,6 +196,9 @@ const GiftPage = () => {
           >
             <Check className="mr-2 h-5 w-5" />
             {giftCard.ctaButton}
+            {discountedAmount && (
+              <span className="ml-2">• {discountedAmount}€</span>
+            )}
           </Button>
 
           <p className="mt-4 text-center font-body text-xs text-secondary">
