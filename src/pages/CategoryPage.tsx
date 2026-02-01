@@ -3,7 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, Sparkles, Heart, Leaf, Gem, LucideIcon } from 'lucide-react';
 import { clientConfig } from '@/config/client-config';
 import { Header, Footer, MobileStickyBadge, StickyBookingButton } from '@/components/layout';
-import { SectionWrapper, SectionTitle } from '@/components/core';
+import { SectionWrapper } from '@/components/core';
 import ServiceModal from '@/components/sections/services/ServiceModal';
 import { cn } from '@/lib/utils';
 
@@ -24,7 +24,7 @@ interface ServiceItem {
 
 const CategoryPage = () => {
   const { slug } = useParams<{ slug: string }>();
-  const { services } = clientConfig;
+  const { services, ui } = clientConfig;
   
   const [selectedService, setSelectedService] = useState<ServiceItem | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -39,14 +39,14 @@ const CategoryPage = () => {
         <main className="flex flex-1 items-center justify-center">
           <div className="text-center">
             <h1 className="font-heading text-2xl font-bold text-foreground">
-              Catégorie non trouvée
+              {ui.categoryNotFound}
             </h1>
             <Link 
               to="/#prestations" 
               className="mt-4 inline-flex items-center gap-2 font-body text-accent hover:underline"
             >
               <ArrowLeft className="h-4 w-4" />
-              Retour aux prestations
+              {ui.backToServices}
             </Link>
           </div>
         </main>
@@ -67,20 +67,6 @@ const CategoryPage = () => {
     setSelectedService(null);
   };
 
-  // Get display title based on category
-  const getDisplayTitle = () => {
-    switch (category.slug) {
-      case 'visage':
-        return 'Soins Du Visage';
-      case 'corps':
-        return 'Soins Du Corps';
-      case 'epilations':
-        return 'Nos Épilations';
-      default:
-        return category.name;
-    }
-  };
-
   return (
     <div className="flex min-h-screen flex-col">
       <Header forceScrolledStyle />
@@ -98,7 +84,7 @@ const CategoryPage = () => {
           {/* Title */}
           <div className="absolute inset-0 z-10 flex items-center justify-center">
             <h1 className="font-heading text-2xl font-bold text-white drop-shadow-lg md:text-4xl">
-              {getDisplayTitle()}
+              {category.displayTitle || category.name}
             </h1>
           </div>
         </section>
@@ -110,7 +96,7 @@ const CategoryPage = () => {
             className="mb-6 inline-flex items-center gap-2 font-body text-sm text-secondary transition-colors hover:text-accent"
           >
             <ArrowLeft className="h-4 w-4" />
-            Retour aux prestations
+            {ui.backToServices}
           </Link>
 
           {/* Services Grid */}

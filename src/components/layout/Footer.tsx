@@ -2,13 +2,15 @@ import { clientConfig } from '@/config/client-config';
 import { MapPin, Phone, Mail, Instagram, Facebook } from 'lucide-react';
 
 const Footer = () => {
+  const { footer } = clientConfig;
+
   return (
     <footer className="bg-[#1A1A1A] px-6 pb-[calc(160px+env(safe-area-inset-bottom,0px))] pt-16 md:px-8 md:pb-8">
       <div className="mx-auto grid max-w-6xl grid-cols-1 gap-8 text-center md:grid-cols-2 md:gap-8 md:text-left lg:grid-cols-4 lg:gap-12">
         {/* Column 1: Location */}
         <div>
           <h4 className="mb-4 font-body text-base font-semibold uppercase tracking-wide text-white">
-            Nous trouver
+            {footer.columns.location}
           </h4>
           <a
             href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(clientConfig.contact.address.full)}`}
@@ -28,7 +30,7 @@ const Footer = () => {
         {/* Column 2: Contact */}
         <div>
           <h4 className="mb-4 font-body text-base font-semibold uppercase tracking-wide text-white">
-            Nous contacter
+            {footer.columns.contact}
           </h4>
           <div className="flex flex-col items-center gap-3 md:items-start">
             <a
@@ -51,10 +53,10 @@ const Footer = () => {
         {/* Column 3: Legal */}
         <div>
           <h4 className="mb-4 font-body text-base font-semibold uppercase tracking-wide text-white">
-            Informations légales
+            {footer.columns.legal}
           </h4>
           <div className="flex flex-col items-center gap-2.5 md:items-start">
-            {clientConfig.footer.legalLinks.map((link) => (
+            {footer.legalLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
@@ -69,7 +71,7 @@ const Footer = () => {
         {/* Column 4: Social */}
         <div>
           <h4 className="mb-4 font-body text-base font-semibold uppercase tracking-wide text-white">
-            Nos réseaux
+            {footer.columns.social}
           </h4>
           <div className="flex justify-center gap-4 md:justify-start">
             <a
@@ -106,7 +108,7 @@ const Footer = () => {
       {/* Copyright */}
       <div className="mx-auto mt-12 max-w-6xl border-t border-white/10 pt-6 text-center md:mt-12">
         <p className="font-body text-[13px] text-white/60">
-          {clientConfig.footer.copyright}
+          {footer.copyright}
         </p>
       </div>
     </footer>

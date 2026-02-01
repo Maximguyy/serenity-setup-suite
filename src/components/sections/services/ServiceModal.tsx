@@ -23,7 +23,7 @@ interface ServiceModalProps {
 }
 
 const ServiceModal = ({ service, isOpen, onClose }: ServiceModalProps) => {
-  const { contact, booking } = clientConfig;
+  const { contact, booking, services, ui } = clientConfig;
 
   if (!service) return null;
 
@@ -51,8 +51,7 @@ const ServiceModal = ({ service, isOpen, onClose }: ServiceModalProps) => {
 
         {/* Description */}
         <p className="mt-1.5 font-body text-xs leading-relaxed text-secondary sm:text-sm">
-          {service.description || 
-            "Offrez-vous un moment de détente et de bien-être avec ce soin réalisé par nos expertes. Une expérience unique adaptée à vos besoins."}
+          {service.description || services.defaultDescription}
         </p>
 
         {/* Price */}
@@ -77,7 +76,7 @@ const ServiceModal = ({ service, isOpen, onClose }: ServiceModalProps) => {
               className="w-full gap-2 border-accent text-accent hover:bg-accent hover:text-white"
             >
               <Phone className="h-4 w-4" />
-              Nous appeler
+              {ui.callButton}
             </Button>
           </a>
 
@@ -100,7 +99,7 @@ const ServiceModal = ({ service, isOpen, onClose }: ServiceModalProps) => {
           >
             <Button className="w-full gap-2 bg-accent text-white hover:bg-accent-hover">
               <Calendar className="h-4 w-4" />
-              Réserver cette séance
+              {ui.bookButton}
             </Button>
           </a>
         </div>
