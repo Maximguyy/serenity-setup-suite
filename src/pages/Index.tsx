@@ -1,11 +1,15 @@
+import { useState } from 'react';
 import { AnnouncementBar, Footer, MobileStickyBadge, StickyBookingButton } from '@/components/layout';
 import { HeroBanner, ServicesSection, PhilosophySection, TeamSection, ContactSection, GoogleReviewsCarousel } from '@/components/sections';
+import { BookingModal } from '@/components/booking';
 
 const Index = () => {
+  const [isBookingOpen, setIsBookingOpen] = useState(false);
+
   return (
     <>
       <AnnouncementBar />
-      <HeroBanner />
+      <HeroBanner onBookingClick={() => setIsBookingOpen(true)} />
       <ServicesSection />
       <PhilosophySection />
       <GoogleReviewsCarousel />
@@ -13,7 +17,13 @@ const Index = () => {
       <ContactSection />
       <Footer />
       <MobileStickyBadge />
-      <StickyBookingButton />
+      <StickyBookingButton onClick={() => setIsBookingOpen(true)} />
+      
+      {/* Booking Modal */}
+      <BookingModal
+        open={isBookingOpen}
+        onOpenChange={setIsBookingOpen}
+      />
     </>
   );
 };

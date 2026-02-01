@@ -7,9 +7,10 @@ import logo from '@/assets/logo.png';
 
 interface HeaderProps {
   forceScrolledStyle?: boolean;
+  onBookingClick?: () => void;
 }
 
-const Header = ({ forceScrolledStyle = false }: HeaderProps) => {
+const Header = ({ forceScrolledStyle = false, onBookingClick }: HeaderProps) => {
   const [isScrolled, setIsScrolled] = useState(forceScrolledStyle);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isPrestationsOpen, setIsPrestationsOpen] = useState(false);
@@ -214,8 +215,8 @@ const Header = ({ forceScrolledStyle = false }: HeaderProps) => {
           </nav>
 
           {/* Desktop CTA Button */}
-          <a
-            href={clientConfig.navigation.ctaButton.href}
+          <button
+            onClick={onBookingClick}
             className={cn(
               'hidden shrink-0 items-center justify-center rounded-sm px-6 py-2.5 font-body text-sm font-semibold tracking-wide transition-all lg:inline-flex',
               isScrolled
@@ -224,7 +225,7 @@ const Header = ({ forceScrolledStyle = false }: HeaderProps) => {
             )}
           >
             {clientConfig.navigation.ctaButton.label}
-          </a>
+          </button>
 
           {/* Mobile/Tablet: Phone Icon */}
           <a
@@ -311,13 +312,15 @@ const Header = ({ forceScrolledStyle = false }: HeaderProps) => {
               </Link>
             );
           })}
-          <a
-            href={clientConfig.navigation.ctaButton.href}
-            onClick={closeMobileMenu}
+          <button
+            onClick={() => {
+              closeMobileMenu();
+              onBookingClick?.();
+            }}
             className="mt-2 inline-flex items-center justify-center rounded-sm bg-accent px-6 py-3.5 font-body text-sm font-semibold tracking-wide text-accent-foreground transition-all hover:bg-accent-hover"
           >
             {clientConfig.navigation.ctaButton.label}
-          </a>
+          </button>
         </nav>
       </div>
     </>

@@ -3,7 +3,11 @@ import { clientConfig } from '@/config/client-config';
 import { Header } from '@/components/layout';
 import { cn } from '@/lib/utils';
 
-const HeroBanner = () => {
+interface HeroBannerProps {
+  onBookingClick?: () => void;
+}
+
+const HeroBanner = ({ onBookingClick }: HeroBannerProps) => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -20,7 +24,7 @@ const HeroBanner = () => {
       style={{ marginTop: 'calc(-1 * env(safe-area-inset-top, 0px))' }}
     >
       {/* Header intégré au hero */}
-      <Header />
+      <Header onBookingClick={onBookingClick} />
 
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
@@ -79,15 +83,13 @@ const HeroBanner = () => {
           style={{ transitionDelay: '600ms' }}
         >
           {/* Primary Button */}
-          <a
-            href={booking.url}
-            target="_blank"
-            rel="noopener noreferrer"
+          <button
+            onClick={onBookingClick}
             className="inline-flex w-full items-center justify-center rounded-sm bg-accent px-8 py-3.5 font-body text-[15px] font-semibold uppercase tracking-wide text-white shadow-lg transition-all hover:-translate-y-0.5 hover:bg-accent-hover hover:shadow-xl md:w-auto"
             aria-label="Réserver une séance dans notre institut"
           >
             {booking.buttonText}
-          </a>
+          </button>
 
           {/* Secondary Button */}
           <a
