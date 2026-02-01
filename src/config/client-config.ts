@@ -156,6 +156,7 @@ export const clientConfig = {
         name: "Soins Visage",
         slug: "visage",
         icon: "sparkles",
+        heroImage: "/assets/categories/visage-hero.jpg",
         items: [
           { name: "Soin Éclat", duration: "60 min", price: "75€", image: "/assets/services/soin-eclat.jpg" },
           { name: "Anti-Âge Premium", duration: "90 min", price: "120€", image: "/assets/services/anti-age.jpg" },
@@ -167,6 +168,7 @@ export const clientConfig = {
         name: "Soins Corps",
         slug: "corps",
         icon: "heart",
+        heroImage: "/assets/categories/corps-hero.jpg",
         items: [
           { name: "Gommage Corps", duration: "45 min", price: "60€", image: "/assets/services/gommage.jpg" },
           { name: "Enveloppement", duration: "60 min", price: "80€", image: "/assets/services/enveloppement.jpg" },
@@ -178,6 +180,7 @@ export const clientConfig = {
         name: "Épilations",
         slug: "epilations",
         icon: "leaf",
+        heroImage: "/assets/categories/epilations-hero.jpg",
         items: [
           { name: "Jambes complètes", duration: "30 min", price: "35€", image: "/assets/services/epilation-jambes.jpg" },
           { name: "Épilation laser", duration: "45 min", price: "90€", image: "/assets/services/epilation-laser.jpg" },

@@ -67,15 +67,15 @@ const CategoryPage = () => {
     setSelectedService(null);
   };
 
-  // Get title suffix based on category
-  const getTitleSuffix = () => {
+  // Get display title based on category
+  const getDisplayTitle = () => {
     switch (category.slug) {
       case 'visage':
-        return 'Du Visage';
+        return 'Soins Du Visage';
       case 'corps':
-        return 'Du Corps';
+        return 'Soins Du Corps';
       case 'epilations':
-        return 'Épilations';
+        return 'Nos Épilations';
       default:
         return category.name;
     }
@@ -86,7 +86,24 @@ const CategoryPage = () => {
       <Header />
       
       <main className="flex-1">
-        <SectionWrapper id="category" background="white" className="pt-24 md:pt-32">
+        {/* Hero Banner */}
+        <section className="relative h-40 w-full overflow-hidden md:h-56">
+          <img
+            src={category.heroImage}
+            alt={category.name}
+            className="h-full w-full object-cover"
+          />
+          {/* Overlay */}
+          <div className="absolute inset-0 bg-black/40" />
+          {/* Title */}
+          <div className="absolute inset-0 flex items-center justify-center">
+            <h1 className="font-heading text-2xl font-bold text-white drop-shadow-lg md:text-4xl">
+              {getDisplayTitle()}
+            </h1>
+          </div>
+        </section>
+
+        <SectionWrapper id="category" background="white" className="py-8 md:py-12">
           {/* Back Link */}
           <Link 
             to="/#prestations" 
@@ -95,14 +112,6 @@ const CategoryPage = () => {
             <ArrowLeft className="h-4 w-4" />
             Retour aux prestations
           </Link>
-
-          {/* Category Header */}
-          <div className="mb-8 flex items-center gap-3">
-            <IconComponent size={28} className="text-accent" />
-            <h1 className="font-heading text-2xl font-bold text-foreground md:text-3xl">
-              Soins {getTitleSuffix()}
-            </h1>
-          </div>
 
           {/* Services Grid */}
           <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:gap-6 lg:grid-cols-4">
