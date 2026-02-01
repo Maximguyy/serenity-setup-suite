@@ -1,7 +1,9 @@
+import { useState } from 'react';
 import { Sparkles, Heart, Leaf, Gem, LucideIcon } from 'lucide-react';
 import { clientConfig } from '@/config/client-config';
 import { SectionWrapper, SectionTitle } from '@/components/core';
 import { cn } from '@/lib/utils';
+import ServiceModal from './ServiceModal';
 
 const iconMap: Record<string, LucideIcon> = {
   sparkles: Sparkles,
@@ -10,8 +12,28 @@ const iconMap: Record<string, LucideIcon> = {
   gem: Gem,
 };
 
+interface ServiceItem {
+  name: string;
+  duration: string;
+  price: string;
+  image?: string;
+  description?: string;
+}
+
 const ServicesSection = () => {
   const { services, booking } = clientConfig;
+  const [selectedService, setSelectedService] = useState<ServiceItem | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleServiceClick = (item: ServiceItem) => {
+    setSelectedService(item);
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setSelectedService(null);
+  };
 
   return (
     <SectionWrapper id="prestations" background="white">
@@ -19,7 +41,7 @@ const ServicesSection = () => {
 
       {/* Categories */}
       <div className="space-y-12 md:space-y-16">
-        {services.categories.map((category, categoryIndex) => {
+        {services.categories.map((category) => {
           const IconComponent = iconMap[category.icon] || Sparkles;
 
           return (
@@ -45,13 +67,12 @@ const ServicesSection = () => {
               {/* Services Grid */}
               <div className="grid grid-cols-4 gap-6 max-lg:grid-cols-3 max-md:flex max-md:gap-3 max-md:overflow-x-auto max-md:pb-4 max-md:scrollbar-hide">
                 {category.items.slice(0, 4).map((item) => (
-                  <a
+                  <button
                     key={item.name}
-                    href={booking.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    type="button"
+                    onClick={() => handleServiceClick(item)}
                     className={cn(
-                      'group block overflow-hidden rounded-xl bg-white shadow-sm transition-all duration-300',
+                      'group block overflow-hidden rounded-xl bg-white text-left shadow-sm transition-all duration-300',
                       'hover:scale-[1.02] hover:shadow-lg',
                       'max-md:w-40 max-md:shrink-0 max-md:snap-start'
                     )}
@@ -87,13 +108,20 @@ const ServicesSection = () => {
                         {item.price}
                       </p>
                     </div>
-                  </a>
+                  </button>
                 ))}
               </div>
             </div>
           );
         })}
       </div>
+
+      {/* Service Modal */}
+      <ServiceModal
+        service={selectedService}
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+      />
     </SectionWrapper>
   );
 };
