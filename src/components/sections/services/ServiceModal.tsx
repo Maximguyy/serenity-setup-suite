@@ -34,7 +34,7 @@ const ServiceModal = ({ service, isOpen, onClose }: ServiceModalProps) => {
       <DialogContent className="max-h-[85vh] max-w-[90vw] overflow-y-auto rounded-xl p-3 sm:max-w-md sm:p-4">
         {/* Service Image */}
         {service.image && (
-          <div className="relative -mx-3 -mt-3 mb-2 aspect-[16/9] overflow-hidden rounded-t-xl sm:-mx-4 sm:-mt-4 sm:aspect-[2/1]">
+          <div className="relative -mx-3 -mt-3 mb-1 aspect-[16/9] overflow-hidden rounded-t-xl sm:-mx-4 sm:-mt-4 sm:aspect-[2/1]">
             <img
               src={service.image}
               alt={service.name}
@@ -50,12 +50,12 @@ const ServiceModal = ({ service, isOpen, onClose }: ServiceModalProps) => {
         </DialogHeader>
 
         {/* Description */}
-        <p className="mt-1 font-body text-xs leading-relaxed text-secondary sm:text-sm">
+        <p className="mt-0.5 font-body text-xs leading-relaxed text-secondary sm:text-sm">
           {service.description || services.defaultDescription}
         </p>
 
         {/* Price */}
-        <div className="mt-2 flex items-baseline gap-2">
+        <div className="mt-1 flex items-baseline gap-2">
           <span className="font-heading text-2xl font-bold text-accent sm:text-3xl">
             {service.price}
           </span>
@@ -65,7 +65,7 @@ const ServiceModal = ({ service, isOpen, onClose }: ServiceModalProps) => {
         </div>
 
         {/* CTAs */}
-        <div className="mt-3 flex flex-col gap-2 sm:flex-row">
+        <div className="mt-2 flex flex-col gap-2 sm:flex-row">
           {/* Call Button - Mobile: opens dialer, Desktop: shows number */}
           <a
             href={`tel:${phoneNumber}`}
