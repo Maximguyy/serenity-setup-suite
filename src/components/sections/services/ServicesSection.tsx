@@ -63,21 +63,20 @@ const ServicesSection = () => {
                 </Link>
               </div>
 
-              {/* Services Grid */}
-              <div className="grid grid-cols-4 gap-6 max-lg:grid-cols-3 max-md:flex max-md:gap-3 max-md:overflow-x-auto max-md:pb-4 max-md:scrollbar-hide">
-                {category.items.slice(0, 4).map((item) => (
+              {/* Desktop: 6 cards grid | Tablet: 3 cards horizontal scroll | Mobile: 2 cards horizontal scroll */}
+              <div className="hidden gap-4 lg:grid lg:grid-cols-6">
+                {category.items.slice(0, 6).map((item) => (
                   <button
                     key={item.name}
                     type="button"
                     onClick={() => handleServiceClick(item)}
                     className={cn(
                       'group block overflow-hidden rounded-xl bg-white text-left shadow-sm transition-all duration-300',
-                      'hover:scale-[1.02] hover:shadow-lg',
-                      'max-md:w-40 max-md:shrink-0 max-md:snap-start'
+                      'hover:scale-[1.02] hover:shadow-lg'
                     )}
                   >
                     {/* Card Image */}
-                    <div className="relative aspect-square overflow-hidden bg-muted max-md:aspect-auto max-md:h-[120px]">
+                    <div className="relative aspect-square overflow-hidden bg-muted">
                       {item.image ? (
                         <img
                           src={item.image}
@@ -93,17 +92,111 @@ const ServicesSection = () => {
                         </div>
                       )}
                       {/* Duration Tag */}
-                      <span className="absolute right-2 top-2 rounded bg-black/70 px-2 py-1 font-body text-[10px] font-medium text-white md:text-[11px]">
+                      <span className="absolute right-2 top-2 rounded bg-black/70 px-2 py-1 font-body text-[10px] font-medium text-white">
                         {item.duration}
                       </span>
                     </div>
 
                     {/* Card Content */}
-                    <div className="p-3 md:p-4">
-                      <h4 className="mb-1.5 font-body text-sm font-semibold leading-tight text-foreground md:text-base">
+                    <div className="p-3">
+                      <h4 className="mb-1 font-body text-sm font-semibold leading-tight text-foreground">
                         {item.name}
                       </h4>
-                      <p className="font-body text-[15px] font-semibold text-accent md:text-base">
+                      <p className="font-body text-sm font-semibold text-accent">
+                        {item.price}
+                      </p>
+                    </div>
+                  </button>
+                ))}
+              </div>
+
+              {/* Tablet: 3 cards scroll */}
+              <div className="hidden gap-4 overflow-x-auto pb-4 scrollbar-hide max-lg:flex md:max-lg:flex">
+                {category.items.slice(0, 6).map((item) => (
+                  <button
+                    key={item.name}
+                    type="button"
+                    onClick={() => handleServiceClick(item)}
+                    className={cn(
+                      'group block w-44 shrink-0 snap-start overflow-hidden rounded-xl bg-white text-left shadow-sm transition-all duration-300',
+                      'hover:scale-[1.02] hover:shadow-lg'
+                    )}
+                  >
+                    {/* Card Image */}
+                    <div className="relative aspect-square overflow-hidden bg-muted">
+                      {item.image ? (
+                        <img
+                          src={item.image}
+                          alt={item.name}
+                          className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                          onError={(e) => {
+                            e.currentTarget.style.display = 'none';
+                          }}
+                        />
+                      ) : (
+                        <div className="flex h-full w-full items-center justify-center">
+                          <IconComponent size={48} className="text-accent/50" />
+                        </div>
+                      )}
+                      {/* Duration Tag */}
+                      <span className="absolute right-2 top-2 rounded bg-black/70 px-2 py-1 font-body text-[10px] font-medium text-white">
+                        {item.duration}
+                      </span>
+                    </div>
+
+                    {/* Card Content */}
+                    <div className="p-3">
+                      <h4 className="mb-1 font-body text-sm font-semibold leading-tight text-foreground">
+                        {item.name}
+                      </h4>
+                      <p className="font-body text-sm font-semibold text-accent">
+                        {item.price}
+                      </p>
+                    </div>
+                  </button>
+                ))}
+              </div>
+
+              {/* Mobile: 2 cards scroll */}
+              <div className="flex gap-3 overflow-x-auto pb-4 scrollbar-hide md:hidden">
+                {category.items.slice(0, 4).map((item) => (
+                  <button
+                    key={item.name}
+                    type="button"
+                    onClick={() => handleServiceClick(item)}
+                    className={cn(
+                      'group block w-40 shrink-0 snap-start overflow-hidden rounded-xl bg-white text-left shadow-sm transition-all duration-300',
+                      'hover:scale-[1.02] hover:shadow-lg'
+                    )}
+                  >
+                    {/* Card Image */}
+                    <div className="relative h-[120px] overflow-hidden bg-muted">
+                      {item.image ? (
+                        <img
+                          src={item.image}
+                          alt={item.name}
+                          className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                          onError={(e) => {
+                            e.currentTarget.style.display = 'none';
+                          }}
+                        />
+                      ) : (
+                        <div className="flex h-full w-full items-center justify-center">
+                          <IconComponent size={48} className="text-accent/50" />
+                        </div>
+                      )}
+                      {/* Duration Tag */}
+                      <span className="absolute right-2 top-2 rounded bg-black/70 px-2 py-1 font-body text-[10px] font-medium text-white">
+                        {item.duration}
+                      </span>
+                    </div>
+
+                    {/* Card Content */}
+                    <div className="p-3">
+                      <h4 className="mb-1 font-body text-sm font-semibold leading-tight text-foreground">
+                        {item.name}
+                      </h4>
+                      <p className="font-body text-sm font-semibold text-accent">
                         {item.price}
                       </p>
                     </div>
