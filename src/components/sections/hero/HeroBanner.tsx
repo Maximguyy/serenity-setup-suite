@@ -17,6 +17,7 @@ const HeroBanner = () => {
     <section
       id="accueil"
       className="relative flex min-h-[72vh] flex-col overflow-hidden max-md:min-h-[75svh]"
+      style={{ marginTop: 'calc(-1 * env(safe-area-inset-top, 0px))' }}
     >
       {/* Header intégré au hero */}
       <Header />
