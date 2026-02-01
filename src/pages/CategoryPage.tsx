@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, Sparkles, Heart, Leaf, Gem, LucideIcon } from 'lucide-react';
 import { clientConfig } from '@/config/client-config';
-import { Header, Footer } from '@/components/layout';
+import { Header, Footer, MobileStickyBadge, StickyBookingButton } from '@/components/layout';
 import { SectionWrapper, SectionTitle } from '@/components/core';
 import ServiceModal from '@/components/sections/services/ServiceModal';
 import { cn } from '@/lib/utils';
@@ -163,6 +163,10 @@ const CategoryPage = () => {
       </main>
 
       <Footer />
+
+      {/* Mobile Sticky UI */}
+      <MobileStickyBadge />
+      <StickyBookingButton />
 
       {/* Service Modal */}
       <ServiceModal
