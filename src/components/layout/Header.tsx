@@ -4,18 +4,27 @@ import { clientConfig } from '@/config/client-config';
 import { cn } from '@/lib/utils';
 import logo from '@/assets/logo.png';
 
-const Header = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
+interface HeaderProps {
+  forceScrolledStyle?: boolean;
+}
+
+const Header = ({ forceScrolledStyle = false }: HeaderProps) => {
+  const [isScrolled, setIsScrolled] = useState(forceScrolledStyle);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
+    if (forceScrolledStyle) {
+      setIsScrolled(true);
+      return;
+    }
+    
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [forceScrolledStyle]);
 
   useEffect(() => {
     const handleResize = () => {
