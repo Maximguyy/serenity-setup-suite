@@ -48,35 +48,31 @@ const AnnouncementBar = ({ onVisibilityChange }: AnnouncementBarProps) => {
   const IconComponent = iconMap[announcement.icon] || Heart;
 
   const barClasses = cn(
-    'relative z-[200] grid min-h-[44px] grid-cols-[auto_1fr_auto] items-center gap-3 bg-black px-4 py-2 transition-all duration-400 md:gap-6 md:px-6',
+    'relative z-[200] flex min-h-[44px] items-center justify-between bg-black px-4 py-2 transition-all duration-400 md:px-6',
     isVisible ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'
   );
 
   return (
     <div className={barClasses}>
-      {/* Column 1: Icon */}
-      <div className="flex items-center justify-center">
-        <IconComponent className="h-5 w-5 text-white" />
-      </div>
-
-      {/* Column 2: Text (centered) */}
-      <div className="flex items-center justify-center text-center">
-        {/* Mobile: two lines */}
-        <span className="whitespace-pre-line font-body text-[13px] font-medium leading-tight text-white md:hidden">
-          {announcement.textMobile || announcement.text}
+      {/* Icon + Text group */}
+      <div className="flex flex-1 items-center gap-2 md:flex-none md:gap-2.5">
+        <IconComponent className="h-4 w-4 shrink-0 text-white md:h-5 md:w-5" />
+        {/* Mobile: single line with responsive text */}
+        <span className="whitespace-nowrap font-body text-[3.2vw] font-medium text-white xs:text-[13px] md:hidden">
+          {announcement.text}
         </span>
-        {/* Desktop: single line with optional suffix */}
-        <span className="hidden font-body text-sm font-medium leading-tight text-white md:block">
+        {/* Desktop: full text with optional suffix */}
+        <span className="hidden whitespace-nowrap font-body text-sm font-medium text-white md:block">
           {announcement.text}
           {announcement.textDesktopOnly && announcement.textDesktopOnly}
         </span>
       </div>
 
-      {/* Column 3: CTA Button */}
+      {/* CTA Button */}
       {announcement.ctaText && announcement.ctaLink && (
         <Link
           to={announcement.ctaLink}
-          className="shrink-0 rounded-sm bg-white px-3 py-1.5 font-body text-xs font-semibold text-black transition-all hover:bg-white/90 md:px-4 md:py-1.5 md:text-sm"
+          className="ml-3 shrink-0 rounded-sm bg-white px-3 py-1.5 font-body text-xs font-semibold text-black transition-all hover:bg-white/90 md:px-4 md:py-1.5 md:text-sm"
         >
           {announcement.ctaText}
         </Link>
