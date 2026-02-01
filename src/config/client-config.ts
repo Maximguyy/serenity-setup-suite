@@ -83,7 +83,8 @@ export const clientConfig = {
   announcement: {
     enabled: true,
     icon: "heart",
-    text: "Saint-Valentin : -20% sur les cartes cadeaux",
+    textMobile: "Saint-Valentin :\n-20% sur nos soins",
+    text: "Saint-Valentin : -20% sur nos soins",
     textDesktopOnly: " • Offrez du bien-être",
     ctaText: "J'en profite",
     ctaLink: "/offrir"
@@ -156,10 +157,10 @@ export const clientConfig = {
         icon: "sparkles",
         heroImage: "/assets/categories/visage-hero.jpg",
         items: [
-          { name: "Soin Éclat", duration: "60 min", price: "75€", image: "/assets/services/soin-eclat.jpg" },
-          { name: "Anti-Âge Premium", duration: "90 min", price: "120€", image: "/assets/services/anti-age.jpg" },
-          { name: "Hydratation Intense", duration: "45 min", price: "55€", image: "/assets/services/hydratation.jpg" },
-          { name: "Nettoyage Profond", duration: "60 min", price: "65€", image: "/assets/services/nettoyage.jpg" }
+          { name: "Soin Éclat", duration: "60 min", price: "75€", originalPrice: "90€", image: "/assets/services/soin-eclat.jpg" },
+          { name: "Anti-Âge Premium", duration: "90 min", price: "120€", originalPrice: "145€", image: "/assets/services/anti-age.jpg" },
+          { name: "Hydratation Intense", duration: "45 min", price: "55€", originalPrice: "65€", image: "/assets/services/hydratation.jpg" },
+          { name: "Nettoyage Profond", duration: "60 min", price: "65€", originalPrice: "80€", image: "/assets/services/nettoyage.jpg" }
         ]
       },
       {
@@ -169,10 +170,10 @@ export const clientConfig = {
         icon: "heart",
         heroImage: "/assets/categories/corps-hero.jpg",
         items: [
-          { name: "Gommage Corps", duration: "45 min", price: "60€", image: "/assets/services/gommage.jpg" },
-          { name: "Enveloppement", duration: "60 min", price: "80€", image: "/assets/services/enveloppement.jpg" },
-          { name: "Massage Relaxant", duration: "60 min", price: "70€", image: "/assets/services/massage.jpg" },
-          { name: "Massage Drainant", duration: "75 min", price: "85€", image: "/assets/services/drainage.jpg" }
+          { name: "Gommage Corps", duration: "45 min", price: "60€", originalPrice: "70€", image: "/assets/services/gommage.jpg" },
+          { name: "Enveloppement", duration: "60 min", price: "80€", originalPrice: "95€", image: "/assets/services/enveloppement.jpg" },
+          { name: "Massage Relaxant", duration: "60 min", price: "70€", originalPrice: "85€", image: "/assets/services/massage.jpg" },
+          { name: "Massage Drainant", duration: "75 min", price: "85€", originalPrice: "100€", image: "/assets/services/drainage.jpg" }
         ]
       },
       {
@@ -182,10 +183,10 @@ export const clientConfig = {
         icon: "leaf",
         heroImage: "/assets/categories/epilations-hero.jpg",
         items: [
-          { name: "Jambes complètes", duration: "30 min", price: "35€", image: "/assets/services/epilation-jambes.jpg" },
-          { name: "Épilation laser", duration: "45 min", price: "90€", image: "/assets/services/epilation-laser.jpg" },
-          { name: "Maillot intégral", duration: "20 min", price: "30€", image: "/assets/services/maillot.jpg" },
-          { name: "Aisselles", duration: "10 min", price: "12€", image: "/assets/services/aisselles.webp" }
+          { name: "Jambes complètes", duration: "30 min", price: "35€", originalPrice: "40€", image: "/assets/services/epilation-jambes.jpg" },
+          { name: "Épilation laser", duration: "45 min", price: "90€", originalPrice: "110€", image: "/assets/services/epilation-laser.jpg" },
+          { name: "Maillot intégral", duration: "20 min", price: "30€", originalPrice: "35€", image: "/assets/services/maillot.jpg" },
+          { name: "Aisselles", duration: "10 min", price: "12€", originalPrice: "15€", image: "/assets/services/aisselles.webp" }
         ]
       },
     ]
