@@ -14,12 +14,17 @@ const AboutPage = () => {
       <Header forceScrolledStyle />
       
       <main className="pt-[70px]">
+        {/* Section Header */}
+        <SectionWrapper id="about-header" background="white" className="pb-0 md:pb-0 lg:pb-0">
+          <SectionTitle 
+            title={about.sectionTitle} 
+            subtitle={about.sectionSubtitle} 
+          />
+        </SectionWrapper>
+
         {/* Section 1 */}
-        <SectionWrapper id="about-intro" background="white">
-          <div className={cn(
-            'flex flex-col items-center gap-8 lg:flex-row lg:gap-16',
-            'lg:flex-row'
-          )}>
+        <SectionWrapper id="about-intro" background="white" className="pt-0 md:pt-0 lg:pt-0">
+          <div className="flex flex-col items-center gap-8 lg:flex-row lg:gap-16">
             <div className="w-full lg:w-1/2">
               <div className="aspect-[4/3] overflow-hidden rounded-2xl shadow-lg">
                 <img
@@ -30,10 +35,10 @@ const AboutPage = () => {
               </div>
             </div>
             <div className="w-full lg:w-1/2">
-              <h2 className="mb-4 font-heading text-3xl font-semibold text-foreground md:text-4xl">
+              <h2 className="mb-4 font-heading text-2xl font-semibold text-foreground md:text-3xl">
                 {about.sections[0].title}
               </h2>
-              <p className="mb-6 font-body text-base leading-relaxed text-secondary md:text-lg">
+              <p className="mb-6 font-body text-base leading-relaxed text-secondary">
                 {about.sections[0].text}
               </p>
               <Button asChild className="bg-accent text-accent-foreground hover:bg-accent-hover">
@@ -48,10 +53,7 @@ const AboutPage = () => {
 
         {/* Section 2 */}
         <SectionWrapper id="about-expertise" background="white">
-          <div className={cn(
-            'flex flex-col items-center gap-8 lg:flex-row lg:gap-16',
-            'lg:flex-row-reverse'
-          )}>
+          <div className="flex flex-col items-center gap-8 lg:flex-row-reverse lg:gap-16">
             <div className="w-full lg:w-1/2">
               <div className="aspect-[4/3] overflow-hidden rounded-2xl shadow-lg">
                 <img
@@ -62,10 +64,10 @@ const AboutPage = () => {
               </div>
             </div>
             <div className="w-full lg:w-1/2">
-              <h2 className="mb-4 font-heading text-3xl font-semibold text-foreground md:text-4xl">
+              <h2 className="mb-4 font-heading text-2xl font-semibold text-foreground md:text-3xl">
                 {about.sections[1].title}
               </h2>
-              <p className="mb-6 font-body text-base leading-relaxed text-secondary md:text-lg">
+              <p className="mb-6 font-body text-base leading-relaxed text-secondary">
                 {about.sections[1].text}
               </p>
               <Button asChild className="bg-accent text-accent-foreground hover:bg-accent-hover">
@@ -77,10 +79,7 @@ const AboutPage = () => {
 
         {/* Section 3 */}
         <SectionWrapper id="about-experience" background="light">
-          <div className={cn(
-            'flex flex-col items-center gap-8 lg:flex-row lg:gap-16',
-            'lg:flex-row'
-          )}>
+          <div className="flex flex-col items-center gap-8 lg:flex-row lg:gap-16">
             <div className="w-full lg:w-1/2">
               <div className="aspect-[4/3] overflow-hidden rounded-2xl shadow-lg">
                 <img
@@ -91,10 +90,10 @@ const AboutPage = () => {
               </div>
             </div>
             <div className="w-full lg:w-1/2">
-              <h2 className="mb-4 font-heading text-3xl font-semibold text-foreground md:text-4xl">
+              <h2 className="mb-4 font-heading text-2xl font-semibold text-foreground md:text-3xl">
                 {about.sections[2].title}
               </h2>
-              <p className="mb-6 font-body text-base leading-relaxed text-secondary md:text-lg">
+              <p className="mb-6 font-body text-base leading-relaxed text-secondary">
                 {about.sections[2].text}
               </p>
               <Button asChild className="bg-accent text-accent-foreground hover:bg-accent-hover">

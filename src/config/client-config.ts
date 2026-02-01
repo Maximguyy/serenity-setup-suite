@@ -308,25 +308,26 @@ export const clientConfig = {
   // PAGE A PROPOS
   // ─────────────────────────────────────────
   about: {
-    pageTitle: "À propos de notre institut",
+    sectionTitle: "Qui sommes-nous ?",
+    sectionSubtitle: "Apprenez à nous connaître avant de nous rencontrer",
     sections: [
       {
-        title: "Bienvenue dans notre écrin de beauté",
-        text: "Au cœur de la ville, notre institut est bien plus qu'un simple espace de soins : c'est un refuge où le temps s'arrête. Depuis notre ouverture, nous avons à cœur d'offrir à chaque cliente une expérience personnalisée, dans un cadre chaleureux et apaisant. Notre philosophie ? Révéler votre beauté naturelle tout en vous offrant un véritable moment de détente.",
+        title: "Votre institut au cœur de Paris",
+        text: "Niché au 123 Rue de la Beauté dans le 1er arrondissement, notre institut vous accueille dans un espace lumineux de 120m². Notre équipe de 4 esthéticiennes diplômées vous reçoit du mardi au samedi pour des moments de détente sur-mesure.",
         image: "/assets/about/institut-interior.jpg",
-        cta: "Découvrir nos soins"
+        cta: "Nous localiser"
       },
       {
-        title: "L'expertise au service de votre beauté",
-        text: "Notre équipe de professionnelles passionnées se forme continuellement aux dernières techniques et innovations du secteur. Chaque soin est réalisé avec des produits haut de gamme, sélectionnés pour leur efficacité et leur respect de votre peau. Nous prenons le temps de vous écouter pour adapter chaque prestation à vos besoins spécifiques.",
+        title: "Plus de 10 ans d'expertise beauté",
+        text: "Depuis 2014, nous avons accompagné plus de 1200 clientes dans leurs rituels beauté. Formées aux techniques les plus récentes, nous utilisons exclusivement des produits professionnels français et bio pour des résultats visibles dès la première séance.",
         image: "/assets/about/expertise.jpg",
-        cta: "Rencontrer notre équipe"
+        cta: "Voir nos soins"
       },
       {
-        title: "Une expérience unique vous attend",
-        text: "Dès votre arrivée, laissez-vous porter par une ambiance zen et raffinée. Nos cabines privatives, notre accueil personnalisé et notre attention aux moindres détails font de chaque visite un moment privilégié. Rejoignez les centaines de clientes qui nous font confiance et découvrez pourquoi notre institut est devenu leur rendez-vous beauté incontournable.",
+        title: "Une note de 4.9★ sur Google",
+        text: "Nos clientes nous font confiance et ça se voit. Avec 127 avis vérifiés et une note moyenne de 4.9 étoiles, nous mettons un point d'honneur à offrir un service irréprochable. Venez découvrir pourquoi elles reviennent.",
         image: "/assets/about/experience.jpg",
-        cta: "Réserver maintenant"
+        cta: "Prendre rendez-vous"
       }
     ]
   },
