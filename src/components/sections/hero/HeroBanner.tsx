@@ -91,11 +91,9 @@ const HeroBanner = () => {
 
           {/* Secondary Button */}
           <a
-            href={booking.giftCardUrl}
-            target="_blank"
-            rel="noopener noreferrer"
+            href="#prestations"
             className="inline-flex w-full items-center justify-center rounded-sm border-2 border-white bg-transparent px-8 py-3.5 font-body text-[15px] font-semibold uppercase tracking-wide text-white transition-all hover:border-white hover:bg-white hover:text-foreground md:w-auto"
-            aria-label="Offrir un soin cadeau"
+            aria-label="Découvrir nos soins"
           >
             {booking.giftCardText}
           </a>
