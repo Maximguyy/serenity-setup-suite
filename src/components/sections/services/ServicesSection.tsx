@@ -55,9 +55,10 @@ const ServicesSection = () => {
                     {category.name}
                   </h3>
                 </div>
+                {/* Desktop/Tablet: "Tout afficher" inline */}
                 <Link
                   to={`/soins/${category.slug}`}
-                  className="font-body text-sm font-medium text-accent underline transition-colors hover:text-accent-hover"
+                  className="hidden font-body text-sm font-medium text-accent underline transition-colors hover:text-accent-hover md:block"
                 >
                   Tout afficher →
                 </Link>
@@ -111,7 +112,7 @@ const ServicesSection = () => {
               </div>
 
               {/* Tablet: 3 cards scroll */}
-              <div className="hidden gap-4 overflow-x-auto pb-4 scrollbar-hide max-lg:flex md:max-lg:flex">
+              <div className="hidden gap-4 overflow-x-auto pb-4 scrollbar-hide md:flex lg:hidden">
                 {category.items.slice(0, 6).map((item) => (
                   <button
                     key={item.name}
@@ -203,6 +204,14 @@ const ServicesSection = () => {
                   </button>
                 ))}
               </div>
+
+              {/* Mobile: "Tout afficher" below cards */}
+              <Link
+                to={`/soins/${category.slug}`}
+                className="mt-3 block text-center font-body text-sm font-medium text-accent underline transition-colors hover:text-accent-hover md:hidden"
+              >
+                Tout afficher →
+              </Link>
             </div>
           );
         })}
