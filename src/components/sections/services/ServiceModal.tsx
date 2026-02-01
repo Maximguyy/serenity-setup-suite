@@ -31,46 +31,46 @@ const ServiceModal = ({ service, isOpen, onClose }: ServiceModalProps) => {
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-h-[90vh] overflow-y-auto sm:max-w-lg">
+      <DialogContent className="max-h-[85vh] max-w-[90vw] overflow-y-auto p-3 sm:max-w-md sm:p-4">
         {/* Service Image */}
         {service.image && (
-          <div className="relative -mx-6 -mt-6 mb-4 aspect-[4/3] overflow-hidden rounded-t-lg">
+          <div className="relative -mx-3 -mt-3 mb-3 aspect-[16/9] overflow-hidden rounded-t-lg sm:-mx-4 sm:-mt-4 sm:aspect-[2/1]">
             <img
               src={service.image}
               alt={service.name}
               className="h-full w-full object-cover"
             />
             {/* Duration Tag */}
-            <span className="absolute right-3 top-3 rounded-full bg-black/70 px-3 py-1.5 font-body text-xs font-medium text-white">
+            <span className="absolute right-2 top-2 rounded-full bg-black/70 px-2.5 py-1 font-body text-[10px] font-medium text-white sm:text-xs">
               {service.duration}
             </span>
           </div>
         )}
 
         <DialogHeader className="text-left">
-          <DialogTitle className="font-heading text-2xl font-semibold text-foreground">
+          <DialogTitle className="font-heading text-lg font-semibold text-foreground sm:text-xl">
             {service.name}
           </DialogTitle>
         </DialogHeader>
 
         {/* Description */}
-        <p className="mt-2 font-body text-sm leading-relaxed text-secondary">
+        <p className="mt-1.5 font-body text-xs leading-relaxed text-secondary sm:text-sm">
           {service.description || 
             "Offrez-vous un moment de détente et de bien-être avec ce soin réalisé par nos expertes. Une expérience unique adaptée à vos besoins."}
         </p>
 
         {/* Price */}
-        <div className="mt-4 flex items-baseline gap-2">
-          <span className="font-heading text-3xl font-bold text-accent">
+        <div className="mt-3 flex items-baseline gap-2">
+          <span className="font-heading text-2xl font-bold text-accent sm:text-3xl">
             {service.price}
           </span>
-          <span className="font-body text-sm text-muted-foreground">
+          <span className="font-body text-xs text-muted-foreground sm:text-sm">
             / {service.duration}
           </span>
         </div>
 
         {/* CTAs */}
-        <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+        <div className="mt-4 flex flex-col gap-2 sm:flex-row">
           {/* Call Button - Mobile: opens dialer, Desktop: shows number */}
           <a
             href={`tel:${phoneNumber}`}
