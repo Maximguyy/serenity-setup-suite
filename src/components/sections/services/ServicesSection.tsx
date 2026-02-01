@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Sparkles, Heart, Leaf, Gem, LucideIcon } from 'lucide-react';
 import { clientConfig } from '@/config/client-config';
 import { SectionWrapper, SectionTitle } from '@/components/core';
@@ -54,14 +55,12 @@ const ServicesSection = () => {
                     {category.name}
                   </h3>
                 </div>
-                <a
-                  href={booking.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <Link
+                  to={`/soins/${category.slug}`}
                   className="font-body text-sm font-medium text-accent underline transition-colors hover:text-accent-hover"
                 >
                   Tout afficher →
-                </a>
+                </Link>
               </div>
 
               {/* Services Grid */}
