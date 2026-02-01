@@ -1,117 +1,128 @@
 
-# Section Notre Équipe
+# Plan de Restructuration du Projet
 
 ## Objectif
-Créer un composant `TeamSection` pour présenter l'équipe de l'institut avec un layout différent selon le device.
+Réorganiser le projet pour le rendre modulaire, maintenable et facilement clonable pour différents clients. Conversion de tous les styles inline vers Tailwind CSS.
 
 ---
 
-## Layout
+## Nouvelle Structure de Fichiers
 
-### Desktop (≥ 768px)
 ```text
-┌─────────────────────────────────────────────────────────────┐
-│                     Notre Équipe                             │
-│    Des professionnelles passionnées et diplômées...          │
-│                                                              │
-│  ┌─────────┐  ┌─────────┐  ┌─────────┐  ┌─────────┐         │
-│  │ [Photo] │  │ [Photo] │  │ [Photo] │  │ [Photo] │         │
-│  │         │  │         │  │         │  │         │         │
-│  └─────────┘  └─────────┘  └─────────┘  └─────────┘         │
-│    Marie        Sophie       Julie        Emma               │
-│  Fondatrice   Esthéticienne  Prothésiste  Esthéticienne     │
-│  Soins visage   Massages     Nail art     Épilations        │
-└─────────────────────────────────────────────────────────────┘
-```
-
-### Mobile (< 768px) - Layout Alterné
-```text
-┌────────────────────────────────────┐
-│         Notre Équipe               │
-│   Des professionnelles...          │
-│                                    │
-│  ┌──────┐  Marie                   │
-│  │Photo │  Fondatrice & Esthé...   │
-│  └──────┘  Depuis 8 ans            │
-│                                    │
-│            Sophie    ┌──────┐      │
-│   Esthéticienne      │Photo │      │
-│        Depuis 5 ans  └──────┘      │
-│                                    │
-│  ┌──────┐  Julie                   │
-│  │Photo │  Prothésiste ongulaire   │
-│  └──────┘  Depuis 3 ans            │
-│                                    │
-│            Emma      ┌──────┐      │
-│   Esthéticienne      │Photo │      │
-│        Depuis 4 ans  └──────┘      │
-└────────────────────────────────────┘
+src/components/
+├── core/
+│   ├── SectionWrapper.tsx      ← Container réutilisable
+│   ├── SectionTitle.tsx        ← Titre de section réutilisable
+│   └── index.ts
+│
+├── sections/
+│   ├── hero/
+│   │   ├── HeroBanner.tsx
+│   │   └── index.ts
+│   ├── services/
+│   │   ├── ServicesSection.tsx
+│   │   └── index.ts
+│   ├── team/
+│   │   ├── TeamSection.tsx
+│   │   └── index.ts
+│   ├── contact/
+│   │   ├── ContactSection.tsx
+│   │   └── index.ts
+│   └── index.ts
+│
+├── layout/
+│   ├── Header.tsx
+│   ├── Footer.tsx
+│   ├── AnnouncementBar.tsx
+│   ├── MobileStickyBadge.tsx
+│   ├── StickyBookingButton.tsx
+│   └── index.ts
+│
+└── ui/                         ← Inchangé
 ```
 
 ---
 
-## Fichiers à créer/modifier
+## Étapes de Réalisation
 
-| Fichier | Action |
-|---------|--------|
-| `src/components/TeamSection.tsx` | Créer |
-| `src/pages/Index.tsx` | Ajouter le composant |
+### 1. Configuration Tailwind
+Ajouter les couleurs et polices personnalisées dans `tailwind.config.ts` :
+- Couleur accent : `#C9A87C`
+- Polices : Bitter (titres), Raleway (corps)
+- Couleurs de fond : light `#F8F8F8`
 
----
+### 2. Composants Core
 
-## Spécifications détaillées
+**SectionWrapper.tsx**
+- Props : `id`, `children`, `className?`, `background?` ('white' | 'light' | 'dark')
+- Applique : padding vertical responsive, container centré, max-width
 
-### Section Container
-- Background : `#F8F8F8` (fond alterné gris clair)
-- Padding : `80px 32px` (desktop) / `60px 24px` (mobile)
-- Max-width : `1200px`
+**SectionTitle.tsx**
+- Props : `title`, `subtitle?`, `centered?` (défaut: true)
+- Styles cohérents pour tous les titres de section
 
-### Titre & Sous-titre
-- Titre : `clientConfig.team.sectionTitle` - Bitter, 42px/32px, 600, #1A1A1A
-- Sous-titre : `clientConfig.team.sectionSubtitle` - Raleway, 18px/16px, 400, #6B6B6B
-- Texte centré, max-width 700px pour le sous-titre
+### 3. Migration des Composants Layout
+Déplacer vers `layout/` :
+- Header, Footer, AnnouncementBar
+- MobileStickyBadge, StickyBookingButton
+- Convertir les `<style>` tags en classes Tailwind
 
-### Cartes Desktop (grille 4 colonnes)
-- Grid : `repeat(4, 1fr)`, gap `32px`
-- Photo : aspect-ratio 1:1, border-radius 12px, bordure 3px accent optionnelle
-- Nom : Raleway, 20px, 600, #1A1A1A
-- Rôle : Raleway, 14px, 400, #6B6B6B
-- Spécialité : Raleway, 13px, 400 italic, couleur accent
-- Hover : `scale(1.02)` + ombre + zoom photo `scale(1.05)`
+### 4. Migration des Sections
+Déplacer et refactorer :
+- **HeroBanner** → `sections/hero/` (cas spécial avec Header intégré)
+- **ServicesSection** → `sections/services/`
+- **TeamSection** → `sections/team/`
+- **ContactSection** → `sections/contact/`
 
-### Layout Mobile (alterné)
-- Flexbox column, gap 40px
-- Chaque membre : flex row, gap 16px
-- Alternance via `flex-direction: row-reverse` sur index pair
-- Photo : 100px × 100px, border-radius 8px
-- Texte aligné selon position (left/right)
-- Afficher "Professionnelle depuis X ans"
+Chaque section utilisera `SectionWrapper` et `SectionTitle`.
 
-### Hover Effects (desktop uniquement)
-- Carte : légère élévation avec ombre
-- Photo : zoom `scale(1.05)` + rotation subtile `rotate(2deg)`
+### 5. Fichiers Index (exports centralisés)
+Créer un `index.ts` dans chaque dossier pour simplifier les imports.
 
----
-
-## Données utilisées
-
+### 6. Mise à jour de Index.tsx
+Nouveaux imports :
 ```typescript
-clientConfig.team.sectionTitle    // "Notre Équipe"
-clientConfig.team.sectionSubtitle // "Des professionnelles passionnées..."
-clientConfig.team.members[]       // Array de 4 membres
-  - name: string
-  - role: string
-  - photo: string
-  - specialty?: string
-  - years: number
+import { AnnouncementBar, Footer, ... } from '@/components/layout';
+import { HeroBanner, ServicesSection, ... } from '@/components/sections';
 ```
+
+### 7. Nettoyage
+Supprimer les anciens fichiers à la racine de `components/`.
 
 ---
 
-## Responsive Breakpoints
+## Fichiers à Créer (11)
+1. `src/components/core/SectionWrapper.tsx`
+2. `src/components/core/SectionTitle.tsx`
+3. `src/components/core/index.ts`
+4. `src/components/layout/index.ts`
+5. `src/components/sections/hero/index.ts`
+6. `src/components/sections/services/index.ts`
+7. `src/components/sections/team/index.ts`
+8. `src/components/sections/contact/index.ts`
+9. `src/components/sections/index.ts`
 
-| Device | Colonnes | Photo | Layout |
-|--------|----------|-------|--------|
-| Desktop ≥1024px | 4 | 100% width, carré | Grille |
-| Tablet 768-1023px | 3 | 100% width | Grille |
-| Mobile < 768px | 1 | 100px cercle | Alterné |
+## Fichiers à Migrer (9)
+- Header, Footer, AnnouncementBar → `layout/`
+- MobileStickyBadge, StickyBookingButton → `layout/`
+- HeroBanner → `sections/hero/`
+- ServicesSection → `sections/services/`
+- TeamSection → `sections/team/`
+- ContactSection → `sections/contact/`
+
+## Fichiers à Modifier (2)
+- `tailwind.config.ts` - Ajouter couleurs/polices
+- `src/pages/Index.tsx` - Nouveaux imports
+
+## Fichiers à Supprimer (10)
+- Anciens fichiers après migration réussie
+- `src/components/NavLink.tsx` (non utilisé)
+
+---
+
+## Résultat Attendu
+- Structure modulaire et organisée
+- Tous les styles en Tailwind CSS (mobile-first)
+- Composants réutilisables (SectionWrapper, SectionTitle)
+- Imports simplifiés via fichiers index
+- Visuel final identique à l'actuel
