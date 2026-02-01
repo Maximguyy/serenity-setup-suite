@@ -154,6 +154,7 @@ export const clientConfig = {
     categories: [
       {
         name: "Soins Visage",
+        slug: "visage",
         icon: "sparkles",
         items: [
           { name: "Soin Éclat", duration: "60 min", price: "75€", image: "/assets/services/soin-eclat.jpg" },
@@ -164,6 +165,7 @@ export const clientConfig = {
       },
       {
         name: "Soins Corps",
+        slug: "corps",
         icon: "heart",
         items: [
           { name: "Gommage Corps", duration: "45 min", price: "60€", image: "/assets/services/gommage.jpg" },
@@ -174,6 +176,7 @@ export const clientConfig = {
       },
       {
         name: "Épilations",
+        slug: "epilations",
         icon: "leaf",
         items: [
           { name: "Jambes complètes", duration: "30 min", price: "35€", image: "/assets/services/epilation-jambes.jpg" },
