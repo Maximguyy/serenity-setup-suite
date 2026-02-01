@@ -14,7 +14,7 @@ const GoogleReviewsCarousel = () => {
   const { reviews, usps } = clientConfig;
 
   return (
-    <SectionWrapper id="avis" background="light" className="py-8 md:py-10 lg:py-12">
+    <SectionWrapper id="avis" background="light" className="hidden py-8 md:block md:py-10 lg:py-12">
       <SectionTitle
         title="Ce que nos clientes disent"
         subtitle="Découvrez les témoignages de nos clientes satisfaites"
