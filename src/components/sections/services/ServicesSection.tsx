@@ -5,6 +5,7 @@ import { clientConfig } from '@/config/client-config';
 import { SectionWrapper, SectionTitle } from '@/components/core';
 import { cn } from '@/lib/utils';
 import ServiceModal from './ServiceModal';
+import { ServiceItem as BookingServiceItem } from '@/components/booking/types';
 
 const iconMap: Record<string, LucideIcon> = {
   sparkles: Sparkles,
@@ -19,6 +20,10 @@ interface ServiceItem {
   price: string;
   image?: string;
   description?: string;
+}
+
+interface ServicesSectionProps {
+  onBookService?: (service: BookingServiceItem) => void;
 }
 
 // Constants for grid calculation
@@ -37,19 +42,28 @@ const getContainerWidth = (columns: number) => {
   return columns * CARD_WIDTH + (columns - 1) * GAP;
 };
 
-const ServicesSection = () => {
+const ServicesSection = ({ onBookService }: ServicesSectionProps) => {
   const { services, ui } = clientConfig;
   const [selectedService, setSelectedService] = useState<ServiceItem | null>(null);
+  const [selectedCategory, setSelectedCategory] = useState<{ name: string; slug: string } | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const handleServiceClick = (item: ServiceItem) => {
+  const handleServiceClick = (item: ServiceItem, category: { name: string; slug: string }) => {
     setSelectedService(item);
+    setSelectedCategory(category);
     setIsModalOpen(true);
   };
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
     setSelectedService(null);
+    setSelectedCategory(null);
+  };
+
+  const handleBookService = (service: BookingServiceItem) => {
+    if (onBookService) {
+      onBookService(service);
+    }
   };
 
   return (
@@ -97,7 +111,7 @@ const ServicesSection = () => {
                   <button
                     key={item.name}
                     type="button"
-                    onClick={() => handleServiceClick(item)}
+                    onClick={() => handleServiceClick(item, { name: category.name, slug: category.slug })}
                     className={cn(
                       'group block overflow-hidden rounded-xl bg-white text-left shadow-sm transition-all duration-300',
                       'hover:scale-[1.02] hover:shadow-lg'
@@ -161,7 +175,7 @@ const ServicesSection = () => {
                   <button
                     key={item.name}
                     type="button"
-                    onClick={() => handleServiceClick(item)}
+                    onClick={() => handleServiceClick(item, { name: category.name, slug: category.slug })}
                     className={cn(
                       'group block w-44 shrink-0 snap-start overflow-hidden rounded-xl bg-white text-left shadow-sm transition-all duration-300',
                       'hover:scale-[1.02] hover:shadow-lg'
@@ -208,7 +222,7 @@ const ServicesSection = () => {
                   <button
                     key={item.name}
                     type="button"
-                    onClick={() => handleServiceClick(item)}
+                    onClick={() => handleServiceClick(item, { name: category.name, slug: category.slug })}
                     className={cn(
                       'group block w-40 shrink-0 snap-start overflow-hidden rounded-xl bg-white text-left shadow-sm transition-all duration-300',
                       'hover:scale-[1.02] hover:shadow-lg'
@@ -266,6 +280,9 @@ const ServicesSection = () => {
         service={selectedService}
         isOpen={isModalOpen}
         onClose={handleCloseModal}
+        onBookService={handleBookService}
+        categoryName={selectedCategory?.name}
+        categorySlug={selectedCategory?.slug}
       />
     </SectionWrapper>
   );
