@@ -2,87 +2,143 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
+/* ============================================
+   DESIGN SYSTEM - Beauty Institute Template
+   ============================================
+   All colors, gradients, fonts, etc defined here.
+   All colors MUST be HSL.
 */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* ===== Brand Colors ===== */
+    --background: 40 20% 98%;           /* #FAFAF8 - Off-white */
+    --foreground: 0 0% 10%;             /* #1A1A1A - Dark text */
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 0 0% 10%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 0 0% 10%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Primary = Dark text color */
+    --primary: 0 0% 10%;                /* #1A1A1A */
+    --primary-foreground: 0 0% 100%;    /* White */
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Secondary = Gray text */
+    --secondary: 0 0% 42%;              /* #6B6B6B */
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Muted = Light gray backgrounds */
+    --muted: 0 0% 97%;                  /* #F8F8F8 */
+    --muted-foreground: 0 0% 42%;       /* #6B6B6B */
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Accent = Gold/Beige brand color */
+    --accent: 37 41% 63%;               /* #C9A87C */
+    --accent-hover: 37 35% 57%;         /* #B8956A */
+    --accent-foreground: 0 0% 100%;     /* White text on accent */
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 0 0% 90%;                 /* Light border */
+    --border-light: 0 0% 94%;           /* #F0F0F0 */
+    --input: 0 0% 90%;
+    --ring: 37 41% 63%;                 /* Accent for focus rings */
 
     --radius: 0.5rem;
 
+    /* ===== Typography ===== */
+    --font-heading: 'Bitter', serif;
+    --font-body: 'Raleway', sans-serif;
+    
+    /* Font weights */
+    --font-light: 300;
+    --font-normal: 400;
+    --font-medium: 500;
+    --font-semibold: 600;
+    --font-bold: 700;
+
+    /* ===== Spacing & Layout ===== */
+    --container-max-width: 1200px;
+    --container-padding: 2rem;
+
+    /* ===== Z-Index Scale ===== */
+    --z-sticky: 100;
+    --z-modal: 200;
+    --z-tooltip: 300;
+
+    /* ===== Transitions ===== */
+    --transition-fast: 150ms ease;
+    --transition-normal: 200ms ease;
+    --transition-slow: 300ms ease;
+
+    /* ===== Legacy vars for compatibility ===== */
+    --color-accent: hsl(37, 41%, 63%);
+    --color-accent-hover: hsl(37, 35%, 57%);
+    --color-primary: hsl(0, 0%, 10%);
+    --color-secondary: hsl(0, 0%, 42%);
+    --color-text: hsl(0, 0%, 10%);
+    --color-text-on-dark: hsl(0, 0%, 100%);
+    --color-background: hsl(40, 20%, 98%);
+    --color-border-light: hsl(0, 0%, 94%);
+    --border-radius-sm: 4px;
+    --border-radius-md: 8px;
+    --border-radius-lg: 12px;
+
+    /* Text sizes */
+    --text-xs: 0.75rem;
+    --text-sm: 0.875rem;
+    --text-base: 1rem;
+    --text-lg: 1.125rem;
+    --text-xl: 1.25rem;
+    --text-2xl: 1.5rem;
+    --text-3xl: 1.875rem;
+    --text-4xl: 2.25rem;
+    --text-5xl: 3rem;
+
+    /* Sidebar (shadcn) */
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    --background: 0 0% 7%;
+    --foreground: 0 0% 98%;
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 0 0% 10%;
+    --card-foreground: 0 0% 98%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 0 0% 10%;
+    --popover-foreground: 0 0% 98%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 10%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 0 0% 60%;
+    --secondary-foreground: 0 0% 98%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 65%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 37 41% 63%;
+    --accent-hover: 37 45% 55%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+    --border: 0 0% 20%;
+    --border-light: 0 0% 15%;
+    --input: 0 0% 20%;
+    --ring: 37 41% 63%;
+
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -100,6 +156,17 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-body antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading;
+  }
+}
+
+/* ===== Custom Utility Classes ===== */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
   }
 }
