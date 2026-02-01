@@ -7,8 +7,8 @@ import Index from "./pages/Index";
 import CategoryPage from "./pages/CategoryPage";
 import GiftPage from "./pages/GiftPage";
 import AboutPage from "./pages/AboutPage";
+import BookingConfirmationPage from "./pages/BookingConfirmationPage";
 import NotFound from "./pages/NotFound";
-
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -22,6 +22,7 @@ const App = () => (
           <Route path="/soins/:slug" element={<CategoryPage />} />
           <Route path="/offrir" element={<GiftPage />} />
           <Route path="/a-propos" element={<AboutPage />} />
+          <Route path="/reservation-confirmee" element={<BookingConfirmationPage />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
