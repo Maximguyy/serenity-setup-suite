@@ -39,7 +39,7 @@ const PhilosophySection = () => {
   );
 
   return (
-    <SectionWrapper id="philosophie" background="white" className="py-10 md:py-12 lg:py-14">
+    <SectionWrapper id="philosophie" background="light" className="py-10 md:py-12 lg:py-14">
       <SectionTitle title={clientConfig.philosophy.sectionTitle} />
 
       {/* Desktop Grid */}

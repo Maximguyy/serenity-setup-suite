@@ -17,7 +17,7 @@ const ContactSection = () => {
   const { contactSection } = clientConfig;
 
   return (
-    <SectionWrapper id="contact" background="white" className="bg-gradient-to-r from-accent/5 via-accent/10 to-accent/5">
+    <SectionWrapper id="contact" background="light">
       {/* Header */}
       <div className="mb-12 text-center">
         <h2 className="mb-6 font-heading text-3xl font-semibold text-foreground md:text-4xl lg:text-[42px]">

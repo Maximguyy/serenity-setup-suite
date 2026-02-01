@@ -10,7 +10,7 @@ const TeamSection = () => {
   };
 
   return (
-    <SectionWrapper id="equipe" background="light">
+    <SectionWrapper id="equipe" background="white">
       <SectionTitle title={team.sectionTitle} subtitle={team.sectionSubtitle} />
 
       {/* Desktop Grid */}
