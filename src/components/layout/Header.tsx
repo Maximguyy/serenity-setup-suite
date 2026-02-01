@@ -255,7 +255,9 @@ const Header = ({ forceScrolledStyle = false, onBookingClick, announcementBarVis
       <div
         className={cn(
           'fixed inset-x-0 z-[100] max-h-[calc(100vh-70px)] overflow-y-auto bg-background p-6 shadow-md transition-all duration-300 lg:hidden',
-          announcementBarVisible ? 'top-[114px]' : 'top-[70px]',
+          // When scrolled (header is fixed), announcement bar is off-screen, so use 70px
+          // When not scrolled AND announcement bar is visible, add its height (44px)
+          isScrolled ? 'top-[70px]' : announcementBarVisible ? 'top-[114px]' : 'top-[70px]',
           isMobileMenuOpen
             ? 'visible translate-y-0 opacity-100'
             : 'invisible -translate-y-full opacity-0'
