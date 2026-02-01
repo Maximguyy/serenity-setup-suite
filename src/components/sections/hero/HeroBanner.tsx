@@ -33,7 +33,7 @@ const HeroBanner = ({ onBookingClick, announcementBarVisible = false }: HeroBann
           <source media="(min-width: 768px)" srcSet={hero.backgroundImage.desktop} />
           <img
             src={hero.backgroundImage.mobile}
-            alt="Salon de beauté élégant avec ambiance zen"
+            alt={hero.backgroundImageAlt || clientConfig.institutName}
             loading="eager"
             className="h-full w-full object-cover object-center"
           />

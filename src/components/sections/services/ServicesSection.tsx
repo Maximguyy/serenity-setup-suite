@@ -72,10 +72,10 @@ const ServicesSection = ({ onBookService }: ServicesSectionProps) => {
       <SectionTitle 
         title={services.sectionTitle} 
         subtitle={services.sectionSubtitle}
-        promoTag={{
-          text: "Offre de Saint-Valentin",
-          textDesktopOnly: " jusqu'à -65%"
-        }}
+        promoTag={services.promoTag?.enabled ? {
+          text: services.promoTag.text,
+          textDesktopOnly: services.promoTag.textDesktopOnly
+        } : undefined}
       />
 
       {/* Categories */}

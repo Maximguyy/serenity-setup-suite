@@ -70,6 +70,7 @@ export const clientConfig = {
       desktop: "/assets/hero-desktop.jpg",
       mobile: "/assets/hero-mobile.jpg"
     },
+    backgroundImageAlt: "Institut de beauté élégant avec ambiance zen",
     // USPs affichés en bas du hero
     usps: [
       { value: "+1200", label: "Femmes satisfaites" },
@@ -149,6 +150,11 @@ export const clientConfig = {
     sectionTitle: "Découvrez Nos Soins",
     sectionSubtitle: "Une sélection de rituels beauté pour révéler votre éclat naturel",
     defaultDescription: "Offrez-vous un moment de détente et de bien-être avec ce soin réalisé par nos expertes. Une expérience unique adaptée à vos besoins.",
+    promoTag: {
+      enabled: true,
+      text: "Offre de Saint-Valentin",
+      textDesktopOnly: " jusqu'à -65%"
+    },
     categories: [
       {
         name: "Soins Visage",
@@ -277,6 +283,8 @@ export const clientConfig = {
     heroSubtitle: "Faites plaisir à vos proches avec une carte cadeau utilisable sur tous nos soins",
     heroTag: "Carte Cadeau",
     valentineTitle: "Meilleur cadeau de Saint-Valentin",
+    discountPercentage: 20,
+    discountBadgeText: "-{percentage}% sur toutes les cartes cadeaux",
     features: [
       {
         icon: "gift",
@@ -376,7 +384,16 @@ export const clientConfig = {
     bookButton: "Réserver cette séance",
     backToServices: "Retour aux prestations",
     categoryNotFound: "Catégorie non trouvée",
-    viewAllLink: "Tout afficher →"
+    viewAllLink: "Tout afficher →",
+    daysLabels: {
+      monday: "Lundi",
+      tuesday: "Mardi",
+      wednesday: "Mercredi",
+      thursday: "Jeudi",
+      friday: "Vendredi",
+      saturday: "Samedi",
+      sunday: "Dimanche"
+    }
   },
 
   // ─────────────────────────────────────────

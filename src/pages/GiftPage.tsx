@@ -14,10 +14,10 @@ const iconMap: Record<string, LucideIcon> = {
   sparkles: Sparkles,
 };
 
-const DISCOUNT_PERCENTAGE = 20;
-
 const GiftPage = () => {
   const { giftCard } = clientConfig;
+  const DISCOUNT_PERCENTAGE = giftCard.discountPercentage || 0;
+
   const [email, setEmail] = useState('');
   const [selectedAmount, setSelectedAmount] = useState<number | null>(null);
   const [customAmount, setCustomAmount] = useState('');
@@ -89,12 +89,14 @@ const GiftPage = () => {
       <SectionWrapper id="offrir-form" background="white" className="py-12 md:py-16">
         <div className="mx-auto max-w-xl">
           {/* Promo reminder above form */}
-          <div className="mb-6 flex justify-center">
-            <span className="inline-flex items-center gap-2 rounded-full bg-black px-4 py-2 font-body text-sm font-medium text-white">
-              <span>❤️</span>
-              <span>-{DISCOUNT_PERCENTAGE}% sur toutes les cartes cadeaux</span>
-            </span>
-          </div>
+          {DISCOUNT_PERCENTAGE > 0 && (
+            <div className="mb-6 flex justify-center">
+              <span className="inline-flex items-center gap-2 rounded-full bg-black px-4 py-2 font-body text-sm font-medium text-white">
+                <span>❤️</span>
+                <span>{giftCard.discountBadgeText?.replace('{percentage}', String(DISCOUNT_PERCENTAGE)) || `-${DISCOUNT_PERCENTAGE}% sur toutes les cartes cadeaux`}</span>
+              </span>
+            </div>
+          )}
           
           <SectionTitle 
             title={giftCard.formTitle} 
