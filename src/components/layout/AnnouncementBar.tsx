@@ -4,8 +4,13 @@ import { clientConfig } from '@/config/client-config';
 import { cn } from '@/lib/utils';
 
 const STORAGE_KEY = 'announcement-dismissed';
+const ANNOUNCEMENT_HEIGHT = 44; // px - used for CSS variable
 
-const AnnouncementBar = () => {
+interface AnnouncementBarProps {
+  onVisibilityChange?: (isVisible: boolean) => void;
+}
+
+const AnnouncementBar = ({ onVisibilityChange }: AnnouncementBarProps) => {
   const [isVisible, setIsVisible] = useState(false);
   const [isDismissed, setIsDismissed] = useState(false);
 
@@ -15,10 +20,21 @@ const AnnouncementBar = () => {
     const dismissed = localStorage.getItem(STORAGE_KEY);
     if (dismissed === 'true') {
       setIsDismissed(true);
+      onVisibilityChange?.(false);
     } else {
-      setTimeout(() => setIsVisible(true), 100);
+      setTimeout(() => {
+        setIsVisible(true);
+        onVisibilityChange?.(true);
+      }, 100);
     }
-  }, []);
+  }, [onVisibilityChange]);
+
+  // Notify parent when visibility changes
+  useEffect(() => {
+    if (isDismissed) {
+      onVisibilityChange?.(false);
+    }
+  }, [isDismissed, onVisibilityChange]);
 
   if (!announcement.enabled || isDismissed) {
     return null;

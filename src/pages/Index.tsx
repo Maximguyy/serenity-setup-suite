@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import { AnnouncementBar, Footer, MobileStickyBadge, StickyBookingButton } from '@/components/layout';
 import { HeroBanner, ServicesSection, PhilosophySection, TeamSection, ContactSection, GoogleReviewsCarousel } from '@/components/sections';
 import { BookingModal } from '@/components/booking';
@@ -7,6 +7,7 @@ import { ServiceItem } from '@/components/booking/types';
 const Index = () => {
   const [isBookingOpen, setIsBookingOpen] = useState(false);
   const [preselectedService, setPreselectedService] = useState<ServiceItem | null>(null);
+  const [announcementVisible, setAnnouncementVisible] = useState(false);
 
   const handleOpenBooking = () => {
     setPreselectedService(null);
@@ -18,10 +19,14 @@ const Index = () => {
     setIsBookingOpen(true);
   };
 
+  const handleAnnouncementVisibilityChange = useCallback((visible: boolean) => {
+    setAnnouncementVisible(visible);
+  }, []);
+
   return (
     <>
-      <AnnouncementBar />
-      <HeroBanner onBookingClick={handleOpenBooking} />
+      <AnnouncementBar onVisibilityChange={handleAnnouncementVisibilityChange} />
+      <HeroBanner onBookingClick={handleOpenBooking} announcementBarVisible={announcementVisible} />
       <ServicesSection onBookService={handleBookService} />
       <PhilosophySection />
       <GoogleReviewsCarousel />

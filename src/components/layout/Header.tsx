@@ -8,9 +8,10 @@ import logo from '@/assets/logo.png';
 interface HeaderProps {
   forceScrolledStyle?: boolean;
   onBookingClick?: () => void;
+  announcementBarVisible?: boolean;
 }
 
-const Header = ({ forceScrolledStyle = false, onBookingClick }: HeaderProps) => {
+const Header = ({ forceScrolledStyle = false, onBookingClick, announcementBarVisible = false }: HeaderProps) => {
   const [isScrolled, setIsScrolled] = useState(forceScrolledStyle);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isPrestationsOpen, setIsPrestationsOpen] = useState(false);
@@ -253,7 +254,8 @@ const Header = ({ forceScrolledStyle = false, onBookingClick }: HeaderProps) => 
       {/* Mobile/Tablet Menu */}
       <div
         className={cn(
-          'fixed inset-x-0 top-[70px] z-[100] max-h-[calc(100vh-70px)] overflow-y-auto bg-background p-6 shadow-md transition-all duration-300 lg:hidden',
+          'fixed inset-x-0 z-[100] max-h-[calc(100vh-70px)] overflow-y-auto bg-background p-6 shadow-md transition-all duration-300 lg:hidden',
+          announcementBarVisible ? 'top-[114px]' : 'top-[70px]',
           isMobileMenuOpen
             ? 'visible translate-y-0 opacity-100'
             : 'invisible -translate-y-full opacity-0'

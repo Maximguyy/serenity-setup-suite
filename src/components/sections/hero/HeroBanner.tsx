@@ -5,9 +5,10 @@ import { cn } from '@/lib/utils';
 
 interface HeroBannerProps {
   onBookingClick?: () => void;
+  announcementBarVisible?: boolean;
 }
 
-const HeroBanner = ({ onBookingClick }: HeroBannerProps) => {
+const HeroBanner = ({ onBookingClick, announcementBarVisible = false }: HeroBannerProps) => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -24,7 +25,7 @@ const HeroBanner = ({ onBookingClick }: HeroBannerProps) => {
       style={{ marginTop: 'calc(-1 * env(safe-area-inset-top, 0px))' }}
     >
       {/* Header intégré au hero */}
-      <Header onBookingClick={onBookingClick} />
+      <Header onBookingClick={onBookingClick} announcementBarVisible={announcementBarVisible} />
 
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
