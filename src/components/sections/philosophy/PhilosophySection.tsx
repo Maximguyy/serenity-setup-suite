@@ -1,26 +1,17 @@
-import { Leaf, Sparkles, Heart } from 'lucide-react';
+import { Leaf, Sparkles, Heart, LucideIcon } from 'lucide-react';
 import { SectionWrapper, SectionTitle } from '@/components/core';
 import useEmblaCarousel from 'embla-carousel-react';
 import { useCallback, useEffect, useState } from 'react';
 import { cn } from '@/lib/utils';
+import { clientConfig } from '@/config/client-config';
 
-const values = [
-  {
-    icon: Leaf,
-    title: 'Naturel',
-    description: 'Des produits sélectionnés avec soin pour respecter votre peau',
-  },
-  {
-    icon: Sparkles,
-    title: 'Excellence',
-    description: 'Un savoir-faire reconnu et des techniques innovantes',
-  },
-  {
-    icon: Heart,
-    title: 'Bien-être',
-    description: 'Votre détente et votre satisfaction sont notre priorité',
-  },
-];
+const iconMap: Record<string, LucideIcon> = {
+  leaf: Leaf,
+  sparkles: Sparkles,
+  heart: Heart,
+};
+
+const values = clientConfig.philosophy.values;
 
 const PhilosophySection = () => {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
@@ -49,12 +40,12 @@ const PhilosophySection = () => {
 
   return (
     <SectionWrapper id="philosophie" background="white" className="py-10 md:py-12 lg:py-14">
-      <SectionTitle title="Notre Philosophie" />
+      <SectionTitle title={clientConfig.philosophy.sectionTitle} />
 
       {/* Desktop Grid */}
       <div className="hidden grid-cols-3 gap-12 md:grid">
         {values.map((value, index) => {
-          const Icon = value.icon;
+          const Icon = iconMap[value.icon] || Leaf;
           return (
             <article key={index} className="flex flex-col items-center text-center">
               <div className="mb-5 flex h-20 w-20 items-center justify-center rounded-full bg-accent/10">
@@ -76,7 +67,7 @@ const PhilosophySection = () => {
         <div className="overflow-hidden" ref={emblaRef}>
           <div className="flex">
             {values.map((value, index) => {
-              const Icon = value.icon;
+              const Icon = iconMap[value.icon] || Leaf;
               return (
                 <article
                   key={index}

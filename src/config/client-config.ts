@@ -230,8 +230,28 @@ export const clientConfig = {
   },
 
   // ─────────────────────────────────────────
-  // GOOGLE MAPS
+  // PHILOSOPHIE
   // ─────────────────────────────────────────
+  philosophy: {
+    sectionTitle: "Notre Philosophie",
+    values: [
+      {
+        icon: "leaf",
+        title: "Naturel",
+        description: "Des produits sélectionnés avec soin pour respecter votre peau"
+      },
+      {
+        icon: "sparkles",
+        title: "Excellence",
+        description: "Un savoir-faire reconnu et des techniques innovantes"
+      },
+      {
+        icon: "heart",
+        title: "Bien-être",
+        description: "Votre détente et votre satisfaction sont notre priorité"
+      }
+    ]
+  },
   map: {
     embedUrl: "https://www.google.com/maps/embed?pb=...",
     latitude: 48.8566,
