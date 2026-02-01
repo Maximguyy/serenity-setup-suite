@@ -60,9 +60,9 @@ const GiftPage = () => {
       </div>
 
       {/* Valentine's Section */}
-      <div className="bg-gradient-to-r from-accent/5 via-accent/10 to-accent/5 py-8">
+      <div className="bg-gradient-to-r from-accent/5 via-accent/10 to-accent/5 py-4 md:py-8">
         <div className="mx-auto max-w-4xl px-4">
-          <div className="mb-6 text-center">
+          <div className="mb-6 text-center hidden md:block">
             <span className="inline-flex items-center gap-2 font-heading text-lg font-semibold text-accent md:text-xl">
               <Heart className="h-5 w-5 fill-accent" />
               Meilleur cadeau de Saint-Valentin
