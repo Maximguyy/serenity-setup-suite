@@ -31,7 +31,7 @@ const Header = ({ forceScrolledStyle = false }: HeaderProps) => {
 
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth >= 768) {
+      if (window.innerWidth >= 1024) {
         setIsMobileMenuOpen(false);
       }
     };
@@ -79,15 +79,14 @@ const Header = ({ forceScrolledStyle = false }: HeaderProps) => {
             : 'absolute bg-transparent'
         )}
       >
-        <div className="mx-auto flex h-[70px] max-w-[1200px] items-center justify-between px-8 md:h-[60px] md:px-6 lg:h-[70px]">
-          {/* Mobile: Burger Menu */}
+        <div className="mx-auto flex h-[70px] max-w-[1200px] items-center justify-between px-8 lg:px-6">
+          {/* Mobile/Tablet: Burger Menu */}
           <button
             onClick={toggleMobileMenu}
             aria-label={isMobileMenuOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
             aria-expanded={isMobileMenuOpen}
             className={cn(
-              'hidden items-center justify-center rounded-sm p-2 transition-colors md:hidden',
-              'max-md:flex',
+              'flex items-center justify-center rounded-sm p-2 transition-colors lg:hidden',
               isScrolled ? 'text-foreground' : 'text-white',
               'hover:bg-white/10'
             )}
@@ -95,14 +94,14 @@ const Header = ({ forceScrolledStyle = false }: HeaderProps) => {
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
 
-          {/* Logo */}
-          <Link to="/#accueil" className="flex shrink-0 items-center">
+          {/* Logo - centered on mobile/tablet */}
+          <Link to="/#accueil" className="absolute left-1/2 flex -translate-x-1/2 shrink-0 items-center lg:relative lg:left-auto lg:translate-x-0">
             {logo ? (
               <img
                 src={logo}
                 alt={clientConfig.institutName}
                 className={cn(
-                  'h-10 w-auto transition-all duration-300 md:h-[30px] lg:h-10',
+                  'h-10 w-auto transition-all duration-300',
                   isScrolled && 'invert'
                 )}
               />
@@ -119,7 +118,7 @@ const Header = ({ forceScrolledStyle = false }: HeaderProps) => {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden flex-1 items-center justify-center gap-8 md:flex lg:gap-8">
+          <nav className="hidden flex-1 items-center justify-center gap-8 lg:flex">
             {clientConfig.navigation.links.map((link) => {
               const linkClasses = cn(
                 'relative py-2 font-body text-[15px] font-medium transition-colors',
@@ -146,7 +145,7 @@ const Header = ({ forceScrolledStyle = false }: HeaderProps) => {
           <a
             href={clientConfig.navigation.ctaButton.href}
             className={cn(
-              'hidden shrink-0 items-center justify-center rounded-sm px-6 py-2.5 font-body text-sm font-semibold tracking-wide transition-all md:inline-flex',
+              'hidden shrink-0 items-center justify-center rounded-sm px-6 py-2.5 font-body text-sm font-semibold tracking-wide transition-all lg:inline-flex',
               isScrolled
                 ? 'bg-accent text-accent-foreground hover:bg-accent-hover hover:shadow-md'
                 : 'border-2 border-white text-white hover:bg-white/10'
@@ -155,12 +154,12 @@ const Header = ({ forceScrolledStyle = false }: HeaderProps) => {
             {clientConfig.navigation.ctaButton.label}
           </a>
 
-          {/* Mobile: Phone Icon */}
+          {/* Mobile/Tablet: Phone Icon */}
           <a
             href={`tel:${clientConfig.contact.phone.replace(/\s/g, '')}`}
             aria-label="Appeler l'institut"
             className={cn(
-              'hidden items-center justify-center rounded-full p-2 transition-colors max-md:flex',
+              'flex items-center justify-center rounded-full p-2 transition-colors lg:hidden',
               isScrolled ? 'text-accent' : 'text-white',
               'hover:bg-white/10'
             )}
@@ -170,18 +169,18 @@ const Header = ({ forceScrolledStyle = false }: HeaderProps) => {
         </div>
       </header>
 
-      {/* Mobile Menu Overlay */}
+      {/* Mobile/Tablet Menu Overlay */}
       {isMobileMenuOpen && (
         <div
-          className="fixed inset-0 z-[99] bg-black/20 md:hidden"
+          className="fixed inset-0 z-[99] bg-black/20 lg:hidden"
           onClick={closeMobileMenu}
         />
       )}
 
-      {/* Mobile Menu */}
+      {/* Mobile/Tablet Menu */}
       <div
         className={cn(
-          'fixed inset-x-0 top-[60px] z-[100] bg-background p-6 shadow-md transition-all duration-300 md:hidden',
+          'fixed inset-x-0 top-[70px] z-[100] bg-background p-6 shadow-md transition-all duration-300 lg:hidden',
           isMobileMenuOpen
             ? 'visible translate-y-0 opacity-100'
             : 'invisible -translate-y-full opacity-0'
