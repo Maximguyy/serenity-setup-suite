@@ -246,7 +246,8 @@ export const clientConfig = {
       { label: "Accueil", href: "#accueil" },
       { label: "Prestations", href: "#prestations" },
       { label: "Contact", href: "#contact" },
-      { label: "Adresse", href: "#adresse" }
+      { label: "Adresse", href: "#adresse" },
+      { label: "Offrir", href: "/offrir" }
     ],
     ctaButton: {
       label: "Prendre rendez-vous",

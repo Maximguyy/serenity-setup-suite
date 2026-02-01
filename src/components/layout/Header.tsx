@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Menu, X, Phone } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { clientConfig } from '@/config/client-config';
 import { cn } from '@/lib/utils';
 import logo from '@/assets/logo.png';
@@ -108,22 +109,27 @@ const Header = ({ forceScrolledStyle = false }: HeaderProps) => {
 
           {/* Desktop Navigation */}
           <nav className="hidden flex-1 items-center justify-center gap-8 md:flex lg:gap-8">
-            {clientConfig.navigation.links.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className={cn(
-                  'relative py-2 font-body text-[15px] font-medium transition-colors',
-                  'after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:transition-all after:duration-200',
-                  'hover:after:w-full',
-                  isScrolled
-                    ? 'text-secondary hover:text-foreground after:bg-accent'
-                    : 'text-white/90 hover:text-white after:bg-white'
-                )}
-              >
-                {link.label}
-              </a>
-            ))}
+            {clientConfig.navigation.links.map((link) => {
+              const isInternalRoute = link.href.startsWith('/');
+              const linkClasses = cn(
+                'relative py-2 font-body text-[15px] font-medium transition-colors',
+                'after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:transition-all after:duration-200',
+                'hover:after:w-full',
+                isScrolled
+                  ? 'text-secondary hover:text-foreground after:bg-accent'
+                  : 'text-white/90 hover:text-white after:bg-white'
+              );
+              
+              return isInternalRoute ? (
+                <Link key={link.href} to={link.href} className={linkClasses}>
+                  {link.label}
+                </Link>
+              ) : (
+                <a key={link.href} href={link.href} className={linkClasses}>
+                  {link.label}
+                </a>
+              );
+            })}
           </nav>
 
           {/* Desktop CTA Button */}
@@ -172,16 +178,30 @@ const Header = ({ forceScrolledStyle = false }: HeaderProps) => {
         )}
       >
         <nav className="flex flex-col gap-4">
-          {clientConfig.navigation.links.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              onClick={closeMobileMenu}
-              className="border-b border-border-light py-2 font-body text-base font-medium text-foreground transition-colors hover:text-accent"
-            >
-              {link.label}
-            </a>
-          ))}
+          {clientConfig.navigation.links.map((link) => {
+            const isInternalRoute = link.href.startsWith('/');
+            const linkClasses = "border-b border-border-light py-2 font-body text-base font-medium text-foreground transition-colors hover:text-accent";
+            
+            return isInternalRoute ? (
+              <Link
+                key={link.href}
+                to={link.href}
+                onClick={closeMobileMenu}
+                className={linkClasses}
+              >
+                {link.label}
+              </Link>
+            ) : (
+              <a
+                key={link.href}
+                href={link.href}
+                onClick={closeMobileMenu}
+                className={linkClasses}
+              >
+                {link.label}
+              </a>
+            );
+          })}
           <a
             href={clientConfig.navigation.ctaButton.href}
             onClick={closeMobileMenu}
