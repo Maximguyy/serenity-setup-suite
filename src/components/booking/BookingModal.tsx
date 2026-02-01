@@ -118,8 +118,9 @@ const BookingModal = ({ open, onOpenChange, initialService = null }: BookingModa
       setIsSubmitting(false);
       onOpenChange(false);
       toast({
-        title: "Demande envoyée !",
-        description: "Nous vous recontacterons rapidement pour confirmer votre rendez-vous.",
+        title: "✓ Rendez-vous confirmé !",
+        description: "Nous vous recontacterons rapidement pour finaliser votre réservation.",
+        variant: "success",
       });
     }, 1000);
   };
