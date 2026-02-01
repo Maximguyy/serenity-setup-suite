@@ -25,7 +25,7 @@ const GoogleReviewsCarousel = () => {
         <img
           src={usps.googleReviews.logo}
           alt="Google Reviews"
-          className="h-8 w-auto"
+          className="h-16 w-auto"
         />
         <div className="flex items-center gap-2">
           <div className="flex">
