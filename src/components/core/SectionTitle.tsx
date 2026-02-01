@@ -5,6 +5,10 @@ interface SectionTitleProps {
   subtitle?: string;
   centered?: boolean;
   className?: string;
+  promoTag?: {
+    text: string;
+    textDesktopOnly?: string;
+  };
 }
 
 const SectionTitle = ({
@@ -12,6 +16,7 @@ const SectionTitle = ({
   subtitle,
   centered = true,
   className,
+  promoTag,
 }: SectionTitleProps) => {
   return (
     <header
@@ -21,6 +26,17 @@ const SectionTitle = ({
         className
       )}
     >
+      {promoTag && (
+        <div className={cn('mb-4', centered && 'flex justify-center')}>
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-black px-4 py-1.5 font-body text-sm font-medium text-white">
+            <span>❤️</span>
+            <span>{promoTag.text}</span>
+            {promoTag.textDesktopOnly && (
+              <span className="hidden md:inline">{promoTag.textDesktopOnly}</span>
+            )}
+          </span>
+        </div>
+      )}
       <h2 className="font-heading text-3xl font-semibold text-foreground md:text-4xl lg:text-[42px]">
         {title}
       </h2>

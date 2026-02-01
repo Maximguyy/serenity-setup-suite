@@ -69,7 +69,14 @@ const ServicesSection = ({ onBookService }: ServicesSectionProps) => {
 
   return (
     <SectionWrapper id="prestations" background="white">
-      <SectionTitle title={services.sectionTitle} subtitle={services.sectionSubtitle} />
+      <SectionTitle 
+        title={services.sectionTitle} 
+        subtitle={services.sectionSubtitle}
+        promoTag={{
+          text: "Offre de Saint-Valentin",
+          textDesktopOnly: " jusqu'à -65%"
+        }}
+      />
 
       {/* Categories */}
       <div className="space-y-12 md:space-y-16">
