@@ -38,11 +38,6 @@ const GiftPage = () => {
       {/* Hero Section */}
       <div className="bg-gradient-to-br from-accent/10 via-background to-accent/5 pb-8 pt-28 md:pb-12 md:pt-32">
         <div className="mx-auto max-w-4xl px-4 text-center">
-          {/* Promo Badge */}
-          <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-black px-4 py-2 text-sm font-medium text-white">
-            <span>❤️</span>
-            <span>-{DISCOUNT_PERCENTAGE}% Saint-Valentin</span>
-          </div>
           <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-accent/10 px-4 py-2 text-sm font-medium text-accent">
             <Gift className="h-4 w-4" />
             {giftCard.heroTag}
