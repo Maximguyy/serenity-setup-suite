@@ -21,6 +21,22 @@ interface ServiceItem {
   description?: string;
 }
 
+// Constants for grid calculation
+const CARD_WIDTH = 180; // px - width of each card
+const GAP = 16; // px - gap between cards (gap-4)
+
+const getGridConfig = (itemCount: number) => {
+  const displayCount = Math.min(itemCount, 6);
+  if (displayCount >= 6) return { columns: 6, cardCount: 6 };
+  if (displayCount >= 4) return { columns: displayCount, cardCount: displayCount };
+  // For 2-3 cards, use wider cards in a flex layout
+  return { columns: displayCount, cardCount: displayCount, useWideCards: true };
+};
+
+const getContainerWidth = (columns: number) => {
+  return columns * CARD_WIDTH + (columns - 1) * GAP;
+};
+
 const ServicesSection = () => {
   const { services, booking } = clientConfig;
   const [selectedService, setSelectedService] = useState<ServiceItem | null>(null);
@@ -44,28 +60,39 @@ const ServicesSection = () => {
       <div className="space-y-12 md:space-y-16">
         {services.categories.map((category) => {
           const IconComponent = iconMap[category.icon] || Sparkles;
+          const gridConfig = getGridConfig(category.items.length);
+          const containerWidth = getContainerWidth(gridConfig.columns);
 
           return (
             <div key={category.name}>
-              {/* Category Header */}
-              <div className="mb-5 flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <IconComponent size={24} className="text-accent" />
-                  <h3 className="font-body text-xl font-semibold text-foreground md:text-2xl">
-                    {category.name}
-                  </h3>
+              {/* Desktop: Adaptive container */}
+              <div 
+                className="mx-auto hidden lg:block"
+                style={{ maxWidth: `${containerWidth}px` }}
+              >
+                {/* Category Header - aligned with grid */}
+                <div className="mb-5 flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <IconComponent size={24} className="text-accent" />
+                    <h3 className="font-body text-xl font-semibold text-foreground md:text-2xl">
+                      {category.name}
+                    </h3>
+                  </div>
+                  <Link
+                    to={`/soins/${category.slug}`}
+                    className="font-body text-sm font-medium text-accent underline transition-colors hover:text-accent-hover"
+                  >
+                    Tout afficher →
+                  </Link>
                 </div>
-                {/* Desktop/Tablet: "Tout afficher" inline */}
-                <Link
-                  to={`/soins/${category.slug}`}
-                  className="hidden font-body text-sm font-medium text-accent underline transition-colors hover:text-accent-hover md:block"
-                >
-                  Tout afficher →
-                </Link>
-              </div>
 
-              {/* Desktop: 6 cards grid | Tablet: 3 cards horizontal scroll | Mobile: 2 cards horizontal scroll */}
-              <div className="hidden gap-4 lg:grid lg:grid-cols-6">
+                {/* Adaptive Grid */}
+                <div 
+                  className="grid gap-4"
+                  style={{ 
+                    gridTemplateColumns: `repeat(${gridConfig.columns}, 1fr)`,
+                  }}
+                >
                 {category.items.slice(0, 6).map((item) => (
                   <button
                     key={item.name}
@@ -109,6 +136,23 @@ const ServicesSection = () => {
                     </div>
                   </button>
                 ))}
+                </div>
+              </div>
+
+              {/* Tablet/Mobile: Category Header */}
+              <div className="mb-5 flex items-center justify-between lg:hidden">
+                <div className="flex items-center gap-3">
+                  <IconComponent size={24} className="text-accent" />
+                  <h3 className="font-body text-xl font-semibold text-foreground md:text-2xl">
+                    {category.name}
+                  </h3>
+                </div>
+                <Link
+                  to={`/soins/${category.slug}`}
+                  className="hidden font-body text-sm font-medium text-accent underline transition-colors hover:text-accent-hover md:block"
+                >
+                  Tout afficher →
+                </Link>
               </div>
 
               {/* Tablet: 3 cards scroll */}
