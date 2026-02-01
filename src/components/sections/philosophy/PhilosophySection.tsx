@@ -48,7 +48,7 @@ const PhilosophySection = () => {
   );
 
   return (
-    <SectionWrapper id="philosophie" background="white">
+    <SectionWrapper id="philosophie" background="white" className="py-10 md:py-12 lg:py-14">
       <SectionTitle title="Notre Philosophie" />
 
       {/* Desktop Grid */}
