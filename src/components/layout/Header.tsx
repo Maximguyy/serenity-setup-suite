@@ -101,7 +101,7 @@ const Header = ({ forceScrolledStyle = false }: HeaderProps) => {
             : 'absolute bg-transparent'
         )}
       >
-        <div className="mx-auto flex h-[70px] max-w-[1200px] items-center justify-between px-8 lg:px-6">
+        <div className="mx-auto flex h-[70px] max-w-[1200px] items-center justify-between px-4 lg:px-6">
           {/* Mobile/Tablet: Burger Menu */}
           <button
             onClick={toggleMobileMenu}
