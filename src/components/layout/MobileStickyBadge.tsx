@@ -102,18 +102,18 @@ const MobileStickyBadge = () => {
   return (
     <>
       {/* Sticky Badge - Mobile Only */}
-      <div className="fixed bottom-[calc(88px+env(safe-area-inset-bottom,0px))] left-0 right-0 z-[1000] hidden justify-center max-md:flex">
+      <div className="fixed bottom-[calc(60px+env(safe-area-inset-bottom,0px))] left-0 right-0 z-[1000] hidden justify-center max-md:flex">
         <button
           onClick={() => setIsModalOpen(true)}
-          className="flex items-center justify-center gap-3 rounded-full border-none bg-white px-5 py-3 shadow-lg"
+          className="flex items-center justify-center gap-2 rounded-full border-none bg-white px-4 py-2 shadow-lg"
           aria-label="Voir les avis Google"
         >
-          <GoogleIcon className="h-6 w-6 shrink-0" />
-          <div className="flex items-center gap-2">
-            <span className="font-body text-lg font-bold text-foreground">{reviews.averageRating}</span>
-            <div className="flex gap-0.5">{renderStars()}</div>
+          <GoogleIcon className="h-5 w-5 shrink-0" />
+          <div className="flex items-center gap-1.5">
+            <span className="font-body text-base font-bold text-foreground">{reviews.averageRating}</span>
+            <div className="flex gap-0.5">{renderStars(12)}</div>
           </div>
-          <span className="font-body text-sm text-secondary">({reviews.totalReviews})</span>
+          <span className="font-body text-xs text-secondary">({reviews.totalReviews})</span>
         </button>
       </div>
 
