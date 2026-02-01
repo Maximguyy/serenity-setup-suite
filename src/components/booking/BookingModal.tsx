@@ -11,6 +11,7 @@ import { cn } from '@/lib/utils';
 import { z } from 'zod';
 import * as Dialog from '@radix-ui/react-dialog';
 import { X } from 'lucide-react';
+import { useToast } from '@/hooks/use-toast';
 
 interface BookingModalProps {
   open: boolean;
@@ -31,6 +32,7 @@ const BookingModal = ({ open, onOpenChange, initialService = null }: BookingModa
   const [bookingState, setBookingState] = useState<BookingState>(initialBookingState);
   const [errors, setErrors] = useState<Partial<Record<keyof ClientInfo, string>>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const { toast } = useToast();
 
   // Reset state when modal opens
   useEffect(() => {
@@ -115,6 +117,10 @@ const BookingModal = ({ open, onOpenChange, initialService = null }: BookingModa
     setTimeout(() => {
       setIsSubmitting(false);
       onOpenChange(false);
+      toast({
+        title: "Demande envoyée !",
+        description: "Nous vous recontacterons rapidement pour confirmer votre rendez-vous.",
+      });
     }, 1000);
   };
 
