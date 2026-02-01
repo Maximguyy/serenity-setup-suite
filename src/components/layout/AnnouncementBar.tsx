@@ -61,11 +61,14 @@ const AnnouncementBar = ({ onVisibilityChange }: AnnouncementBarProps) => {
 
       {/* Column 2: Text (centered) */}
       <div className="flex items-center justify-center text-center">
-        <span className="font-body text-[13px] font-medium leading-tight text-white md:text-sm">
+        {/* Mobile: two lines */}
+        <span className="whitespace-pre-line font-body text-[13px] font-medium leading-tight text-white md:hidden">
+          {announcement.textMobile || announcement.text}
+        </span>
+        {/* Desktop: single line with optional suffix */}
+        <span className="hidden font-body text-sm font-medium leading-tight text-white md:block">
           {announcement.text}
-          {announcement.textDesktopOnly && (
-            <span className="hidden md:inline">{announcement.textDesktopOnly}</span>
-          )}
+          {announcement.textDesktopOnly && announcement.textDesktopOnly}
         </span>
       </div>
 

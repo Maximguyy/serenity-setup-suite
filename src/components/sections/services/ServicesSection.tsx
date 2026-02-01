@@ -18,6 +18,7 @@ interface ServiceItem {
   name: string;
   duration: string;
   price: string;
+  originalPrice?: string;
   image?: string;
   description?: string;
 }
@@ -144,9 +145,16 @@ const ServicesSection = ({ onBookService }: ServicesSectionProps) => {
                       <h4 className="mb-1 font-body text-sm font-semibold leading-tight text-foreground">
                         {item.name}
                       </h4>
-                      <p className="font-body text-sm font-semibold text-accent">
-                        {item.price}
-                      </p>
+                      <div className="flex items-center gap-2">
+                        {item.originalPrice && (
+                          <span className="font-body text-xs text-muted-foreground line-through">
+                            {item.originalPrice}
+                          </span>
+                        )}
+                        <span className="font-body text-sm font-semibold text-accent">
+                          {item.price}
+                        </span>
+                      </div>
                     </div>
                   </button>
                 ))}
@@ -208,9 +216,16 @@ const ServicesSection = ({ onBookService }: ServicesSectionProps) => {
                       <h4 className="mb-1 font-body text-sm font-semibold leading-tight text-foreground">
                         {item.name}
                       </h4>
-                      <p className="font-body text-sm font-semibold text-accent">
-                        {item.price}
-                      </p>
+                      <div className="flex items-center gap-2">
+                        {item.originalPrice && (
+                          <span className="font-body text-xs text-muted-foreground line-through">
+                            {item.originalPrice}
+                          </span>
+                        )}
+                        <span className="font-body text-sm font-semibold text-accent">
+                          {item.price}
+                        </span>
+                      </div>
                     </div>
                   </button>
                 ))}
@@ -255,9 +270,16 @@ const ServicesSection = ({ onBookService }: ServicesSectionProps) => {
                       <h4 className="mb-1 font-body text-sm font-semibold leading-tight text-foreground">
                         {item.name}
                       </h4>
-                      <p className="font-body text-sm font-semibold text-accent">
-                        {item.price}
-                      </p>
+                      <div className="flex items-center gap-2">
+                        {item.originalPrice && (
+                          <span className="font-body text-xs text-muted-foreground line-through">
+                            {item.originalPrice}
+                          </span>
+                        )}
+                        <span className="font-body text-sm font-semibold text-accent">
+                          {item.price}
+                        </span>
+                      </div>
                     </div>
                   </button>
                 ))}

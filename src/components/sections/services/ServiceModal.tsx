@@ -13,6 +13,7 @@ interface ServiceItem {
   name: string;
   duration: string;
   price: string;
+  originalPrice?: string;
   image?: string;
   description?: string;
 }
@@ -82,6 +83,11 @@ const ServiceModal = ({
 
         {/* Price */}
         <div className="mt-1 flex items-baseline gap-2">
+          {service.originalPrice && (
+            <span className="font-body text-base text-muted-foreground line-through sm:text-lg">
+              {service.originalPrice}
+            </span>
+          )}
           <span className="font-heading text-2xl font-bold text-accent sm:text-3xl">
             {service.price}
           </span>

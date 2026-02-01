@@ -18,6 +18,7 @@ interface ServiceItem {
   name: string;
   duration: string;
   price: string;
+  originalPrice?: string;
   image?: string;
   description?: string;
 }
@@ -138,9 +139,16 @@ const CategoryPage = () => {
                   <h4 className="mb-1.5 font-body text-sm font-semibold leading-tight text-foreground md:text-base">
                     {item.name}
                   </h4>
-                  <p className="font-body text-[15px] font-semibold text-accent md:text-base">
-                    {item.price}
-                  </p>
+                  <div className="flex items-center gap-2">
+                    {item.originalPrice && (
+                      <span className="font-body text-xs text-muted-foreground line-through md:text-sm">
+                        {item.originalPrice}
+                      </span>
+                    )}
+                    <span className="font-body text-[15px] font-semibold text-accent md:text-base">
+                      {item.price}
+                    </span>
+                  </div>
                 </div>
               </button>
             ))}
