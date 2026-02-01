@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Menu, X, Phone } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { clientConfig } from '@/config/client-config';
 import { cn } from '@/lib/utils';
 import logo from '@/assets/logo.png';
@@ -12,6 +12,8 @@ interface HeaderProps {
 const Header = ({ forceScrolledStyle = false }: HeaderProps) => {
   const [isScrolled, setIsScrolled] = useState(forceScrolledStyle);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
 
   useEffect(() => {
     if (forceScrolledStyle) {
@@ -47,6 +49,15 @@ const Header = ({ forceScrolledStyle = false }: HeaderProps) => {
 
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
   const closeMobileMenu = () => setIsMobileMenuOpen(false);
+
+  // Helper to get correct href for navigation links
+  const getNavigationHref = (href: string) => {
+    // Internal routes like /offrir stay as-is
+    if (href.startsWith('/')) return href;
+    // Hash links need to go to homepage when not on homepage
+    if (href.startsWith('#') && !isHomePage) return `/${href}`;
+    return href;
+  };
 
   return (
     <>
@@ -85,7 +96,7 @@ const Header = ({ forceScrolledStyle = false }: HeaderProps) => {
           </button>
 
           {/* Logo */}
-          <a href="#accueil" className="flex shrink-0 items-center">
+          <Link to="/#accueil" className="flex shrink-0 items-center">
             {logo ? (
               <img
                 src={logo}
@@ -105,12 +116,11 @@ const Header = ({ forceScrolledStyle = false }: HeaderProps) => {
                 {clientConfig.institutName}
               </span>
             )}
-          </a>
+          </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden flex-1 items-center justify-center gap-8 md:flex lg:gap-8">
             {clientConfig.navigation.links.map((link) => {
-              const isInternalRoute = link.href.startsWith('/');
               const linkClasses = cn(
                 'relative py-2 font-body text-[15px] font-medium transition-colors',
                 'after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:transition-all after:duration-200',
@@ -120,14 +130,14 @@ const Header = ({ forceScrolledStyle = false }: HeaderProps) => {
                   : 'text-white/90 hover:text-white after:bg-white'
               );
               
-              return isInternalRoute ? (
-                <Link key={link.href} to={link.href} className={linkClasses}>
+              return (
+                <Link 
+                  key={link.href} 
+                  to={getNavigationHref(link.href)} 
+                  className={linkClasses}
+                >
                   {link.label}
                 </Link>
-              ) : (
-                <a key={link.href} href={link.href} className={linkClasses}>
-                  {link.label}
-                </a>
               );
             })}
           </nav>
@@ -179,27 +189,17 @@ const Header = ({ forceScrolledStyle = false }: HeaderProps) => {
       >
         <nav className="flex flex-col gap-4">
           {clientConfig.navigation.links.map((link) => {
-            const isInternalRoute = link.href.startsWith('/');
             const linkClasses = "border-b border-border-light py-2 font-body text-base font-medium text-foreground transition-colors hover:text-accent";
             
-            return isInternalRoute ? (
+            return (
               <Link
                 key={link.href}
-                to={link.href}
+                to={getNavigationHref(link.href)}
                 onClick={closeMobileMenu}
                 className={linkClasses}
               >
                 {link.label}
               </Link>
-            ) : (
-              <a
-                key={link.href}
-                href={link.href}
-                onClick={closeMobileMenu}
-                className={linkClasses}
-              >
-                {link.label}
-              </a>
             );
           })}
           <a
