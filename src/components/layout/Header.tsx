@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, Phone } from 'lucide-react';
+import { Menu, X, Phone, ChevronDown, ChevronUp } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import { clientConfig } from '@/config/client-config';
 import { cn } from '@/lib/utils';
@@ -12,8 +12,12 @@ interface HeaderProps {
 const Header = ({ forceScrolledStyle = false }: HeaderProps) => {
   const [isScrolled, setIsScrolled] = useState(forceScrolledStyle);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isPrestationsOpen, setIsPrestationsOpen] = useState(false);
+  const [isMobilePrestationsOpen, setIsMobilePrestationsOpen] = useState(false);
   const location = useLocation();
   const isHomePage = location.pathname === '/';
+
+  const { services } = clientConfig;
 
   useEffect(() => {
     if (forceScrolledStyle) {
@@ -33,6 +37,7 @@ const Header = ({ forceScrolledStyle = false }: HeaderProps) => {
     const handleResize = () => {
       if (window.innerWidth >= 1024) {
         setIsMobileMenuOpen(false);
+        setIsMobilePrestationsOpen(false);
       }
     };
 
@@ -47,17 +52,34 @@ const Header = ({ forceScrolledStyle = false }: HeaderProps) => {
     };
   }, [isMobileMenuOpen]);
 
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      if (!target.closest('[data-prestations-dropdown]')) {
+        setIsPrestationsOpen(false);
+      }
+    };
+
+    document.addEventListener('click', handleClickOutside);
+    return () => document.removeEventListener('click', handleClickOutside);
+  }, []);
+
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
-  const closeMobileMenu = () => setIsMobileMenuOpen(false);
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false);
+    setIsMobilePrestationsOpen(false);
+  };
 
   // Helper to get correct href for navigation links
   const getNavigationHref = (href: string) => {
-    // Internal routes like /offrir stay as-is
     if (href.startsWith('/')) return href;
-    // Hash links need to go to homepage when not on homepage
     if (href.startsWith('#') && !isHomePage) return `/${href}`;
     return href;
   };
+
+  // Check if a link is the Prestations link
+  const isPrestationsLink = (href: string) => href === '#prestations';
 
   return (
     <>
@@ -128,6 +150,56 @@ const Header = ({ forceScrolledStyle = false }: HeaderProps) => {
                   ? 'text-secondary hover:text-foreground after:bg-accent'
                   : 'text-white/90 hover:text-white after:bg-white'
               );
+
+              // Prestations dropdown
+              if (isPrestationsLink(link.href)) {
+                return (
+                  <div 
+                    key={link.href} 
+                    className="relative"
+                    data-prestations-dropdown
+                  >
+                    <button
+                      onClick={() => setIsPrestationsOpen(!isPrestationsOpen)}
+                      className={cn(
+                        linkClasses,
+                        'flex items-center gap-1'
+                      )}
+                    >
+                      {link.label}
+                      <ChevronDown 
+                        size={16} 
+                        className={cn(
+                          'transition-transform duration-200',
+                          isPrestationsOpen && 'rotate-180'
+                        )}
+                      />
+                    </button>
+
+                    {/* Dropdown Menu */}
+                    <div
+                      className={cn(
+                        'absolute left-1/2 top-full mt-2 -translate-x-1/2 rounded-lg bg-background py-2 shadow-lg ring-1 ring-black/5 transition-all duration-200',
+                        isPrestationsOpen
+                          ? 'visible translate-y-0 opacity-100'
+                          : 'invisible -translate-y-2 opacity-0'
+                      )}
+                      style={{ minWidth: '180px' }}
+                    >
+                      {services.categories.map((category) => (
+                        <Link
+                          key={category.slug}
+                          to={`/soins/${category.slug}`}
+                          onClick={() => setIsPrestationsOpen(false)}
+                          className="block px-4 py-2.5 font-body text-sm font-medium text-foreground transition-colors hover:bg-muted hover:text-accent"
+                        >
+                          {category.name}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                );
+              }
               
               return (
                 <Link 
@@ -180,7 +252,7 @@ const Header = ({ forceScrolledStyle = false }: HeaderProps) => {
       {/* Mobile/Tablet Menu */}
       <div
         className={cn(
-          'fixed inset-x-0 top-[70px] z-[100] bg-background p-6 shadow-md transition-all duration-300 lg:hidden',
+          'fixed inset-x-0 top-[70px] z-[100] max-h-[calc(100vh-70px)] overflow-y-auto bg-background p-6 shadow-md transition-all duration-300 lg:hidden',
           isMobileMenuOpen
             ? 'visible translate-y-0 opacity-100'
             : 'invisible -translate-y-full opacity-0'
@@ -188,14 +260,52 @@ const Header = ({ forceScrolledStyle = false }: HeaderProps) => {
       >
         <nav className="flex flex-col gap-4">
           {clientConfig.navigation.links.map((link) => {
-            const linkClasses = "border-b border-border-light py-2 font-body text-base font-medium text-foreground transition-colors hover:text-accent";
-            
+            // Prestations expandable section
+            if (isPrestationsLink(link.href)) {
+              return (
+                <div key={link.href}>
+                  <button
+                    onClick={() => setIsMobilePrestationsOpen(!isMobilePrestationsOpen)}
+                    className="flex w-full items-center justify-between border-b border-border-light py-2 font-body text-base font-medium text-foreground transition-colors hover:text-accent"
+                  >
+                    {link.label}
+                    {isMobilePrestationsOpen ? (
+                      <ChevronUp size={20} className="text-accent" />
+                    ) : (
+                      <ChevronDown size={20} />
+                    )}
+                  </button>
+
+                  {/* Subcategories */}
+                  <div
+                    className={cn(
+                      'overflow-hidden transition-all duration-300',
+                      isMobilePrestationsOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
+                    )}
+                  >
+                    <div className="flex flex-col gap-1 pl-4 pt-2">
+                      {services.categories.map((category) => (
+                        <Link
+                          key={category.slug}
+                          to={`/soins/${category.slug}`}
+                          onClick={closeMobileMenu}
+                          className="py-2 font-body text-sm font-medium text-secondary transition-colors hover:text-accent"
+                        >
+                          {category.name}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              );
+            }
+
             return (
               <Link
                 key={link.href}
                 to={getNavigationHref(link.href)}
                 onClick={closeMobileMenu}
-                className={linkClasses}
+                className="border-b border-border-light py-2 font-body text-base font-medium text-foreground transition-colors hover:text-accent"
               >
                 {link.label}
               </Link>
