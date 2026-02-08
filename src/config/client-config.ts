@@ -32,9 +32,9 @@ export const clientConfig = {
   // RESEAUX SOCIAUX
   // ─────────────────────────────────────────
   social: {
-    instagram: "https://instagram.com/institut-exemple",
+    instagram: "https://www.instagram.com/skinstudio.paris.ladefense/",
     facebook: "https://facebook.com/institut-exemple",
-    google: "https://g.page/institut-exemple"
+    google: "https://www.google.com/maps/place/SKIN+STUDIO+PARIS+La+D%C3%A9fense/@48.896037,2.2244434,17z/data=!3m1!4b1!4m6!3m5!1s0x47e6650d5e96959b:0x5df8c1669be20fb3!8m2!3d48.896037!4d2.2270237!16s%2Fg%2F11yy0ynj56"
   },
 
   // ─────────────────────────────────────────
