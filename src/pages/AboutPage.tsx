@@ -2,7 +2,7 @@ import { clientConfig } from '@/config/client-config';
 import Header from '@/components/layout/Header';
 import { Footer } from '@/components/layout';
 import { SectionWrapper, SectionTitle } from '@/components/core';
-import { TeamSection, ContactSection } from '@/components/sections';
+import { ContactSection } from '@/components/sections';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
@@ -48,8 +48,6 @@ const AboutPage = () => {
           </div>
         </SectionWrapper>
 
-        {/* Team Section (duplicated from home) */}
-        <TeamSection />
 
         {/* Section 2 */}
         <SectionWrapper id="about-expertise" background="white">

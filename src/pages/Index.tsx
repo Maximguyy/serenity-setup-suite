@@ -1,6 +1,6 @@
 import { useState, useCallback } from 'react';
 import { AnnouncementBar, Footer, MobileStickyBadge, StickyBookingButton } from '@/components/layout';
-import { HeroBanner, ServicesSection, PhilosophySection, TeamSection, ContactSection, GoogleReviewsCarousel } from '@/components/sections';
+import { HeroBanner, ServicesSection, PhilosophySection, ContactSection, GoogleReviewsCarousel } from '@/components/sections';
 import { BookingModal } from '@/components/booking';
 import { ServiceItem } from '@/components/booking/types';
 
@@ -30,7 +30,7 @@ const Index = () => {
       <ServicesSection onBookService={handleBookService} />
       <PhilosophySection />
       <GoogleReviewsCarousel />
-      <TeamSection />
+      
       <ContactSection />
       <Footer />
       <MobileStickyBadge />
