@@ -80,8 +80,9 @@ const Header = ({ forceScrolledStyle = false, onBookingClick, announcementBarVis
     return href;
   };
 
-  // Check if a link is the Prestations link
-  const isPrestationsLink = (href: string) => href === '#prestations';
+  // Check if a link is the Prestations link — only show dropdown if multiple categories
+  const hasManyCategories = services.categories.length > 1;
+  const isPrestationsLink = (href: string) => href === '#prestations' && hasManyCategories;
 
   return (
     <>

@@ -8,8 +8,8 @@ export const clientConfig = {
   // ─────────────────────────────────────────
   // IDENTITE
   // ─────────────────────────────────────────
-  institutName: "Institut Beauté Exemple",
-  tagline: "Votre moment de bien-être",
+  institutName: "Skins & Lights",
+  tagline: "Beauty Expert",
   logo: "/assets/logo.png",
   favicon: "/assets/favicon.ico",
 
@@ -17,14 +17,14 @@ export const clientConfig = {
   // COORDONNEES
   // ─────────────────────────────────────────
   contact: {
-    phone: "01 23 45 67 89",
-    email: "contact@institut-exemple.fr",
+    phone: "06 44 77 27 53",
+    email: "contact@skins-and-lights.fr",
     address: {
-      street: "123 Rue de la Beauté",
-      postalCode: "75001",
-      city: "Paris",
+      street: "47 Bd des Bouvets",
+      postalCode: "92000",
+      city: "Nanterre",
       country: "France",
-      full: "123 Rue de la Beauté, 75001 Paris"
+      full: "47 Bd des Bouvets, 92000 Nanterre"
     }
   },
 
@@ -41,13 +41,13 @@ export const clientConfig = {
   // HORAIRES D'OUVERTURE
   // ─────────────────────────────────────────
   hours: {
-    monday: "Fermé",
-    tuesday: "9h00 - 19h00",
-    wednesday: "9h00 - 19h00",
-    thursday: "9h00 - 19h00",
-    friday: "9h00 - 19h00",
-    saturday: "9h00 - 18h00",
-    sunday: "Fermé"
+    monday: "09:00 - 22:00",
+    tuesday: "09:00 - 22:00",
+    wednesday: "09:00 - 22:00",
+    thursday: "09:00 - 22:00",
+    friday: "09:00 - 22:00",
+    saturday: "09:00 - 22:00",
+    sunday: "09:00 - 22:00"
   },
 
   // ─────────────────────────────────────────
@@ -64,8 +64,8 @@ export const clientConfig = {
   // CONTENU HERO
   // ─────────────────────────────────────────
   hero: {
-    title: "Prenez soin de vous, vous le méritez",
-    subtitle: "Un moment de détente et de beauté rien que pour vous",
+    title: "Révélez l'éclat de votre peau",
+    subtitle: "Soins HYDRASKIN et Luminothérapie pour sublimer votre beauté naturelle",
     backgroundImage: {
       desktop: "/assets/hero-desktop.jpg",
       mobile: "/assets/hero-mobile.jpg"
@@ -73,8 +73,8 @@ export const clientConfig = {
     backgroundImageAlt: "Institut de beauté élégant avec ambiance zen",
     // USPs affichés en bas du hero
     usps: [
-      { value: "+1200", label: "Femmes satisfaites" },
-      { value: "+10", label: "Ans d'expérience" }
+      { value: "+500", label: "Clientes satisfaites" },
+      { value: "+5", label: "Ans d'expérience" }
     ]
   },
 
@@ -107,31 +107,31 @@ export const clientConfig = {
       {
         author: "Marie D.",
         rating: 5,
-        text: "Un moment de pure détente ! L'équipe est aux petits soins et l'ambiance est vraiment relaxante. Je reviendrai sans hésiter.",
+        text: "Un soin HYDRASKIN incroyable ! Ma peau est visiblement plus lumineuse et hydratée. L'équipe est aux petits soins, je reviendrai sans hésiter.",
         date: "il y a 2 semaines"
       },
       {
         author: "Sophie L.",
         rating: 5,
-        text: "Excellent institut, je recommande vivement les soins du visage. Ma peau n'a jamais été aussi belle !",
+        text: "La luminothérapie a transformé ma peau. Après seulement quelques séances, les résultats sont bluffants. Je recommande vivement !",
         date: "il y a 1 mois"
       },
       {
         author: "Julie M.",
         rating: 5,
-        text: "Ambiance zen et professionnalisme. Mon institut préféré ! Les filles sont adorables et très compétentes.",
+        text: "Ambiance zen et professionnalisme au top. Mon institut préféré à Nanterre ! Les filles sont adorables et très compétentes.",
         date: "il y a 1 mois"
       },
       {
         author: "Camille B.",
         rating: 4,
-        text: "Très bon massage relaxant, je me suis endormie tellement c'était agréable. Seul petit bémol : un peu d'attente à l'accueil.",
+        text: "Très bon soin hydratant, ma peau n'a jamais été aussi douce. Seul petit bémol : un peu d'attente à l'accueil.",
         date: "il y a 2 mois"
       },
       {
         author: "Léa P.",
         rating: 5,
-        text: "Super expérience pour ma première visite ! L'épilation est rapide et quasi indolore. Merci à Emma pour sa douceur.",
+        text: "Super expérience pour ma première visite ! Le soin HYDRASKIN est rapide et efficace. Merci pour votre douceur.",
         date: "il y a 2 mois"
       },
       {
@@ -147,54 +147,26 @@ export const clientConfig = {
   // PRESTATIONS
   // ─────────────────────────────────────────
   services: {
-    sectionTitle: "Découvrez Nos Soins",
-    sectionSubtitle: "Une sélection de rituels beauté pour révéler votre éclat naturel",
+    sectionTitle: "Nos Soins",
+    sectionSubtitle: "Des soins experts pour révéler la beauté de votre peau",
     defaultDescription: "Offrez-vous un moment de détente et de bien-être avec ce soin réalisé par nos expertes. Une expérience unique adaptée à vos besoins.",
     promoTag: {
-      enabled: true,
-      text: "Offre de Saint-Valentin",
-      textDesktopOnly: " jusqu'à -65%"
+      enabled: false,
+      text: "",
+      textDesktopOnly: ""
     },
     categories: [
       {
-        name: "Soins Visage",
-        displayTitle: "Soins Du Visage",
-        slug: "visage",
+        name: "Nos Soins",
+        displayTitle: "Nos Soins",
+        slug: "soins",
         icon: "sparkles",
         heroImage: "/assets/categories/visage-hero.jpg",
         items: [
-          { name: "Soin Éclat", duration: "60 min", price: "75€", originalPrice: "90€", image: "/assets/services/soin-eclat.jpg" },
-          { name: "Anti-Âge Premium", duration: "90 min", price: "120€", originalPrice: "145€", image: "/assets/services/anti-age.jpg" },
-          { name: "Hydratation Intense", duration: "45 min", price: "55€", originalPrice: "65€", image: "/assets/services/hydratation.jpg" },
-          { name: "Nettoyage Profond", duration: "60 min", price: "65€", originalPrice: "80€", image: "/assets/services/nettoyage.jpg" }
+          { name: "HYDRASKIN", duration: "60 min", price: "120€", originalPrice: undefined as string | undefined, image: "/assets/services/hydratation.jpg" },
+          { name: "LUMINOTHERAPIE", duration: "30 min", price: "35€", originalPrice: undefined as string | undefined, image: "/assets/services/soin-eclat.jpg" }
         ]
-      },
-      {
-        name: "Soins Corps",
-        displayTitle: "Soins Du Corps",
-        slug: "corps",
-        icon: "heart",
-        heroImage: "/assets/categories/corps-hero.jpg",
-        items: [
-          { name: "Gommage Corps", duration: "45 min", price: "60€", originalPrice: "70€", image: "/assets/services/gommage.jpg" },
-          { name: "Enveloppement", duration: "60 min", price: "80€", originalPrice: "95€", image: "/assets/services/enveloppement.jpg" },
-          { name: "Massage Relaxant", duration: "60 min", price: "70€", originalPrice: "85€", image: "/assets/services/massage.jpg" },
-          { name: "Massage Drainant", duration: "75 min", price: "85€", originalPrice: "100€", image: "/assets/services/drainage.jpg" }
-        ]
-      },
-      {
-        name: "Épilations",
-        displayTitle: "Nos Épilations",
-        slug: "epilations",
-        icon: "leaf",
-        heroImage: "/assets/categories/epilations-hero.jpg",
-        items: [
-          { name: "Jambes complètes", duration: "30 min", price: "35€", originalPrice: "40€", image: "/assets/services/epilation-jambes.jpg" },
-          { name: "Épilation laser", duration: "45 min", price: "90€", originalPrice: "110€", image: "/assets/services/epilation-laser.jpg" },
-          { name: "Maillot intégral", duration: "20 min", price: "30€", originalPrice: "35€", image: "/assets/services/maillot.jpg" },
-          { name: "Aisselles", duration: "10 min", price: "12€", originalPrice: "15€", image: "/assets/services/aisselles.webp" }
-        ]
-      },
+      }
     ]
   },
 
@@ -265,9 +237,9 @@ export const clientConfig = {
   // CONTACT / MAP
   // ─────────────────────────────────────────
   map: {
-    embedUrl: "https://www.google.com/maps/embed?pb=...",
-    latitude: 48.8566,
-    longitude: 2.3522
+    embedUrl: "https://maps.google.com/maps?q=47+Boulevard+des+Bouvets+92000+Nanterre&t=&z=16&ie=UTF8&iwloc=&output=embed",
+    latitude: 48.8920,
+    longitude: 2.2070
   },
 
   contactSection: {
@@ -321,20 +293,20 @@ export const clientConfig = {
     sectionSubtitle: "Apprenez à nous connaître avant de nous rencontrer",
     sections: [
       {
-        title: "Votre institut au cœur de Paris",
-        text: "Niché au 123 Rue de la Beauté dans le 1er arrondissement, notre institut vous accueille dans un espace lumineux et apaisant. Notre équipe de 4 esthéticiennes diplômées vous reçoit du mardi au samedi pour des moments de détente sur-mesure.",
+        title: "Votre institut à Nanterre",
+        text: "Situé au 47 Boulevard des Bouvets à Nanterre, notre institut vous accueille dans un espace lumineux et apaisant. Notre équipe de professionnelles passionnées vous reçoit 7j/7 de 9h à 22h pour des soins sur-mesure.",
         image: "/assets/about/institut-interior.jpg",
         cta: "Prendre rendez-vous"
       },
       {
-        title: "Plus de 10 ans d'expertise beauté",
-        text: "Depuis 2014, nous avons accompagné plus de 1200 clientes dans leurs rituels beauté. Formées aux techniques les plus récentes, nous utilisons exclusivement des produits professionnels français et bio pour des résultats visibles dès la première séance.",
+        title: "L'expertise HYDRASKIN & Luminothérapie",
+        text: "Spécialisées dans les soins HYDRASKIN et la luminothérapie, nous utilisons des technologies de pointe pour des résultats visibles dès la première séance. Nos protocoles sont adaptés à chaque type de peau pour un éclat naturel.",
         image: "/assets/about/expertise.jpg",
         cta: "Voir nos soins"
       },
       {
         title: "Une note de 4.9★ sur Google",
-        text: "Nos clientes nous font confiance et ça se voit. Avec 127 avis vérifiés et une note moyenne de 4.9 étoiles, nous mettons un point d'honneur à offrir un service irréprochable. Venez découvrir pourquoi elles reviennent.",
+        text: "Nos clientes nous font confiance et ça se voit. Avec plus de 127 avis vérifiés et une note moyenne de 4.9 étoiles, nous mettons un point d'honneur à offrir un service irréprochable. Venez découvrir pourquoi elles reviennent.",
         image: "/assets/about/experience.jpg",
         cta: "Prendre rendez-vous"
       }
@@ -368,7 +340,7 @@ export const clientConfig = {
       legal: "Informations légales",
       social: "Nos réseaux"
     },
-    copyright: "© 2025 Institut de Beauté Exemple. Tous droits réservés.",
+    copyright: "© 2025 Skins & Lights. Tous droits réservés.",
     legalLinks: [
       { label: "Mentions légales", href: "/mentions-legales" },
       { label: "Politique de confidentialité", href: "/confidentialite" },
@@ -400,11 +372,11 @@ export const clientConfig = {
   // SEO & META
   // ─────────────────────────────────────────
   seo: {
-    title: "Institut de Beauté Exemple | Soins Visage & Corps à Paris",
-    description: "Découvrez notre institut de beauté à Paris. Soins du visage, massages, épilations et manucures dans une ambiance zen et relaxante.",
-    keywords: "institut beauté, soins visage, massage, épilation, manucure, Paris",
+    title: "Skins & Lights | HYDRASKIN & Luminothérapie à Nanterre",
+    description: "Découvrez Skins & Lights à Nanterre. Soins HYDRASKIN et luminothérapie pour révéler l'éclat de votre peau. Ouvert 7j/7.",
+    keywords: "hydraskin, luminothérapie, soins peau, institut beauté, Nanterre",
     ogImage: "/assets/og-image.jpg",
-    twitterHandle: "@institut_exemple"
+    twitterHandle: "@skins_and_lights"
   }
 };
 
