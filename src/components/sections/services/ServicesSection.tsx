@@ -69,14 +69,6 @@ const ServicesSection = ({ onBookService }: ServicesSectionProps) => {
 
   return (
     <SectionWrapper id="prestations" background="white">
-      <SectionTitle 
-        title={services.sectionTitle} 
-        subtitle={services.sectionSubtitle}
-        promoTag={services.promoTag?.enabled ? {
-          text: services.promoTag.text,
-          textDesktopOnly: services.promoTag.textDesktopOnly
-        } : undefined}
-      />
 
       {/* Categories */}
       <div className="space-y-12 md:space-y-16">
@@ -92,21 +84,6 @@ const ServicesSection = ({ onBookService }: ServicesSectionProps) => {
                 className="mx-auto hidden lg:block"
                 style={{ maxWidth: `${containerWidth}px` }}
               >
-                {/* Category Header - aligned with grid */}
-                <div className="mb-5 flex items-center justify-between">
-                  <div className="flex items-center gap-3">
-                    <IconComponent size={24} className="text-accent" />
-                    <h3 className="font-body text-xl font-semibold text-foreground md:text-2xl">
-                      {category.name}
-                    </h3>
-                  </div>
-                  <Link
-                    to={`/soins/${category.slug}`}
-                    className="font-body text-sm font-medium text-accent underline transition-colors hover:text-accent-hover"
-                  >
-                    {ui.viewAllLink}
-                  </Link>
-                </div>
 
                 {/* Adaptive Grid */}
                 <div 
@@ -168,21 +145,7 @@ const ServicesSection = ({ onBookService }: ServicesSectionProps) => {
                 </div>
               </div>
 
-              {/* Tablet/Mobile: Category Header */}
-              <div className="mb-5 flex items-center justify-between lg:hidden">
-                <div className="flex items-center gap-3">
-                  <IconComponent size={24} className="text-accent" />
-                  <h3 className="font-body text-xl font-semibold text-foreground md:text-2xl">
-                    {category.name}
-                  </h3>
-                </div>
-                <Link
-                  to={`/soins/${category.slug}`}
-                  className="hidden font-body text-sm font-medium text-accent underline transition-colors hover:text-accent-hover md:block"
-                >
-                  {ui.viewAllLink}
-                </Link>
-              </div>
+              {/* Tablet/Mobile: Cards */}
 
               {/* Tablet: 3 cards scroll */}
               <div className="hidden gap-4 overflow-x-auto pb-4 scrollbar-hide md:flex lg:hidden">
@@ -291,14 +254,6 @@ const ServicesSection = ({ onBookService }: ServicesSectionProps) => {
                   </button>
                 ))}
               </div>
-
-              {/* Mobile: "Tout afficher" below cards */}
-              <Link
-                to={`/soins/${category.slug}`}
-                className="mt-3 block text-center font-body text-sm font-medium text-accent underline transition-colors hover:text-accent-hover md:hidden"
-              >
-                {ui.viewAllLink}
-              </Link>
             </div>
           );
         })}
