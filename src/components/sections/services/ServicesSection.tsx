@@ -70,6 +70,13 @@ const ServicesSection = ({ onBookService }: ServicesSectionProps) => {
   return (
     <SectionWrapper id="prestations" background="white">
 
+      {/* Section Title */}
+      <SectionTitle
+        title={services.sectionTitle}
+        subtitle={services.sectionSubtitle}
+        promoTag={services.promoTag?.enabled ? { text: services.promoTag.text, textDesktopOnly: services.promoTag.textDesktopOnly } : undefined}
+      />
+
       {/* Categories */}
       <div className="space-y-12 md:space-y-16">
         {services.categories.map((category) => {
@@ -258,6 +265,63 @@ const ServicesSection = ({ onBookService }: ServicesSectionProps) => {
           );
         })}
       </div>
+
+      {/* Luminotherapy Section */}
+      {services.luminotherapy && (
+        <div className="mt-12 md:mt-16">
+          <h3 className="mb-6 text-center font-heading text-2xl font-semibold text-foreground md:mb-8 md:text-3xl">
+            {services.luminotherapy.title}
+          </h3>
+
+          {/* Mobile layout */}
+          <div className="mx-auto max-w-md rounded-2xl border border-border bg-white p-4 shadow-sm md:hidden">
+            <div className="flex gap-4">
+              <div className="h-24 w-24 shrink-0 overflow-hidden rounded-xl bg-muted">
+                <img
+                  src={services.luminotherapy.image}
+                  alt={services.luminotherapy.name}
+                  className="h-full w-full object-cover"
+                />
+              </div>
+              <div className="flex flex-col justify-center">
+                <h4 className="font-heading text-lg font-semibold text-foreground">
+                  {services.luminotherapy.name}
+                </h4>
+                <span className="font-body text-sm text-muted-foreground">
+                  {services.luminotherapy.duration}
+                </span>
+              </div>
+            </div>
+            <p className="mt-3 font-body text-sm leading-relaxed text-secondary">
+              {services.luminotherapy.description}
+            </p>
+          </div>
+
+          {/* Desktop layout */}
+          <div className="mx-auto hidden max-w-3xl items-center gap-8 rounded-2xl border border-border bg-white p-6 shadow-sm md:flex lg:p-8">
+            <div className="h-48 w-48 shrink-0 overflow-hidden rounded-xl bg-muted lg:h-56 lg:w-56">
+              <img
+                src={services.luminotherapy.image}
+                alt={services.luminotherapy.name}
+                className="h-full w-full object-cover"
+              />
+            </div>
+            <div className="flex-1">
+              <div className="mb-2 flex items-center gap-3">
+                <h4 className="font-heading text-2xl font-semibold text-foreground">
+                  {services.luminotherapy.name}
+                </h4>
+                <span className="font-body text-sm text-muted-foreground">
+                  {services.luminotherapy.duration}
+                </span>
+              </div>
+              <p className="font-body text-base leading-relaxed text-secondary">
+                {services.luminotherapy.description}
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Service Modal */}
       <ServiceModal
