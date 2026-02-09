@@ -205,13 +205,13 @@ const Header = ({ forceScrolledStyle = false, onBookingClick, announcementBarVis
               }
               
               return (
-                <Link 
+                <a 
                   key={link.href} 
-                  to={getNavigationHref(link.href)} 
+                  href={getNavigationHref(link.href)} 
                   className={linkClasses}
                 >
                   {link.label}
-                </Link>
+                </a>
               );
             })}
           </nav>
@@ -307,14 +307,14 @@ const Header = ({ forceScrolledStyle = false, onBookingClick, announcementBarVis
             }
 
             return (
-              <Link
+              <a
                 key={link.href}
-                to={getNavigationHref(link.href)}
+                href={getNavigationHref(link.href)}
                 onClick={closeMobileMenu}
                 className="border-b border-border-light py-2 font-body text-base font-medium text-foreground transition-colors hover:text-accent"
               >
                 {link.label}
-              </Link>
+              </a>
             );
           })}
           <button
