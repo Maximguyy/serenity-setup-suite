@@ -163,8 +163,11 @@ export const clientConfig = {
         icon: "sparkles",
         heroImage: "/assets/categories/visage-hero.jpg",
         items: [
-          { name: "HYDRASKIN", duration: "60 min", price: "120€", originalPrice: undefined as string | undefined, image: "/assets/services/hydratation.jpg" },
-          { name: "LUMINOTHERAPIE", duration: "30 min", price: "35€", originalPrice: undefined as string | undefined, image: "/assets/services/soin-eclat.jpg" }
+          { name: "HYDRASKIN EXPERT", duration: "60 min", price: "120€", originalPrice: undefined as string | undefined, image: "/assets/services/hydratation.jpg", description: "Purification - Hydratation & éclat" },
+          { name: "NANONEEDLING", duration: "60 min", price: "100€", originalPrice: undefined as string | undefined, image: "/assets/services/soin-eclat.jpg", description: "Texture & qualité de peau" },
+          { name: "DUO SIGNATURE", duration: "90 min", price: "190€", originalPrice: undefined as string | undefined, image: "/assets/services/nettoyage.jpg", description: "Protocole global recommandé (Hydraskin + Nano)" },
+          { name: "SOIN EXPRESS", duration: "25 min", price: "40€", originalPrice: undefined as string | undefined, image: "/assets/services/gommage.jpg", description: "Entretien de la peau" },
+          { name: "LUMINOTHÉRAPIE", duration: "30 min", price: "Offerte", originalPrice: undefined as string | undefined, image: "/assets/services/masque-led.jpg", description: "Masque LED Visage NOOANCE Elite X600 - Incluse à chaque séance" }
         ]
       }
     ]
