@@ -1,13 +1,19 @@
-import { useState, useCallback } from 'react';
-import { AnnouncementBar, Footer, MobileStickyBadge, StickyBookingButton } from '@/components/layout';
-import { HeroBanner, ServicesSection, PhilosophySection, ContactSection, GoogleReviewsCarousel } from '@/components/sections';
-import { clientConfig } from '@/config/client-config';
+import { useState, useCallback } from "react";
+import { AnnouncementBar, Footer, MobileStickyBadge, StickyBookingButton } from "@/components/layout";
+import {
+  HeroBanner,
+  ServicesSection,
+  PhilosophySection,
+  ContactSection,
+  GoogleReviewsCarousel,
+} from "@/components/sections";
+import { clientConfig } from "@/config/client-config";
 
 const Index = () => {
   const [announcementVisible, setAnnouncementVisible] = useState(false);
 
   const handleOpenBooking = () => {
-    window.open(clientConfig.booking.url, '_blank', 'noopener,noreferrer');
+    window.open(clientConfig.booking.url, "_blank", "noopener,noreferrer");
   };
 
   const handleAnnouncementVisibilityChange = useCallback((visible: boolean) => {
@@ -16,12 +22,11 @@ const Index = () => {
 
   return (
     <>
-      <AnnouncementBar onVisibilityChange={handleAnnouncementVisibilityChange} />
       <HeroBanner onBookingClick={handleOpenBooking} announcementBarVisible={announcementVisible} />
       <ServicesSection onBookService={() => handleOpenBooking()} />
       <PhilosophySection />
       <GoogleReviewsCarousel />
-      
+
       <ContactSection />
       <Footer />
       <MobileStickyBadge />
