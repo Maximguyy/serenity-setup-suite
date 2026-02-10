@@ -163,10 +163,10 @@ export const clientConfig = {
         icon: "sparkles",
         heroImage: "/assets/categories/visage-hero.jpg",
         items: [
-          { name: "HYDRASKIN EXPERT", duration: "60 min", price: "120€", originalPrice: undefined as string | undefined, image: "/assets/services/hydratation.jpg", description: "Soin visage technologique combinant hydratation intense, nettoyage profond des pores et éclat de la peau." },
-          { name: "NANONEEDLING", duration: "60 min", price: "100€", originalPrice: undefined as string | undefined, image: "/assets/services/soin-eclat.jpg", description: "Soin visage ciblé visant à améliorer la texture et l'aspect de la peau après nettoyage profond." },
-          { name: "DUO SIGNATURE", duration: "90 min", price: "190€", originalPrice: undefined as string | undefined, image: "/assets/services/nettoyage.jpg", description: "Protocole complet associe hydratation, désincrustation des pores, soin visage technologique." },
-          { name: "SOIN EXPRESS", duration: "25 min", price: "40€", originalPrice: undefined as string | undefined, image: "/assets/services/gommage.jpg", description: "Soin visage rapide pour nettoyage profond, peau plus nette et plus fraîche." }
+          { name: "HYDRASKIN EXPERT", duration: "60 min", price: "120€", originalPrice: undefined as string | undefined, image: "/assets/services/hydraskin.png", description: "Soin visage technologique combinant hydratation intense, nettoyage profond des pores et éclat de la peau." },
+          { name: "NANONEEDLING", duration: "60 min", price: "100€", originalPrice: undefined as string | undefined, image: "/assets/services/nanoneedling.png", description: "Soin visage ciblé visant à améliorer la texture et l'aspect de la peau après nettoyage profond." },
+          { name: "DUO SIGNATURE", duration: "90 min", price: "190€", originalPrice: undefined as string | undefined, image: "/assets/services/duo-signature.png", description: "Protocole complet associe hydratation, désincrustation des pores, soin visage technologique." },
+          { name: "SOIN EXPRESS", duration: "25 min", price: "40€", originalPrice: undefined as string | undefined, image: "/assets/services/soin-express.png", description: "Soin visage rapide pour nettoyage profond, peau plus nette et plus fraîche." }
         ]
       }
     ],
