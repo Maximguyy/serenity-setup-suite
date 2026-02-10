@@ -1,22 +1,13 @@
 import { useState, useCallback } from 'react';
 import { AnnouncementBar, Footer, MobileStickyBadge, StickyBookingButton } from '@/components/layout';
 import { HeroBanner, ServicesSection, PhilosophySection, ContactSection, GoogleReviewsCarousel } from '@/components/sections';
-import { BookingModal } from '@/components/booking';
-import { ServiceItem } from '@/components/booking/types';
+import { clientConfig } from '@/config/client-config';
 
 const Index = () => {
-  const [isBookingOpen, setIsBookingOpen] = useState(false);
-  const [preselectedService, setPreselectedService] = useState<ServiceItem | null>(null);
   const [announcementVisible, setAnnouncementVisible] = useState(false);
 
   const handleOpenBooking = () => {
-    setPreselectedService(null);
-    setIsBookingOpen(true);
-  };
-
-  const handleBookService = (service: ServiceItem) => {
-    setPreselectedService(service);
-    setIsBookingOpen(true);
+    window.open(clientConfig.booking.url, '_blank', 'noopener,noreferrer');
   };
 
   const handleAnnouncementVisibilityChange = useCallback((visible: boolean) => {
@@ -27,21 +18,14 @@ const Index = () => {
     <>
       <AnnouncementBar onVisibilityChange={handleAnnouncementVisibilityChange} />
       <HeroBanner onBookingClick={handleOpenBooking} announcementBarVisible={announcementVisible} />
-      <ServicesSection onBookService={handleBookService} />
+      <ServicesSection onBookService={() => handleOpenBooking()} />
       <PhilosophySection />
       <GoogleReviewsCarousel />
       
       <ContactSection />
       <Footer />
       <MobileStickyBadge />
-      <StickyBookingButton onClick={handleOpenBooking} />
-      
-      {/* Booking Modal */}
-      <BookingModal
-        open={isBookingOpen}
-        onOpenChange={setIsBookingOpen}
-        initialService={preselectedService}
-      />
+      <StickyBookingButton />
     </>
   );
 };
