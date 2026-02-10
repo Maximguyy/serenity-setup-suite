@@ -42,18 +42,8 @@ const ServiceModal = ({
   const phoneNumber = contact.phone.replace(/\s/g, '');
 
   const handleBookClick = () => {
-    if (onBookService && service) {
-      const bookingService: BookingServiceItem = {
-        name: service.name,
-        duration: service.duration,
-        price: service.price,
-        image: service.image || '',
-        categoryName: categoryName,
-        categorySlug: categorySlug
-      };
-      onBookService(bookingService);
-      onClose();
-    }
+    window.open(clientConfig.booking.url, '_blank', 'noopener,noreferrer');
+    onClose();
   };
 
   return (
