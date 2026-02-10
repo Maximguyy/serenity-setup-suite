@@ -298,24 +298,24 @@ export const clientConfig = {
   // PAGE A PROPOS
   // ─────────────────────────────────────────
   about: {
-    sectionTitle: "Qui sommes-nous ?",
-    sectionSubtitle: "Apprenez à nous connaître avant de nous rencontrer",
+    sectionTitle: "Skin Studio Paris La Défense Arena",
+    sectionSubtitle: "L'expertise au service de votre peau",
     sections: [
       {
-        title: "Votre institut à Nanterre",
-        text: "Situé au 47 Boulevard des Bouvets à Nanterre, notre institut vous accueille dans un espace lumineux et apaisant. Notre équipe de professionnelles passionnées vous reçoit 7j/7 de 9h à 22h pour des soins sur-mesure.",
-        image: "/assets/about/institut-interior.jpg",
+        title: "Un espace dédié aux soins visage experts",
+        text: "Skin Studio Paris La Défense est un espace dédié aux soins visage experts, où technologie avancée et précision esthétique se rencontrent pour révéler l'éclat naturel de chaque peau. Nous croyons qu'une peau saine et lumineuse ne relève ni du hasard ni des tendances, mais d'une analyse personnalisée, d'un protocole adapté et d'un savoir-faire maîtrisé.",
+        image: "/assets/about/skin-studio-marble.jpg",
         cta: "Prendre rendez-vous"
       },
       {
-        title: "L'expertise HYDRASKIN & Luminothérapie",
-        text: "Spécialisées dans les soins HYDRASKIN et la luminothérapie, nous utilisons des technologies de pointe pour des résultats visibles dès la première séance. Nos protocoles sont adaptés à chaque type de peau pour un éclat naturel.",
-        image: "/assets/about/expertise.jpg",
-        cta: "Voir nos soins"
+        title: "Des protocoles sur-mesure, une expertise de pointe",
+        text: "Chaque soin est conçu comme un véritable protocole sur-mesure, combinant technologies esthétiques avancées, cosmétique coréenne haute performance, gestes techniques précis et une approche respectueuse de la barrière cutanée.",
+        image: "/assets/about/technologies.jpg",
+        cta: "Découvrir nos soins"
       },
       {
-        title: "Une note de 4.9★ sur Google",
-        text: "Nos clientes nous font confiance et ça se voit. Avec plus de 127 avis vérifiés et une note moyenne de 4.9 étoiles, nous mettons un point d'honneur à offrir un service irréprochable. Venez découvrir pourquoi elles reviennent.",
+        title: "Votre peau, sublimée en profondeur",
+        text: "Notre objectif n'est pas seulement d'améliorer l'apparence de la peau, mais de travailler sa qualité en profondeur : équilibre, texture, hydratation, fermeté et éclat. Chaque protocole est pensé pour des résultats visibles et durables.",
         image: "/assets/about/experience.jpg",
         cta: "Prendre rendez-vous"
       }
