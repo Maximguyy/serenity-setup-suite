@@ -1,5 +1,5 @@
 import { clientConfig } from '@/config/client-config';
-import { MapPin, Phone, Clock, Instagram, Facebook } from 'lucide-react';
+import { MapPin, Phone, Clock, Instagram } from 'lucide-react';
 import { SectionWrapper } from '@/components/core';
 import { cn } from '@/lib/utils';
 
@@ -26,15 +26,6 @@ const ContactSection = () => {
             aria-label="Instagram"
           >
             <Instagram className="h-6 w-6 max-md:h-5 max-md:w-5" />
-          </a>
-          <a
-            href={clientConfig.social.facebook}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex h-12 w-12 items-center justify-center rounded-full bg-muted text-foreground transition-all duration-300 hover:-translate-y-0.5 hover:bg-accent hover:text-white max-md:h-11 max-md:w-11"
-            aria-label="Facebook"
-          >
-            <Facebook className="h-6 w-6 max-md:h-5 max-md:w-5" />
           </a>
           <a
             href={clientConfig.social.google}
