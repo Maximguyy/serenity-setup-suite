@@ -8,6 +8,9 @@ import CategoryPage from "./pages/CategoryPage";
 import GiftPage from "./pages/GiftPage";
 import AboutPage from "./pages/AboutPage";
 import BookingConfirmationPage from "./pages/BookingConfirmationPage";
+import MentionsLegalesPage from "./pages/MentionsLegalesPage";
+import ConfidentialitePage from "./pages/ConfidentialitePage";
+import CGVPage from "./pages/CGVPage";
 import NotFound from "./pages/NotFound";
 const queryClient = new QueryClient();
 
@@ -23,6 +26,9 @@ const App = () => (
           <Route path="/offrir" element={<GiftPage />} />
           <Route path="/a-propos" element={<AboutPage />} />
           <Route path="/reservation-confirmee" element={<BookingConfirmationPage />} />
+          <Route path="/mentions-legales" element={<MentionsLegalesPage />} />
+          <Route path="/confidentialite" element={<ConfidentialitePage />} />
+          <Route path="/cgv" element={<CGVPage />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
