@@ -175,7 +175,7 @@ export const clientConfig = {
       name: "Luminothérapie",
       duration: "10 min",
       image: "/assets/services/masque-led.jpg",
-      description: "Renforcez les effets de chaque soin grâce à notre masque LED NOOANCE Elite X600. La luminothérapie stimule le collagène, apaise les rougeurs et booste l'éclat naturel de votre peau."
+      description: "Renforcez les effets de chaque soin grâce à notre masque LED NOOANCE. La luminothérapie stimule le collagène, apaise les rougeurs et booste l'éclat naturel de votre peau."
     }
   },
 
