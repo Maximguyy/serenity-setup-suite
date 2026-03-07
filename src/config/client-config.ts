@@ -54,7 +54,7 @@ export const clientConfig = {
   // LIENS DE RESERVATION
   // ─────────────────────────────────────────
   booking: {
-    url: "https://api.leadconnectorhq.com/widget/booking/CNQZQ7cKraOQVCLgARFQ",
+    url: "https://api.leadconnectorhq.com/widget/booking/AvjuLeRoJwgCLn3q6oQj",
     buttonText: "Réserver une séance",
     giftCardUrl: "https://exemple-carte-cadeau.com",
     giftCardText: "Découvrir nos offres"
